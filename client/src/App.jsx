@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
+import { filterSearchQuery } from './utils/movieFilters';
 
 import Movies from './components/Movies'
 import MovieService from './services/MovieService';
@@ -9,9 +11,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('')
 
-  const filteredMovies = movies.filter(movie => 
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const filteredMovies = filterSearchQuery(movies, searchQuery)
 
   useEffect(() => {
     MovieService
