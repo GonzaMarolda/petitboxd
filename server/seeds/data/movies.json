@@ -1,0 +1,64 @@
+[
+    {
+        "title": "Citizen Kane",
+        "poster": "citizenKane.jpg",
+        "year": "1941",
+        "director": "Orson Welles",
+        "genres": ["Drama", "Mystery"],
+        "length": 119,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Singin' in the Rain",
+        "poster": "singingInTheRain.jpg",
+        "year": "1952",
+        "director": "Stanley Donen Gene Kelly",
+        "genres": ["Comedy", "Musical", "Romance"],
+        "length": 103,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Ladykillers",
+        "poster": "theLadykillers.jpg",
+        "year": "1955",
+        "director": "Alexander Mackendrick",
+        "genres": ["Comedy", "Crime"],
+        "length": 91,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Vertigo",
+        "poster": "vertigo.jpg",
+        "year": "1958",
+        "director": "Alfred Hitchcock",
+        "genres": ["Mystery", "Romance", "Suspense"],
+        "length": 128,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The 400 Blows",
+        "poster": "los400golpes.jpg",
+        "year": "1959",
+        "director": "François Truffaut",
+        "genres": ["Crime", "Drama"],
+        "length": 99,
+        "country": "France",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "8 1/2",
+        "poster": "ochoymedio.jpg",
+        "year": "1963",
+        "director": "Federico Fellini",
+        "genres": ["Drama"],
+        "length": 138,
+        "country": "Italy",
+        "seenBy": ["Ariel"]
+    }
+]
+
+
