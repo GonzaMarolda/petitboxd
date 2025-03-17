@@ -1,23 +1,24 @@
 import React, { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
-import './Dropdown.css'
-import '../MovieForm.css'
+import GenreService from '../../services/GenreService'
+import './GenreDropdown.css'
+import './MovieForm.css'
 
-const Dropdown = ({ DataService, isMultiple, onModify, placeholder, classNameSelected, classNameInput, maxSelections }) => {
+const GenreDropdown = ({ onModify }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState('')
-    const [data, setData] = useState([])
-    const [filteredData, setFilteredData] = useState([])
-    const [selectedData, setSelectedData] = useState([])
+    const [genres, setGenres] = useState([])
+    const [filteredGenres, setFilteredGenres] = useState([])
+    const [selectedGenres, setSelectedGenres] = useState([])
     const dropdownRef = useRef(null);
     const inputRef = useRef(null)
 
     useEffect(() => {
-        DataService
+        GenreService
             .getAll()
-            .then(data => {
-                setData(data)
-                setFilteredData(data);
+            .then(genres => {
+                setGenres(genres)
+                setFilteredGenres(genres);
             })
     }, [])
 
@@ -40,41 +41,35 @@ const Dropdown = ({ DataService, isMultiple, onModify, placeholder, classNameSel
 
     const handleEnter = (event) => {
         event.preventDefault(); 
-        if (filteredData.length == 0) return
+        if (filteredGenres.length == 0) return
 
-        const firstMatch = filteredData[0]
-        isMultiple ? handleSelectionMultiple(firstMatch) : handleSelection(firstMatch) 
+        const firstMatch = filteredGenres[0]
+        handleSelection(firstMatch)
     };
 
-    const handleSelection = (item) => {
-        setSearchQuery('')
-        setIsOpen(false)
-        onModify(item)
-    }
+    const handleSelection = (genre) => {
+        if (selectedGenres.length >= 4) return;
 
-    const handleSelectionMultiple = (item) => {
-        if (selectedData.length >= maxSelections) return;
-
-        setSelectedData(selectedData.concat(item))
-        const newFilteredData = filterData('').filter(i => i.id !== item.id)
-        setFilteredData(newFilteredData)
+        setSelectedGenres(selectedGenres.concat(genre))
+        const newFilteredGenres = filterGenres('').filter(i => i.id !== genre.id)
+        setFilteredGenres(newFilteredGenres)
         setSearchQuery('')
         
-        onModify(item, true)
+        onModify(genre, true)
     }
 
-    const handleRemove = (item) => {
-        setSelectedData(selectedData.filter(i => i.id !== item.id))
-        const newFilteredData = filterData(searchQuery).concat(item)
-        setFilteredData(newFilteredData)
+    const handleRemove = (genre) => {
+        setSelectedGenres(selectedGenres.filter(i => i.id !== genre.id))
+        const newFilteredGenres = filterGenres(searchQuery).concat(genre)
+        setFilteredGenres(newFilteredGenres)
 
-        onModify(item, false)
+        onModify(genre, false)
     }
 
-    const filterData = (searchQueryValue) => {
-        return data.filter(i => 
+    const filterGenres = (searchQueryValue) => {
+        return genres.filter(i => 
             i.name.toLowerCase().startsWith(searchQueryValue.toLowerCase()) &&
-            !selectedData.some(selected => selected.id === i.id)
+            !selectedGenres.some(selected => selected.id === i.id)
         )
     }
 
@@ -82,22 +77,22 @@ const Dropdown = ({ DataService, isMultiple, onModify, placeholder, classNameSel
         <div className="multiple-dropdown-container">
             <div className="dropdown-container">
                 <div 
-                    className={classNameInput} 
+                    className="genre-input"
                     onClick={() => {
                         setIsOpen(true)
-                        filterData(searchQuery)
+                        filterGenres(searchQuery)
                     }}
                 >
                     <input
                         type="text"
-                        placeholder={placeholder}
+                        placeholder="Select up to 4 genders"
                         value={searchQuery}
                         onKeyDown={(e) => {
                             if (e.key === "Enter") handleEnter(e)}}
                         onChange={(e) => {
                             setSearchQuery(e.target.value)
-                            const newFilteredData = filterData(e.target.value)
-                            setFilteredData(newFilteredData)}}
+                            const newFilteredGenres = filterGenres(e.target.value)
+                            setFilteredGenres(newFilteredGenres)}}
                         ref={inputRef}
                     />
                 </div>
@@ -108,7 +103,7 @@ const Dropdown = ({ DataService, isMultiple, onModify, placeholder, classNameSel
                         role="listbox"
                         ref={dropdownRef}
                     >
-                        {filteredData
+                        {filteredGenres
                             .sort((a, b) => {
                                 if (a.name < b.name) {
                                     return -1;
@@ -117,52 +112,41 @@ const Dropdown = ({ DataService, isMultiple, onModify, placeholder, classNameSel
                                     return 1;
                                 }
                                 return 0;})
-                            .map(item => (
+                            .map(genre => (
                                 <div
-                                    key={item.id}
-                                    className="dropdown-item"
+                                    key={genre.id}
+                                    className="dropdown-genre"
                                     onClick={() => {
-                                        isMultiple ? handleSelectionMultiple(item) : handleSelection(item) 
+                                        handleSelection(genre)
                                         setIsOpen(false)
                                         setSearchQuery('')}}
                                     role="option"
                                 >
-                                    {item.name}
+                                    {genre.name}
                                 </div>))
                         }
                     </div>
                 )}
             </div>
-            <div className="selected-item-container">
-                {isMultiple && (
-                    <>
-                    {selectedData.map(item => (
-                        <div key={item.id} className={classNameSelected}>
-                            <span>{item.name}</span>
+            <div className="selected-genre-container">
+                    {selectedGenres.map(genre => (
+                        <div key={genre.id} className="selected-genre">
+                            <span>{genre.name}</span>
                             <button 
                                 type="button" 
-                                className="remove-item"
-                                onClick={() => handleRemove(item)}
+                                className="remove-genre"
+                                onClick={() => handleRemove(genre)}
                             >
                                 ×
                             </button>
                         </div>
                     ))}
-                    </>
-                )}
             </div>
         </div>
     )
 }
-Dropdown.propTypes = {
-    DataService: PropTypes.object.isRequired,
-    isMultiple: PropTypes.bool.isRequired,
-    onModify: PropTypes.func.isRequired,
-    placeholder: PropTypes.string.isRequired,
-    classNameSelected: PropTypes.string.isRequired,
-    classNameInput: PropTypes.string.isRequired,
-    maxSelections: PropTypes.number.isRequired
-
+GenreDropdown.propTypes = {
+    onModify: PropTypes.func.isRequired
 }
 
-export default Dropdown
+export default GenreDropdown

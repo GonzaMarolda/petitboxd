@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import './MovieForm.css'
 import '../Movies.css'
-import GenreService from '../../services/GenreService';
-import CountryService from '../../services/CountryService';
 import PetitService from '../../services/PetitService'
-import Dropdown from './common/Dropdown'
+import GenreDropdown from './GenreDropdown'
+import CountryDropdown from './CountryDropdown'
+import PosterInsert from './PosterInsert'
 
 const MovieForm = ({ handleAddMovie, setShowModal }) => {
     const [formData, setFormData] = useState({
@@ -20,14 +20,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
         poster: null
     });
 
-    const [posterPreview, setPosterPreview] = useState(null);
     const [petits, setPetits] = useState([])
-    // Countries
-    const [countries, setCountries] = useState([])
-    const [filteredCountries, setFilteredCountries] = useState([])
-    const [countryFlag, setCountryFlag] = useState('missing')
-    const [isCountriesOpen, setIsCountriesOpen] = useState(false)
-    const [countryQuery, setCountryQuery] = useState('')
 
     useEffect(() => {
         PetitService
@@ -35,20 +28,18 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
             .then(petits => 
                 setPetits(petits)
             )
-        CountryService
-            .getAll()
-            .then(countries => {
-                setCountries(countries)
-                setFilteredCountries(countries)
-            })
     }, [])
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        let processedValue = correctLengthInput(name, value)
+        let processedValue = correctInputLength(name, value)
 
         setFormData({...formData, [name]: processedValue });
-    };
+    }
+
+    const handlePosterUpload = (file) => {
+        setFormData({...formData, ["poster"]: file })
+    }
 
     const handlePetitSelection = (petit) => {
         formData.seenBy.includes(petit.id) ? 
@@ -63,39 +54,10 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
     }
 
     const handleCountrySelection = (country) => {
-        setCountryQuery('')
-        setFilteredCountries(countries)
-        setIsCountriesOpen(false)
-        setCountryFlag(country.name)
         setFormData({...formData, ["country"]: country.id })
     }
 
-    const handleEnterOnCountries = (event) => {
-        event.preventDefault(); 
-        if (filteredCountries.length == 0) return
-
-        const firstMatch = filteredCountries[0]
-        handleCountrySelection(firstMatch) 
-    };
-
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-    
-        if (!file.type.startsWith('image/')) {
-          alert('Invalid image file');
-          return;
-        }
-    
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => setPosterPreview(reader.result);
-
-
-        setFormData({...formData, ["poster"]: file })
-      };
-
-    const correctLengthInput = (name, value) => {
+    const correctInputLength = (name, value) => {
         let processedValue = value
 
         if (name === "hours") {
@@ -113,32 +75,9 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
     return (
         <div className="modal-overlay">
             <div className="movie-card">
-                <label className="poster-insert-container" htmlFor="poster-upload">
-                    <input 
-                        type="file" 
-                        style={{ display: 'none' }}
-                        onChange={handleImageUpload}
-                        id="poster-upload"
-                    />
-                    {posterPreview ? (
-                        <img
-                            src={posterPreview} 
-                            alt="Poster preview" 
-                            className="poster-inserted"
-                        />
-                    ) : (
-                        <>
-                        <img
-                            src={"posters/insertImage.jpg"} 
-                            alt="Poster preview" 
-                            className="poster-insert"
-                        />
-                        <div className="poster-insert-text">
-                            Insert movie poster
-                        </div>
-                        </>
-                    )}
-                </label>
+                <PosterInsert 
+                    onUpload={handlePosterUpload}
+                />
 
                 <header className="movie-header">
                     <h3 className="movie-title">
@@ -166,59 +105,9 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                                 />
                             })
                         </span>
-                        <span className='country-container'>
-                            <img 
-                                src={
-                                    "flags/" + 
-                                    countryFlag.toLowerCase().replace(/\s+/g, '-')  + ".png"
-                                }
-                                alt={name + " flag"} 
-                                onError={() => {setCountryFlag("missing")}}
-                                className="clickable-flag-icon"
-                                onClick={() => setIsCountriesOpen(!isCountriesOpen)}
-                            />
-                            {isCountriesOpen && (
-                                <div className='countries-dropdown'>
-                                    <input 
-                                        type="text" 
-                                        className='country-input'
-                                        value={countryQuery}
-                                        onChange={(e) => {
-                                            const newQuery = e.target.value
-                                            setFilteredCountries(countries.filter(c => c.name.toLowerCase().startsWith(newQuery.toLowerCase())))
-                                            setCountryQuery(newQuery)
-                                        }}
-                                        onKeyDown={(e) => {
-                                            if (e.key === "Enter") handleEnterOnCountries(e)}}
-                                        placeholder='Select a country'
-                                    />
-                                    <div 
-                                        className="countries-dropdown-menu"
-                                    >
-                                        {filteredCountries
-                                            .sort((a, b) => {
-                                                if (a.name < b.name) {
-                                                    return -1;
-                                                }
-                                                if (a.name > b.name) {
-                                                    return 1;
-                                                }
-                                                return 0;})
-                                            .map(country => (
-                                                <div
-                                                    key={country.id}
-                                                    className="dropdown-item"
-                                                    onClick={() => {
-                                                        handleCountrySelection(country) 
-                                                    }}
-                                                >
-                                                    {country.name}
-                                                </div>))
-                                        }
-                                    </div>
-                                </div>
-                            )}
-                        </span>
+                        <CountryDropdown
+                            onSelection={handleCountrySelection}
+                        />
                     </h3>
                 </header>
 
@@ -267,14 +156,8 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
 
                 <div className="genres-container">
                     <h4 className="section-title">Genres</h4> 
-                    <Dropdown
-                        DataService={GenreService}
-                        isMultiple={true}
+                    <GenreDropdown
                         onModify={handleGenreModification}
-                        placeholder={"Select up to 4 genres"}
-                        classNameSelected={"selected-genre"}
-                        classNameInput={"genre-input"}
-                        maxSelections={4}
                     />
                 </div>
 
@@ -321,11 +204,3 @@ MovieForm.propTypes = {
 }
 
 export default MovieForm
-
-/*
-<MovieImage 
-    src={"insertImage.png"}
-    alt={"test poster"}
-    className={"poster-insert"}
-/>
-*/
