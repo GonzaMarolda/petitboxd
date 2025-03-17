@@ -45,6 +45,7 @@ const CountryDropdown = ( {onSelection} ) => {
                 alt={countryFlag + " flag"} 
                 onError={() => {setCountryFlag("missing")}}
                 className="clickable-flag-icon"
+                data-testid="flag_button"
                 onClick={() => setIsCountriesOpen(!isCountriesOpen)}
             />
             {isCountriesOpen && (

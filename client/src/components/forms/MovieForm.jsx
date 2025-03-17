@@ -85,6 +85,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                             <input
                                 type="text"
                                 name="title"
+                                data-testid="title"
                                 value={formData.title}
                                 onChange={handleInputChange}
                                 placeholder="Enter a title"
@@ -97,6 +98,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                                 <input
                                     type="number"
                                     name="year"
+                                    data-testid="year"
                                     value={formData.year}
                                     onChange={handleInputChange}
                                     placeholder="Enter a year"
@@ -118,6 +120,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                             <input
                                 type="text"
                                 name="director"
+                                data-testid="director"
                                 value={formData.director}
                                 onChange={handleInputChange}
                                 placeholder="Enter a director"
@@ -134,6 +137,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                                 <input
                                     type="text"
                                     name="hours"
+                                    data-testid="hours"
                                     value={formData.hours}
                                     onChange={handleInputChange}
                                     className='length-input'
@@ -144,6 +148,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                                 <input
                                     type="text"
                                     name="minutes"
+                                    data-testid="minutes"
                                     value={formData.minutes}
                                     onChange={handleInputChange}
                                     className='length-input'
@@ -186,6 +191,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                     </button>
                     <button 
                         type="submit"
+                        data-testid="add_movie"
                         onClick={(e) => {
                             e.preventDefault()
                             handleAddMovie(formData)

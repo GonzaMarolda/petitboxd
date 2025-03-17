@@ -49,4 +49,12 @@ const simpleAttributeLoader = async (Model, data) => {
 }
 
 mongoose.connect(config.MONGODB_URI)
+  .then(() => {
+    if (process.env.NODE_ENV !== "test") {
+      console.log("Connected to MongoDB")
+    } else console.log("Connected to MongoDB (Test)")
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error.message)
+  })
 seedDatabase()

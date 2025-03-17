@@ -78,6 +78,7 @@ const GenreDropdown = ({ onModify }) => {
             <div className="dropdown-container">
                 <div 
                     className="genre-input"
+                    data-testid="genre_input"
                     onClick={() => {
                         setIsOpen(true)
                         filterGenres(searchQuery)
