@@ -8,21 +8,8 @@ const getAll = async () => {
   }
 
 const create = async newObject => {
-    const request = await axios.post(baseUrl, newObject)
-    console.log("Recieved data: " + request.data)
-    return request.then(response => response.data)
+    const response = await axios.post(baseUrl, newObject, {headers: { 'Content-Type': 'multipart/form-data' }})
+    return response.data
 }
 
-const update = async (id, newObject) => {
-    const request = await axios.put(baseUrl + "/" + id, newObject)
-    console.log("Recieved data: " + request.data)
-    return request.then(response => response.data)
-}
-
-const remove = async (id) => {
-    const request = await axios.delete(baseUrl + "/" + id)
-    console.log("Recieved data: " + request.data)
-    return request.then(response => response.data)
-}
-
-export default { getAll, create, update, remove }
+export default { getAll, create }

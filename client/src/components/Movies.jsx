@@ -1,8 +1,8 @@
 import './Movies.css'
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-const Movies = ({movies}) => {
+export const Movies = ({movies}) => {
     return (
         <div className="movies-container">
             {movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
@@ -16,10 +16,11 @@ Movies.propTypes = {
 const MovieCard = ({movie}) => {
     return (
         <div className="movie-card">
-          <img 
-            src={"posters/" + movie.poster} 
-            alt={movie.title + " poster"} 
-            className="movie-poster"
+
+          <MovieImage 
+            src={movie.poster}
+            alt={movie.title + " poster"}
+            className={"movie-poster"}
           />
 
           <header className="movie-header">
@@ -91,16 +92,21 @@ Petit.propTypes = {
 }
 
 const Flag = ({name}) => {
-  const convertName = (name) => {
+  const [isMissing, setIsMissing] = useState(false);
+
+  const convertName = (name = "missing") => {
     return name
       .toLowerCase()    
       .replace(/\s+/g, '-') 
   };
 
+  const convertedName = isMissing ? "missing" : convertName(name)
+
   return (
     <img 
-      src={"flags/" + convertName(name) + ".png"}
+      src={"http://localhost:3001/uploads/flags/" + convertedName + ".png"}
       alt={name + " flag"} 
+      onError={() => {setIsMissing(true)}}
       className="flag-icon"
     />
   )
@@ -109,10 +115,26 @@ Flag.propTypes = {
   name: PropTypes.string.isRequired
 }
 
+export const MovieImage = ({ src, alt, className }) => {
+  const [imageSrc, setImageSrc] = useState(src)
+
+  return (
+    <img 
+      src={"http://localhost:3001/uploads/posters/" + imageSrc}
+      alt={alt}
+      onError={() => {setImageSrc("missing.jpg")}}
+      className={className}
+    />
+  )
+}
+MovieImage.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  className: PropTypes.string
+}
+
 const minsToStringHours = (mins) => {
   const hoursString = Math.floor(mins/60).toString() + "h"
   const minsString = Math.ceil((mins/60 - Math.floor(mins/60))*60) + "m"
   return hoursString + " " + minsString
 }
-
-export default Movies

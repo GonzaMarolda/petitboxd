@@ -11,7 +11,7 @@ const movieSchema = new mongoose.Schema({
     },
     poster: {
         type: String,
-        required: true
+        required: false
     },
     year: {
         type: String,
@@ -31,11 +31,13 @@ const movieSchema = new mongoose.Schema({
     },
     country: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Country'
+        ref: 'Country',
+        required: false
     },
     seenBy: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Petit'
+        ref: 'Petit',
+        required: false
     }]
 })
 

@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import { filterSearchQuery } from './utils/movieFilters';
 
-import Movies from './components/Movies'
+import {Movies} from './components/Movies'
 import MovieService from './services/MovieService';
 import AppHeader from './components/AppHeader';
 import SearchBar from './components/SearchBar';
@@ -23,7 +22,7 @@ const App = () => {
 
   return (
     <>
-      <AppHeader/>
+      <AppHeader setMovies={setMovies}/>
       <div className="main-content">
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
         <Movies movies={filteredMovies}/>

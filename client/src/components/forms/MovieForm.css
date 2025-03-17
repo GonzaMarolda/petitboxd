@@ -1,0 +1,232 @@
+/* Modal */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+  
+.modal-action {
+    position: relative;
+    top: 7px;
+    left: 2px;
+    margin-top: 0.95rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.modal-action button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: white;
+    border-radius: 4px;
+}
+  
+.modal-action button[type="submit"] {
+    background: #007bff;
+    border: none;
+}
+
+.modal-action button[type="cancel"] {
+    background: none;
+    color: #007bff;
+    border: 1px double #007bff;
+}
+
+/* Poster Insert */
+
+.poster-insert-container {
+    width: 100%;
+    height: 250px;
+    background-color: #181d28;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.poster-insert-container:hover .poster-insert-text{
+    opacity: 0.8;
+}
+
+.poster-insert-container:hover .poster-insert{
+    opacity: 0.8;
+}
+
+.poster-insert {
+    width: 35%;
+    height: 35%;
+    object-fit: fill;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.poster-insert-text {
+    color: #fff; 
+    font-size: 1rem;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.poster-inserted {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* Country */
+
+.clickable-flag-icon {
+    width: 30px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 3px;
+    margin: 0 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    vertical-align: middle;
+    cursor: pointer
+}
+
+.countries-dropdown {
+    position: absolute;
+    right: 406px;
+    top: 300px;
+    display: flex;
+    flex-direction: column;
+    width: 94px;
+}
+
+.country-input {
+    background-color: rgba(26, 28, 34, 0.75);
+    color: #666;
+    font-size: 11.5px;
+    padding: 5px;
+    border: 0px;
+    outline: 1px solid white;
+    border-radius: 4px;
+}
+
+.countries-dropdown-menu {
+    max-height: 130px;
+    border: 0px;
+    margin-top: 1px;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+    font-size: smaller;
+    font-weight: 100;
+
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Simple Inputs */
+
+.title-input {
+    margin-right: 5px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    outline: none; 
+    border-bottom: 2px solid #ccc;
+    color: white;
+}
+
+.year-input {
+    text-align: center;
+    width: 73px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    outline: none; 
+    border-bottom: 2px solid #ccc;
+    color: white;
+}
+
+.director-input {
+    text-align: right;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    outline: none; 
+    color: #666;
+}
+
+.length-input {
+    text-align: center;
+    width: 15px;
+    background-color: rgba(0, 0, 0, 0);
+    outline: none; 
+    border: 0px;
+    color: #666;
+}
+
+/* Genres */
+
+.genre-input input {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    color: #666;
+    width: 109px;
+    font-size: 11.5px;
+    padding: 8px;
+    border: 0px;
+    outline: 1px solid white;
+    border-radius: 4px;
+}   
+
+.selected-genre {
+    position: relative;
+    top: 6px;
+    background: #f0f0f0;
+    color: #333;
+    padding: 0.19rem 0.25rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    cursor: default;
+    flex-shrink: 0;
+}
+
+/* Seen By */
+
+.petit-tag {
+    background: #e8f4ff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bolder;
+}
+
+.petit-unselected {
+    cursor: pointer;
+    transition: all ease 0.2s;
+    color: #12467380;
+}
+
+.petit-selected {
+    cursor: pointer;
+    color: #124673;
+}
+
+.petit-unselected:hover {
+    color: #124673;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
