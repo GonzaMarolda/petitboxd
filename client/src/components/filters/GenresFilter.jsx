@@ -1,23 +1,25 @@
 import React, { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import GenreService from '../../services/GenreService'
-import styles from './GenreDropdown.module.css'
+import styles from './GenresFilter.module.css'
 
-const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
+const GenresFilter = ({ onModify, placeholder, startingIncludedGenresId, startingExcludedGenresId }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState('')
     const [genres, setGenres] = useState([])
     const [filteredGenres, setFilteredGenres] = useState([])
-    const [selectedGenres, setSelectedGenres] = useState([])
+    const [includedGenres, setIncludedGenres] = useState([])
+    const [excludedGenres, setExcludedGenres] = useState([])
+    const selectedGenres = includedGenres.concat(excludedGenres)
     const dropdownRef = useRef(null);
-    const inputRef = useRef(null)
 
     useEffect(() => {
         GenreService
             .getAll()
             .then(genres => {
                 setGenres(genres)
-                setFilteredGenres(genres);
+                setFilteredGenres(genres)
+                checkStartingGenres(genres)
             })
     }, [])
 
@@ -38,6 +40,20 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
         };
     }, [isOpen]);
 
+    const checkStartingGenres = (genres) => {
+        if (!startingIncludedGenresId && !startingExcludedGenresId) return
+
+        startingIncludedGenresId.forEach(genreId => {
+            const includedGenre = genres.find(g => g.id === genreId)
+            setIncludedGenres(prev => prev.concat(includedGenre))
+        });
+
+        startingExcludedGenresId.forEach(genreId => {
+            const excludedGenre = genres.find(g => g.id === genreId)
+            setExcludedGenres(prev => prev.concat(excludedGenre))
+        });
+    }
+
     const handleEnter = (event) => {
         event.preventDefault(); 
         if (filteredGenres.length == 0) return
@@ -47,22 +63,28 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
     };
 
     const handleSelection = (genre) => {
-        if (selectedGenres ? selectedGenres.length >= selectLimit : false) return;
+        if (includedGenres.includes(genre)) {
+            setIncludedGenres(includedGenres.filter(i => i.id !== genre.id))
+            setExcludedGenres(prev => prev.concat(genre))
+        } else {
+            setExcludedGenres(excludedGenres.filter(i => i.id !== genre.id))
+            setIncludedGenres(prev => prev.concat(genre))
+        }
 
-        setSelectedGenres(selectedGenres.concat(genre))
         const newFilteredGenres = filterGenres('').filter(i => i.id !== genre.id)
         setFilteredGenres(newFilteredGenres)
         setSearchQuery('')
         
-        onModify(genre, true)
+        onModify(genre)
     }
 
     const handleRemove = (genre) => {
-        setSelectedGenres(selectedGenres.filter(i => i.id !== genre.id))
+        setIncludedGenres(includedGenres.filter(i => i.id !== genre.id))
+        setExcludedGenres(excludedGenres.filter(i => i.id !== genre.id))
         const newFilteredGenres = filterGenres(searchQuery).concat(genre)
         setFilteredGenres(newFilteredGenres)
 
-        onModify(genre, false)
+        onModify(genre, true)
     }
 
     const filterGenres = (searchQueryValue) => {
@@ -74,14 +96,10 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
 
     return (
         <div className={styles["multiple-dropdown-container"]}>
-            <div className={styles["dropdown-container"]}>
+            <div className={styles["filter-dropdown-container"]}>
                 <div 
-                    className={styles["genre-input"]}
-                    data-testid="genre_input"
-                    onClick={() => {
-                        setIsOpen(true)
-                        filterGenres(searchQuery)
-                    }}
+                    className={styles["filter-genre-input"]}
+                    data-testid="filter-genre-input"
                 >
                     <input
                         type="text"
@@ -93,13 +111,19 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
                             setSearchQuery(e.target.value)
                             const newFilteredGenres = filterGenres(e.target.value)
                             setFilteredGenres(newFilteredGenres)}}
-                        ref={inputRef}
+                        onClick={() => {
+                            setIsOpen(true)
+                            filterGenres(searchQuery)
+                        }}
                     />
+
+                    <div className={styles['filter-genres-text']}><span style={{color: "#daecdd"}}>Include</span> or <span style={{color: "#ecdeda"}}>Exclude</span> genres from the search</div>
+
                 </div>
                 
                 {isOpen && (
                     <div 
-                        className={styles["dropdown-menu"]}
+                        className={styles["filter-dropdown-menu"]}
                         role="listbox"
                         ref={dropdownRef}
                     >
@@ -115,7 +139,7 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
                             .map(genre => (
                                 <div
                                     key={genre.id}
-                                    className={styles["dropdown-genre"]}
+                                    className={styles["filter-dropdown-genre"]}
                                     onClick={() => {
                                         handleSelection(genre)
                                         setIsOpen(false)
@@ -128,13 +152,18 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
                     </div>
                 )}
             </div>
-            <div className={styles["selected-genre-container"]}>
+            <div className={styles["filter-selected-genre-container"]}>
                     {selectedGenres.map(genre => (
-                        <div key={genre.id} className={styles["selected-genre"]}>
-                            <span>{genre.name}</span>
+                        <div 
+                            key={genre.id} 
+                            className=
+                                {styles["filter-selected-genre"] + " " +
+                                (includedGenres.includes(genre) ? styles["filter-included"] : styles["filter-excluded"])}                      
+                        >
+                            <span style={{cursor: "pointer"}} onClick={() => handleSelection(genre)}>{genre.name}</span>
                             <button 
                                 type="button" 
-                                className={styles["remove-genre"]}
+                                className={styles["filter-remove-genre"]}
                                 onClick={() => handleRemove(genre)}
                             >
                                 ×
@@ -145,10 +174,11 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
         </div>
     )
 }
-GenreDropdown.propTypes = {
+GenresFilter.propTypes = {
     onModify: PropTypes.func.isRequired,
     placeholder: PropTypes.string.isRequired,
-    selectLimit: PropTypes.number
+    startingIncludedGenresId: PropTypes.array.isRequired,
+    startingExcludedGenresId: PropTypes.array.isRequired
 }
 
-export default GenreDropdown
+export default GenresFilter

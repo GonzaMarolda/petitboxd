@@ -1,4 +1,4 @@
-import './AppHeader.css'
+import styles from './AppHeader.module.css'
 import React from 'react'
 import { useState } from 'react';
 import MovieForm from './forms/MovieForm';
@@ -29,26 +29,26 @@ const AppHeader = ({ setMovies }) => {
     };
 
     return (
-        <header className="header-container">
-            <h1 className="header-logo">
+        <header className={styles["header-container"]}>
+            <h1 className={styles["header-logo"]}>
                 Petitboxd
                 <img src="http://localhost:3001/uploads/logo.png" alt="petitboxd logo" width="50" height="50"/>
             </h1>
 
-            <div className="header-controls">
+            <div className={styles["header-controls"]}>
                 <button 
-                    className="header-button"
+                    className={styles["header-button"]}
                     onClick={() => setShowModal(true)}
                 >
                     ➕ Add movie
                 </button>
                 {showModal && <MovieForm handleAddMovie={handleAddMovie} setShowModal={setShowModal}/>}                
 
-                <button className="header-button">💬 Suggest movie</button>
+                <button className={styles["header-button"]}>💬 Suggest movie</button>
                 <input 
                     type="password" 
                     placeholder="Enter your petit key" 
-                    className="access-input"
+                    className={styles["access-input"]}
                 />
             </div>
         </header>

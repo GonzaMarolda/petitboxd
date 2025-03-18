@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import './PosterInsert.css'
+import styles from './PosterInsert.module.css'
 
 const PosterInsert = ({onUpload}) => {
     const [posterPreview, setPosterPreview] = useState(null);
@@ -22,7 +22,7 @@ const PosterInsert = ({onUpload}) => {
     }
 
     return (
-        <label className="poster-insert-container" htmlFor="poster-upload">
+        <label className={styles["poster-insert-container"]} htmlFor="poster-upload">
             <input 
                 type="file" 
                 style={{ display: 'none' }}
@@ -33,16 +33,16 @@ const PosterInsert = ({onUpload}) => {
                 <img
                     src={posterPreview} 
                     alt="Poster preview" 
-                    className="poster-inserted"
+                    className={styles["poster-inserted"]}
                 />
             ) : (
                 <>
                 <img
                     src={"http://localhost:3001/uploads/posters/insertImage.jpg"} 
                     alt="Poster preview" 
-                    className="poster-insert"
+                    className={styles["poster-insert"]}
                 />
-                <div className="poster-insert-text">
+                <div className={styles["poster-insert-text"]}>
                     Insert movie poster
                 </div>
                 </>

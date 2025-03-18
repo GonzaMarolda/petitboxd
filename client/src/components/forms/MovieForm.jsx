@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import './MovieForm.css'
-import '../Movies.css'
+import styles from './MovieForm.module.css'
 import PetitService from '../../services/PetitService'
 import GenreDropdown from './GenreDropdown'
 import CountryDropdown from './CountryDropdown'
@@ -73,14 +72,14 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
     }
 
     return (
-        <div className="modal-overlay">
-            <div className="movie-card">
+        <div className={styles["modal-overlay"]}>
+            <div className={styles["movie-card"]}>
                 <PosterInsert 
                     onUpload={handlePosterUpload}
                 />
 
-                <header className="movie-header">
-                    <h3 className="movie-title">
+                <header className={styles["movie-header"]}>
+                    <h3 className={styles["movie-title"]}>
                         {
                             <input
                                 type="text"
@@ -89,11 +88,11 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                                 value={formData.title}
                                 onChange={handleInputChange}
                                 placeholder="Enter a title"
-                                className='title-input'
+                                className={styles['title-input']}
                                 required
                             />
                         }
-                        <span className="movie-year"> 
+                        <span className={styles["movie-year"]}> 
                             ({
                                 <input
                                     type="number"
@@ -102,7 +101,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                                     value={formData.year}
                                     onChange={handleInputChange}
                                     placeholder="Enter a year"
-                                    className='year-input'
+                                    className={styles['year-input']}
                                     required
                                 />
                             })
@@ -113,10 +112,10 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                     </h3>
                 </header>
 
-                <div className="movie-details">
-                    <div className="detail-row">
-                        <span className="detail-label">Director:</span>
-                        <span className="detail-value">
+                <div className={styles["movie-details"]}>
+                    <div className={styles["detail-row"]}>
+                        <span className={styles["detail-label"]}>Director:</span>
+                        <span className={styles["detail-value"]}>
                             <input
                                 type="text"
                                 name="director"
@@ -124,15 +123,15 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                                 value={formData.director}
                                 onChange={handleInputChange}
                                 placeholder="Enter a director"
-                                className='director-input'
+                                className={styles['director-input']}
                                 required
                             />
                         </span>
                     </div>
 
-                    <div className="detail-row">
-                        <span className="detail-label">Length:</span>
-                        <span className="detail-value">
+                    <div className={styles["detail-row"]}>
+                        <span className={styles["detail-label"]}>Length:</span>
+                        <span className={styles["detail-value"]}>
                             {
                                 <input
                                     type="text"
@@ -140,7 +139,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                                     data-testid="hours"
                                     value={formData.hours}
                                     onChange={handleInputChange}
-                                    className='length-input'
+                                    className={styles['length-input']}
                                     required
                                 />
                             }h {" "}
@@ -151,7 +150,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                                     data-testid="minutes"
                                     value={formData.minutes}
                                     onChange={handleInputChange}
-                                    className='length-input'
+                                    className={styles['length-input']}
                                     required
                                 />
                             }m
@@ -159,22 +158,24 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                     </div>
                 </div>
 
-                <div className="genres-container">
-                    <h4 className="section-title">Genres</h4> 
+                <div className={styles["genres-container"]}>
+                    <h4 className={styles["section-title"]}>Genres</h4> 
                     <GenreDropdown
                         onModify={handleGenreModification}
+                        placeholder={"Enter up to 4 genders"}
+                        selectLimit={4}
                     />
                 </div>
 
-                <div className="seen-by-container">
-                    <h4 className="section-title">Seen by</h4>
-                    <div className="seen-by-list">
+                <div className={styles["seen-by-container"]}>
+                    <h4 className={styles["section-title"]}>Seen by</h4>
+                    <div className={styles["seen-by-list"]}>
                         {petits
                         .sort((a, b) => a.name.localeCompare(b.name))
                         .map(petit => (
                             <span 
                                 key={petit.id} 
-                                className={"petit-tag " + (formData.seenBy.includes(petit.id) ? "petit-selected" : "petit-unselected")}
+                                className={styles["petit-tag"] + " " + (formData.seenBy.includes(petit.id) ? styles["petit-selected"] : styles["petit-unselected"])}
                                 onClick={() => handlePetitSelection(petit)}>
                                     {petit.name}
                             </span>
@@ -182,7 +183,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                     </div>
                 </div>
 
-                <div className="modal-action">
+                <div className={styles["modal-action"]}>
                     <button 
                         type="cancel" 
                         onClick={() => setShowModal(false)}

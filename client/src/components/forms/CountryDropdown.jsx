@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import CountryService from '../../services/CountryService'
 import PropTypes from 'prop-types'
-import './CountryDropdown.css'
+import styles from './CountryDropdown.module.css'
 
 const CountryDropdown = ( {onSelection} ) => {
     const [countries, setCountries] = useState([])
@@ -44,15 +44,15 @@ const CountryDropdown = ( {onSelection} ) => {
                 }
                 alt={countryFlag + " flag"} 
                 onError={() => {setCountryFlag("missing")}}
-                className="clickable-flag-icon"
+                className={styles["clickable-flag-icon"]}
                 data-testid="flag_button"
                 onClick={() => setIsCountriesOpen(!isCountriesOpen)}
             />
             {isCountriesOpen && (
-                <div className='countries-dropdown'>
+                <div className={styles['countries-dropdown']}>
                     <input 
                         type="text" 
-                        className='country-input'
+                        className={styles['country-input']}
                         value={countryQuery}
                         onChange={(e) => {
                             const newQuery = e.target.value
@@ -64,7 +64,7 @@ const CountryDropdown = ( {onSelection} ) => {
                         placeholder='Select a country'
                     />
                     <div 
-                        className="countries-dropdown-menu"
+                        className={styles["countries-dropdown-menu"]}
                     >
                         {filteredCountries
                             .sort((a, b) => {
@@ -78,7 +78,7 @@ const CountryDropdown = ( {onSelection} ) => {
                             .map(country => (
                                 <div
                                     key={country.id}
-                                    className="dropdown-country"
+                                    className={styles["dropdown-country"]}
                                     onClick={() => {
                                         handleSelection(country) 
                                     }}

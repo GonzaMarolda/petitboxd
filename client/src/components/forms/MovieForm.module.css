@@ -41,6 +41,45 @@
     border: 1px double #007bff;
 }
 
+/* Card */
+
+.movie-card {
+    max-width: 341px;
+    overflow: hidden;
+    background: #1a1c22;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.movie-header {
+    margin-bottom: 1rem;
+}
+
+.movie-year {
+    color: #666;
+    font-weight: 400;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #eee;
+}
+  
+.detail-label {
+    font-weight: 600;
+    color: #444;
+}
+  
+.detail-value {
+    color: #666;
+}
+
+
 /* Simple Inputs */
 
 .title-input {

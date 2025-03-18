@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { filterSearchQuery } from './utils/movieFilters';
+import { filterMovies } from './utils/movieFilters';
 
 import {Movies} from './components/Movies'
 import MovieService from './services/MovieService';
@@ -9,8 +9,15 @@ import SearchBar from './components/SearchBar';
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedFilters, setSelectedFilters] = useState({
+    includedGenres: [],
+    excludedGenres: [],
+    minYear: '',
+    maxYear: '',
+    country: ''
+  });
 
-  const filteredMovies = filterSearchQuery(movies, searchQuery)
+  const filteredMovies = filterMovies(movies, searchQuery, selectedFilters)
 
   useEffect(() => {
     MovieService
@@ -24,7 +31,12 @@ const App = () => {
     <>
       <AppHeader setMovies={setMovies}/>
       <div className="main-content">
-        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+        <SearchBar 
+          searchQuery={searchQuery} 
+          setSearchQuery={setSearchQuery}
+          selectedFilters={selectedFilters}
+          setSelectedFilters={setSelectedFilters}
+        />
         <Movies movies={filteredMovies}/>
       </div>
     </>

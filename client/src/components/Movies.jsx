@@ -1,10 +1,10 @@
-import './Movies.css'
+import styles from './Movies.module.css'
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 export const Movies = ({movies}) => {
     return (
-        <div className="movies-container">
+        <div className={styles["movies-container"]}>
             {movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
         </div> 
     )
@@ -15,46 +15,46 @@ Movies.propTypes = {
 
 const MovieCard = ({movie}) => {
     return (
-        <div className="movie-card">
-
+        <div className={styles["movie-card"]}>
+          
           <MovieImage 
             src={movie.poster}
             alt={movie.title + " poster"}
-            className={"movie-poster"}
+            className={styles["movie-poster"]}
           />
 
-          <header className="movie-header">
-            <h3 className="movie-title">
+          <header className={styles["movie-header"]}>
+            <h3 className={styles["movie-title"]}>
               {movie.title}
-              <span className="movie-year"> ({movie.year})</span>
-              <Flag name={movie.country.name}/>
+              <span className={styles["movie-year"]}> ({movie.year})</span>
+              <Flag name={movie.country?.name}/>
             </h3>
           </header>
 
-          <div className="movie-details">
-            <div className="detail-row">
-              <span className="detail-label">Director:</span>
-              <span className="detail-value">{movie.director}</span>
+          <div className={styles["movie-details"]}>
+            <div className={styles["detail-row"]}>
+              <span className={styles["detail-label"]}>Director:</span>
+              <span className={styles["detail-value"]}>{movie.director}</span>
             </div>
 
-            <div className="detail-row">
-              <span className="detail-label">Length:</span>
-              <span className="detail-value">{minsToStringHours(movie.length)}</span>
+            <div className={styles["detail-row"]}>
+              <span className={styles["detail-label"]}>Length:</span>
+              <span className={styles["detail-value"]}>{minsToStringHours(movie.length)}</span>
             </div>
           </div>
 
-          <div className="genres-container">
-            <h4 className="section-title">Genres</h4>
-            <ul className="genres-list">
+          <div className={styles["genres-container"]}>
+            <h4 className={styles["section-title"]}>Genres</h4>
+            <ul className={styles["genres-list"]}>
               {movie.genres.map(genre => (
                 <Genre key={genre.id} name={genre.name} />
               ))}
             </ul>
           </div>
 
-          <div className="seen-by-container">
-            <h4 className="section-title">Seen by</h4>
-            <div className="seen-by-list">
+          <div className={styles["seen-by-container"]}>
+            <h4 className={styles["section-title"]}>Seen by</h4>
+            <div className={styles["seen-by-list"]}>
               {[...movie.seenBy]
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map(petit => (
@@ -71,7 +71,7 @@ MovieCard.propTypes = {
 
 const Genre = ({name}) => {
   return (
-    <li className="genre-item">
+    <li className={styles["genre-item"]}>
       {name} 
     </li>
   ) 
@@ -82,7 +82,7 @@ Genre.propTypes = {
 
 const Petit = ({name}) => {
   return (
-    <span className="petit-user">
+    <span className={styles["petit-user"]}>
       {name}
     </span>
   )
@@ -107,7 +107,7 @@ const Flag = ({name}) => {
       src={"http://localhost:3001/uploads/flags/" + convertedName + ".png"}
       alt={name + " flag"} 
       onError={() => {setIsMissing(true)}}
-      className="flag-icon"
+      className={styles["flag-icon"]}
     />
   )
 }

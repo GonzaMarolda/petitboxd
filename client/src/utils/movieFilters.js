@@ -1,6 +1,12 @@
 /* eslint-disable no-unused-vars */
 
-export const filterSearchQuery = (movies, searchQuery) => {
+export const filterMovies = (movies, searchQuery, selectedFilters) => {
+  const queryFilteredMovies = filterSearchQuery(movies, searchQuery)
+  const filteredMovies = filterSelectedFilters(queryFilteredMovies, selectedFilters)
+  return filteredMovies
+}
+
+const filterSearchQuery = (movies, searchQuery) => {
     const processedMovies = getProcessedMovies(movies, searchQuery) 
     const filteredMovies = processedMovies.filter(movie => !movie.failedMatch)
 
@@ -16,6 +22,31 @@ export const filterSearchQuery = (movies, searchQuery) => {
       const { wordStartMatch, failedMatch, ...cleanMovie } = movie;
       return cleanMovie;
     });
+}
+
+const filterSelectedFilters = (movies, selectedFilters) => {
+  return movies.filter(movie => { // Year
+    const minYear = selectedFilters.minYear ? selectedFilters.minYear : '0'
+    const maxYear = selectedFilters.maxYear ? selectedFilters.maxYear : '3000' 
+
+    return movie.year >= minYear && movie.year <= maxYear
+  })
+  .filter(movie => { // Country
+    if (!selectedFilters.country) return true
+    return movie.country.id === selectedFilters.country
+  })
+  .filter(movie => { // Genres
+    const hasIncluded = selectedFilters.includedGenres.length > 0 ? movie.genres.some(g => selectedFilters.includedGenres.includes(g.id)) : true
+    const hasExcluded = selectedFilters.excludedGenres.length > 0 ? movie.genres.some(g => selectedFilters.excludedGenres.includes(g.id)) : false
+
+    return hasIncluded && !hasExcluded
+  })
+  .sort((a, b) => {
+    const countA = a.genres.filter(genre => selectedFilters.includedGenres.includes(genre.id)).length
+    const countB = b.genres.filter(genre => selectedFilters.includedGenres.includes(genre.id)).length
+    
+    return countB - countA
+  })
 }
 
 // Matches movies to the quert and returns them with a failedMatch property

@@ -6,34 +6,47 @@
     gap: 8px;
 }
 
-.dropdown-container {
+.filter-dropdown-container {
+    position: relative;
+    display: flex;
+    gap: 8px;
+}
+
+.filter-genre-input {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 8px;
-    width: auto;
-    max-width: none;
+    gap: 20px;
 }
 
-.genre-input input {
-    position: relative;
+.filter-genre-input input {
     background-color: rgba(0, 0, 0, 0);
-    color: #666;
-    width: 109px;
+    color: #999;
+    width: 110px;
     font-size: 11.5px;
     padding: 8px;
     border: 0px;
     outline: 1px solid white;
     border-radius: 4px;
-}   
+    transition: all 0.2s ease;
+} 
+
+.filter-genre-input input:focus {
+    outline-color: #3f466b;
+ }
+
+.filter-genres-text {
+    font-size: 13px;
+    font-weight: 400;
+}
   
-.dropdown-menu {
+.filter-dropdown-menu {
     position: absolute;
     width: 125px;
     left: 0;
     top: 100%;
     max-height: 150px;
-    border: 1px solid rgba(221,221,221,0.1);;
+    border: 1px solid rgba(221,221,221,0.1);
     background: rgba(0,0,0,0.6);
     z-index: 1000;
     margin-top: 4px;
@@ -45,47 +58,55 @@
       }
 }
   
-.dropdown-genre {
+.filter-dropdown-genre {
     padding: 8px;
     cursor: pointer;
     transition: background 0.2s;
 }
   
-.dropdown-genre:hover {
+.filter-dropdown-genre:hover {
     background: rgba(255,255,255,0.2);;
 }
 
 /* Selected Items */
 
-.selected-genre-container {
+.filter-selected-genre-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 6px;
-    overflow-x: hidden; 
     padding-bottom: 6px;
-    min-height: 23px;
+    min-height: 27px;
 }
 
-.selected-genre {
+.filter-selected-genre {
     position: relative;
     top: 6px;
     background: #f0f0f0;
     color: #333;
-    padding: 0.19rem 0.25rem;
+    padding: 0.19rem 0.4rem;
     border-radius: 4px;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
     cursor: default;
     flex-shrink: 0;
 }
 
-.remove-genre {
+.filter-remove-genre {
     position: relative;
     top: 2px; 
-    left: 1px;
+    left: 1.5px;
     background: none;
     border: none;
     cursor: pointer;
     color: #666;
-    font-size: 1rem;
-    line-height: 1;
-    padding: 0 1px;
+    font-size: 1.1rem;
+    padding: 0px 2px;
+}
+
+.filter-included {
+    background: #daecdd;
+}
+
+.filter-excluded {
+    background: #ecdeda;
 }
