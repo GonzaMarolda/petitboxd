@@ -4,6 +4,20 @@ import PropTypes from 'prop-types'
 import { POSTERS_BASE_PATH, API_BASE_URL } from '../config'
 
 export const Movies = ({movies}) => {
+    if (movies.length === 0) {
+      return (
+        <div className={styles.noResultsContainer}>
+            <div className={styles.noResultsContent}>
+                <h3 className={styles.noResultsTitle}>No movies found</h3>
+                <p className={styles.noResultsMessage}>
+                    Try adjusting your search or filters to find what you're looking for.
+                </p>
+            </div>
+        </div>
+      )
+    }
+
+
     return (
         <div className={styles["movies-container"]}>
             {movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}

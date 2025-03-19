@@ -111,3 +111,34 @@
     font-size: 0.85rem;
     font-weight: bolder;
 }
+
+/* No results */ 
+
+.noResultsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+.noResultsContent {
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.noResultsTitle {
+    color: #e0e0e0;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.noResultsMessage {
+    color: #9ca3af;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
