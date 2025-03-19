@@ -18,7 +18,7 @@ const App = () => {
     country: ''
   });
 
-  console.log("Env: " + import.meta.env.VITE_LOCAL_URL)
+  console.log("Hostname: " + window.location.hostname)
   console.log("URL: " + API_BASE_URL)
 
   const filteredMovies = filterMovies(movies, searchQuery, selectedFilters)
