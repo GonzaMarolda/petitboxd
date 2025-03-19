@@ -1,6 +1,6 @@
 .poster-insert-container {
     width: 100%;
-    height: 250px;
+    height: 210px;
     background-color: #181d28;
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@
 }
 
 .poster-inserted {
-    width: 100%;
+    width: 68%;
     height: 100%;
     border-radius: 5px;
 }

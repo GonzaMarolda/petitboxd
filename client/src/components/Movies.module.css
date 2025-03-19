@@ -6,7 +6,7 @@
 }
 
 .movie-card {
-    max-width: 341px;
+    max-width: 300px;
     overflow: hidden;
     background: #1a1c22;
     border-radius: 10px;
@@ -19,7 +19,7 @@
 
 .movie-poster {
     width: 100%;
-    height: 250px;
+    height: 331px;
     object-fit: fill;
     border-radius: 5px;
 }
