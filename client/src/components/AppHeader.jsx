@@ -4,6 +4,7 @@ import { useState } from 'react';
 import MovieForm from './forms/MovieForm';
 import MovieService from '../services/MovieService';
 import PropTypes from 'prop-types';
+import { POSTERS_BASE_PATH } from '../config';
 
 const AppHeader = ({ setMovies }) => {
     const [showModal, setShowModal] = useState(false);
@@ -32,7 +33,7 @@ const AppHeader = ({ setMovies }) => {
         <header className={styles["header-container"]}>
             <h1 className={styles["header-logo"]}>
                 Petitboxd
-                <img src="http://localhost:3001/uploads/logo.png" alt="petitboxd logo" width="50" height="50"/>
+                <img src={POSTERS_BASE_PATH} alt="petitboxd logo" width="50" height="50"/>
             </h1>
 
             <div className={styles["header-controls"]}>

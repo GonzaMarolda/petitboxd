@@ -1,6 +1,7 @@
 import styles from './Movies.module.css'
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { POSTERS_BASE_PATH } from '../config'
 
 export const Movies = ({movies}) => {
     return (
@@ -104,7 +105,7 @@ const Flag = ({name}) => {
 
   return (
     <img 
-      src={"http://localhost:3001/uploads/flags/" + convertedName + ".png"}
+      src={POSTERS_BASE_PATH + convertedName + ".png"}
       alt={name + " flag"} 
       onError={() => {setIsMissing(true)}}
       className={styles["flag-icon"]}
@@ -120,7 +121,7 @@ export const MovieImage = ({ src, alt, className }) => {
 
   return (
     <img 
-      src={"http://localhost:3001/uploads/posters/" + imageSrc}
+      src={POSTERS_BASE_PATH + imageSrc}
       alt={alt}
       onError={() => {setImageSrc("missing.jpg")}}
       className={className}

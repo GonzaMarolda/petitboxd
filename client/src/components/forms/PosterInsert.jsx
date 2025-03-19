@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './PosterInsert.module.css'
+import { POSTERS_BASE_PATH } from '../../config'
 
 const PosterInsert = ({onUpload}) => {
     const [posterPreview, setPosterPreview] = useState(null);
@@ -38,7 +39,7 @@ const PosterInsert = ({onUpload}) => {
             ) : (
                 <>
                 <img
-                    src={"http://localhost:3001/uploads/posters/insertImage.jpg"} 
+                    src={POSTERS_BASE_PATH} 
                     alt="Poster preview" 
                     className={styles["poster-insert"]}
                 />
