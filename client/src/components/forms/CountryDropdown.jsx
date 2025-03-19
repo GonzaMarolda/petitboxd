@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CountryService from '../../services/CountryService'
 import PropTypes from 'prop-types'
 import styles from './CountryDropdown.module.css'
-import { POSTERS_BASE_PATH } from '../../config'
+import { API_BASE_URL } from '../../config'
 
 const CountryDropdown = ( {onSelection} ) => {
     const [countries, setCountries] = useState([])
@@ -40,7 +40,7 @@ const CountryDropdown = ( {onSelection} ) => {
         <span>
             <img 
                 src={
-                    POSTERS_BASE_PATH + 
+                    API_BASE_URL + "/uploads/flags/" +
                     countryFlag.toLowerCase().replace(/\s+/g, '-')  + ".png"
                 }
                 alt={countryFlag + " flag"} 

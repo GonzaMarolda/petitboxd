@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import CountryService from '../../services/CountryService'
 import PropTypes from 'prop-types'
 import styles from './CountryFilter.module.css'
-import { POSTERS_BASE_PATH } from '../../config'
+import { API_BASE_URL } from '../../config'
 
 const CountryFilter = ( {onSelection, startingCountryId} ) => {
     const [countries, setCountries] = useState([])
@@ -117,7 +117,7 @@ const CountryFilter = ( {onSelection, startingCountryId} ) => {
             )}
             <img 
                 src={
-                    POSTERS_BASE_PATH + 
+                    API_BASE_URL + "/uploads/flags/" +
                     countryFlag.toLowerCase().replace(/\s+/g, '-')  + ".png"
                 }
                 alt={countryFlag + " flag"} 
