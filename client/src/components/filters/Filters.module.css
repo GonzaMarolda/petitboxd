@@ -11,6 +11,8 @@
 }
   
  .filter-section {
+    display: flex;
+    justify-content: space-between; 
     padding-bottom: 1rem;
     border-bottom: 1px solid #3e4451;
     margin-bottom: 1rem;
@@ -20,6 +22,10 @@
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+.filter-subsection {
+
 }
   
  .filter-title {
@@ -77,6 +83,42 @@
    color: #6b7280;
    padding: 0 0.5rem;
    font-weight: 500;
+}
+
+.seen-by-list {
+    display: flex;
+    gap: 8px;
+}
+
+.petit-tag {
+    background: #e8f4ff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bolder;
+}
+
+.petit-any-tag {
+    background: #ecf2f7;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    outline: 1px solid black;
+    font-weight: bolder;
+}
+
+.petit-unselected {
+    cursor: pointer;
+    transition: all ease 0.2s;
+    color: #12467380;
+}
+
+.petit-selected {
+    cursor: pointer;
+    color: #124673;
+}
+
+.petit-unselected:hover {
+    color: #124673;
 }
 
 

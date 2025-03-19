@@ -35,6 +35,14 @@ const filterSelectedFilters = (movies, selectedFilters) => {
     if (!selectedFilters.country) return true
     return movie.country.id === selectedFilters.country
   })
+  .filter(movie => { // Seen By
+    if (selectedFilters.seenBy.includes('any')) return true
+
+    const movieSeenBy = movie.seenBy.map(p => p.id).sort().join(',');
+    const filterSeenBy = selectedFilters.seenBy.sort().join(',');
+
+    return movieSeenBy === filterSeenBy
+  })
   .filter(movie => { // Genres
     const hasIncluded = selectedFilters.includedGenres.length > 0 ? movie.genres.some(g => selectedFilters.includedGenres.includes(g.id)) : true
     const hasExcluded = selectedFilters.excludedGenres.length > 0 ? movie.genres.some(g => selectedFilters.excludedGenres.includes(g.id)) : false

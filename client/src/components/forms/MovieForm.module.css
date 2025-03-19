@@ -123,6 +123,11 @@
 
 /* Seen By */
 
+.seen-by-list {
+    display: flex;
+    gap: 8px;
+}
+
 .petit-tag {
     background: #e8f4ff;
     padding: 0.25rem 0.75rem;

@@ -15,7 +15,8 @@ const App = () => {
     excludedGenres: [],
     minYear: '',
     maxYear: '',
-    country: ''
+    country: '',
+    seenBy: ['any']
   });
 
   console.log("Hostname: " + window.location.hostname)

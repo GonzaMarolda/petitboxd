@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import styles from './Filters.module.css'
 import GenresFilter from './GenresFilter'
 import CountryFilter from './CountryFilter';
+import PetitService from '../../services/PetitService';
 
 const Filters = ({selectedFilters ,setSelectedFilters, toggleFilters}) => {
     const [unappliedFilters, setUnappliedFilters] = useState(selectedFilters)
+    const [petits, setPetits] = useState([])
+
+    useEffect(() => {
+        PetitService.getAll()
+            .then(petits => {
+                setPetits(petits)
+            })
+    }, [])
 
     const handleGenreFilter = (genre, isRemove = false) => {
         if (isRemove) {
@@ -57,42 +66,78 @@ const Filters = ({selectedFilters ,setSelectedFilters, toggleFilters}) => {
     return (
         <div className={styles["filters-panel"]}>
             <div className={styles["filter-section"]}>
-                <h4 className={styles["filter-title"]}>Genres</h4>
-                <GenresFilter 
-                    onModify={handleGenreFilter}
-                    placeholder={"Select genres"}
-                    startingIncludedGenresId = {selectedFilters.includedGenres}
-                    startingExcludedGenresId = {selectedFilters.excludedGenres}
-                />
+                <div className={styles["filter-subsection"]}>
+                    <h4 className={styles["filter-title"]}>Genres</h4>
+                    <GenresFilter 
+                        onModify={handleGenreFilter}
+                        placeholder={"Select genres"}
+                        startingIncludedGenresId = {selectedFilters.includedGenres}
+                        startingExcludedGenresId = {selectedFilters.excludedGenres}
+                    />
+                </div>
             </div>
 
             <div className={styles["filter-section"]}>
-                <h4 className={styles["filter-title"]}>Country</h4>
-                <CountryFilter
-                    startingCountryId={selectedFilters.country}
-                    onSelection={(country) => setUnappliedFilters(prev => ({...prev, ["country"]: country.id}))
-                }
-                />
+                <div className={styles["filter-subsection"]}> 
+                    <h4 className={styles["filter-title"]}>Country</h4>
+                    <CountryFilter
+                        startingCountryId={selectedFilters.country}
+                        onSelection={(country) => setUnappliedFilters(prev => ({...prev, ["country"]: country.id}))
+                    }
+                    />
+                </div>
+                <div className={styles["filter-subsection"]}> 
+                    <h4 className={styles["filter-title"]} style={{textAlign: "right"}}>Seen By</h4>
+                    <div className={styles["seen-by-list"]}> 
+                        {petits
+                        .sort((a, b) => a.name.localeCompare(b.name))
+                        .map(petit => (
+                            <span 
+                                key={petit.id} 
+                                className={styles["petit-tag"] + " " + (unappliedFilters.seenBy.includes(petit.id) ? styles["petit-selected"] : styles["petit-unselected"])}
+                                onClick={() => {     
+                                    setUnappliedFilters(prev => ({...prev, ["seenBy"]: prev.seenBy.filter(pId => pId !== 'any') }))   
+                                    unappliedFilters.seenBy.includes(petit.id) ? 
+                                        setUnappliedFilters(prev => ({...prev, ["seenBy"]: prev.seenBy.filter(pId => pId !== petit.id) })) :
+                                        setUnappliedFilters(prev => ({...prev, ["seenBy"]: prev.seenBy.concat(petit.id) }))
+                                    }}
+                            >
+                                    {petit.name}
+                            </span>
+                        ))}
+                        <span 
+                            className={styles["petit-any-tag"] + " " + (unappliedFilters.seenBy.includes('any') ? styles["petit-selected"] : styles["petit-unselected"])}
+                            onClick={() => {        
+                                setUnappliedFilters(prev => ({...prev, ["seenBy"]: ['any'] }))
+                            }}
+                        >
+                            Any
+                        </span>
+                    </div>
+                </div>
             </div>
+            
 
             <div className={styles["filter-section"]}>
-                <h4 className={styles["filter-title"]}>Year</h4>
-                <div className={styles["year-range-container"]}>
-                    <input
-                        type="number"
-                        placeholder="Min"
-                        className={styles["year-input"]}
-                        value={unappliedFilters.minYear}
-                        onChange={(e) => handleFilterChange('minYear', e.target.value)}
-                    />
-                    <span className={styles["year-separator"]}>-</span>
-                    <input
-                        type="number"
-                        placeholder="Max"
-                        className={styles["year-input"]}
-                        value={unappliedFilters.maxYear}
-                        onChange={(e) => handleFilterChange('maxYear', e.target.value)}
-                    />
+                <div className={styles["filter-subsection"]} style={{width: "100%"}}>
+                    <h4 className={styles["filter-title"]}>Year</h4>
+                    <div className={styles["year-range-container"]}>
+                        <input
+                            type="number"
+                            placeholder="Min"
+                            className={styles["year-input"]}
+                            value={unappliedFilters.minYear}
+                            onChange={(e) => handleFilterChange('minYear', e.target.value)}
+                        />
+                        <span className={styles["year-separator"]}>-</span>
+                        <input
+                            type="number"
+                            placeholder="Max"
+                            className={styles["year-input"]}
+                            value={unappliedFilters.maxYear}
+                            onChange={(e) => handleFilterChange('maxYear', e.target.value)}
+                        />
+                    </div>
                 </div>
             </div>
 
