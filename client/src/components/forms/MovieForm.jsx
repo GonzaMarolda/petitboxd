@@ -71,6 +71,22 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
         } else return value
     }
 
+    const validateSubmit = () => {
+        const requiredData = ["title", "year", "director"]
+        const isLengthMissing = formData.hours === "0" && formData.minutes === "0"
+        if (requiredData.some(d => formData[d] === "") || isLengthMissing) {
+            let lackingData = requiredData.filter(d => formData[d] === "")
+            if (isLengthMissing) lackingData = lackingData.concat("length")
+            lackingData = lackingData.join(", ")
+            
+            alert("Missing required information: " + lackingData)
+            return
+        }
+
+        setShowModal(false)
+        handleAddMovie(formData)
+    }
+
     return (
         <div className={styles["modal-overlay"]}>
             <div className={styles["movie-card"]}>
@@ -195,8 +211,7 @@ const MovieForm = ({ handleAddMovie, setShowModal }) => {
                         data-testid="add_movie"
                         onClick={(e) => {
                             e.preventDefault()
-                            handleAddMovie(formData)
-                            setShowModal(false)
+                            validateSubmit()
                             }}>
                         Add Movie
                     </button>
