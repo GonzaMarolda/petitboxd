@@ -66,7 +66,6 @@ const CountryFilter = ( {onSelection, startingCountryId} ) => {
         <div className={styles["dropdown-container"]}>
             <div 
                 className={styles["country-input"]}
-                data-testid="country-input"
             >
                 <input
                     type="text"
@@ -82,6 +81,7 @@ const CountryFilter = ( {onSelection, startingCountryId} ) => {
                     onClick={() => {
                         setIsOpen(true)
                     }}
+                    data-testid="country-input"
                 />
             </div>
             

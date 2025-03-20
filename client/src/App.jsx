@@ -5,7 +5,7 @@ import {Movies} from './components/Movies'
 import MovieService from './services/MovieService';
 import AppHeader from './components/AppHeader';
 import SearchBar from './components/SearchBar';
-import { API_BASE_URL } from './config';
+import PageSwitch from './components/PageSwitch';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -18,9 +18,8 @@ const App = () => {
     country: '',
     seenBy: ['any']
   });
-
-  console.log("Hostname: " + window.location.hostname)
-  console.log("URL: " + API_BASE_URL)
+  const moviesPerPage = 8
+  const [page, setPage] = useState(0)
 
   const filteredMovies = filterMovies(movies, searchQuery, selectedFilters)
 
@@ -42,7 +41,12 @@ const App = () => {
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
         />
-        <Movies movies={filteredMovies}/>
+        <Movies movies={filteredMovies.slice(moviesPerPage*page, moviesPerPage*page + moviesPerPage)}/>
+        <PageSwitch
+          page={page}
+          setPage={setPage}
+          totalPages={Math.ceil(filteredMovies.length / moviesPerPage)}
+        />
       </div>
     </>
   )

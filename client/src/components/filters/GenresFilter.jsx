@@ -115,6 +115,7 @@ const GenresFilter = ({ onModify, placeholder, startingIncludedGenresId, startin
                             setIsOpen(true)
                             filterGenres(searchQuery)
                         }}
+                        data-testid="genres-input"
                     />
 
                     <div className={styles['filter-genres-text']}><span style={{color: "#daecdd"}}>Include</span> or <span style={{color: "#ecdeda"}}>Exclude</span> genres from the search</div>
@@ -145,6 +146,7 @@ const GenresFilter = ({ onModify, placeholder, startingIncludedGenresId, startin
                                         setIsOpen(false)
                                         setSearchQuery('')}}
                                     role="option"
+                                    data-testid={"genres-filter-" + genre.name}
                                 >
                                     {genre.name}
                                 </div>))

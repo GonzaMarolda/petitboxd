@@ -16,12 +16,13 @@ const SearchBar = ({ searchQuery, setSearchQuery, selectedFilters, setSelectedFi
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search a movie..."
                     className={styles["search-input"]}
+                    data-testid="search-input"
                 />
                 <button 
                     className={styles["filter-button"] + " " + (showFilters ? styles["active"] : "")}
                     onClick={toggleFilters}
                 >
-                <svg className={styles["filter-icon"]} viewBox="0 0 24 24">
+                <svg className={styles["filter-icon"]} viewBox="0 0 24 24" data-testid="filters-button">
                     <path d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
                 </button>

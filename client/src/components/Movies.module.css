@@ -24,6 +24,11 @@
     border-radius: 5px;
 }
 
+.missing-image{
+    width: 85%;
+    height: 63.75%;
+}
+
 .movie-header {
     margin-bottom: 1rem;
 }

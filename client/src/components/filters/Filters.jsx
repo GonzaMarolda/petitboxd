@@ -95,6 +95,7 @@ const Filters = ({selectedFilters ,setSelectedFilters, toggleFilters}) => {
                             <span 
                                 key={petit.id} 
                                 className={styles["petit-tag"] + " " + (unappliedFilters.seenBy.includes(petit.id) ? styles["petit-selected"] : styles["petit-unselected"])}
+                                data-testid={"filter-" + petit.name}
                                 onClick={() => {     
                                     setUnappliedFilters(prev => ({...prev, ["seenBy"]: prev.seenBy.filter(pId => pId !== 'any') }))   
                                     unappliedFilters.seenBy.includes(petit.id) ? 

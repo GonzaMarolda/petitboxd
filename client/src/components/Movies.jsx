@@ -10,7 +10,7 @@ export const Movies = ({movies}) => {
             <div className={styles.noResultsContent}>
                 <h3 className={styles.noResultsTitle}>No movies found</h3>
                 <p className={styles.noResultsMessage}>
-                    Try adjusting your search or filters to find what you're looking for.
+                    Try adjusting your search or filters to find what you&apos;re looking for.
                 </p>
             </div>
         </div>
@@ -132,6 +132,21 @@ Flag.propTypes = {
 
 export const MovieImage = ({ src, alt, className }) => {
   const [imageSrc, setImageSrc] = useState(src)
+
+  if (imageSrc === "missing.jpg") {
+    return (
+        <div 
+            className={className}
+            style={{background: "#181d28", display: "flex", justifyContent: "center", alignItems: "center"}}
+        >
+            <img 
+                src={POSTERS_BASE_PATH + imageSrc} 
+                alt={alt}
+                className={styles["missing-image"]}
+            />
+        </div>
+    )
+  }
 
   return (
     <img 
