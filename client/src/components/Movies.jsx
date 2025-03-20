@@ -4,84 +4,130 @@ import PropTypes from 'prop-types'
 import { POSTERS_BASE_PATH, API_BASE_URL } from '../config'
 
 export const Movies = ({movies}) => {
-    if (movies.length === 0) {
-      return (
-        <div className={styles.noResultsContainer}>
-            <div className={styles.noResultsContent}>
-                <h3 className={styles.noResultsTitle}>No movies found</h3>
-                <p className={styles.noResultsMessage}>
-                    Try adjusting your search or filters to find what you&apos;re looking for.
-                </p>
-            </div>
-        </div>
-      )
-    }
+	const [clickedMovieId, setClickedMovieId] = useState('')
+
+	const onClick = (movieId, isOpen) => {
+		if (!isOpen) setClickedMovieId('')
+		else setClickedMovieId(movieId)
+	}
+
+	if (movies.length === 0) {
+		return (
+			<div className={styles.noResultsContainer}>
+					<div className={styles.noResultsContent}>
+							<h3 className={styles.noResultsTitle}>No movies found</h3>
+							<p className={styles.noResultsMessage}>
+									Try adjusting your search or filters to find what you&apos;re looking for.
+							</p>
+					</div>
+			</div>
+		)
+	}
 
 
-    return (
-        <div className={styles["movies-container"]}>
-            {movies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
-        </div> 
-    )
+	return (
+			<div className={styles["movies-container"]}>
+					{movies.map(movie => 
+						<MovieCard 
+							key={movie.id} 
+							movie={movie} 
+							clickedMovieId={clickedMovieId} 
+							onClick={onClick}
+						/>)}
+			</div> 
+	)
 }
 Movies.propTypes = {
   movies: PropTypes.array.isRequired
 }
 
-const MovieCard = ({movie}) => {
-    return (
-        <div className={styles["movie-card"]}>
-          
-          <MovieImage 
-            src={movie.poster}
-            alt={movie.title + " poster"}
-            className={styles["movie-poster"]}
-          />
+const MovieCard = ({movie, clickedMovieId, onClick}) => {
+	const clicked = movie.id === clickedMovieId
 
-          <header className={styles["movie-header"]}>
-            <h3 className={styles["movie-title"]}>
-              {movie.title}
-              <span className={styles["movie-year"]}> ({movie.year})</span>
-              <Flag name={movie.country?.name}/>
-            </h3>
-          </header>
+	return (
+		<div 
+			className={styles["movie-card"] + " " + (clicked ? "" : styles["hoverable"])} 
+			onClick={() => {if (!clicked) onClick(movie.id, true)}} 
+			style={clicked ? {cursor: "auto"} : {cursor: "pointer"}}
+		>
+			<div className={styles["movie-config-container"]} style={clicked ? {visibility: "visible"} : {visibility: "hidden"}}>
+					<div 	className={styles["config-button"]}>
+						<img 
+							className={styles["edit-button"]}
+							src={API_BASE_URL + "/uploads/edit.png"} 
+							alt="edit-image" 
+						/>
+					</div>
 
-          <div className={styles["movie-details"]}>
-            <div className={styles["detail-row"]}>
-              <span className={styles["detail-label"]}>Director:</span>
-              <span className={styles["detail-value"]}>{movie.director}</span>
-            </div>
+					<div 	className={styles["config-button"]}>
+						<img 
+							className={styles["star-button"]}
+							src={API_BASE_URL + "/uploads/star.webp"} 
+							alt="edit-image" 
+						/>
+					</div>
 
-            <div className={styles["detail-row"]}>
-              <span className={styles["detail-label"]}>Length:</span>
-              <span className={styles["detail-value"]}>{minsToStringHours(movie.length)}</span>
-            </div>
-          </div>
+					<div className={styles["config-button"]} onClick={() => onClick(movie.id, false)}>
+						<img 
+							className={styles["close-button"]}
+							src={API_BASE_URL + "/uploads/close.png"} 
+							alt="edit-image" 
+						/>
+					</div>
+			</div>
 
-          <div className={styles["genres-container"]}>
-            <h4 className={styles["section-title"]}>Genres</h4>
-            <ul className={styles["genres-list"]}>
-              {movie.genres.map(genre => (
-                <Genre key={genre.id} name={genre.name} />
-              ))}
-            </ul>
-          </div>
+			<MovieImage 
+				src={movie.poster}
+				alt={movie.title + " poster"}
+				className={styles["movie-poster"]}
+			/>
 
-          <div className={styles["seen-by-container"]}>
-            <h4 className={styles["section-title"]}>Seen by</h4>
-            <div className={styles["seen-by-list"]}>
-              {[...movie.seenBy]
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map(petit => (
-                  <Petit key={petit.id} name={petit.name} />
-                ))}
-            </div>
-          </div>
-        </div>
-      )
+			<header className={styles["movie-header"]}>
+				<h3 className={styles["movie-title"]}>
+					{movie.title}
+					<span className={styles["movie-year"]}> ({movie.year})</span>
+					<Flag name={movie.country?.name}/>
+				</h3>
+			</header>
+
+			<div className={styles["movie-details"]}>
+				<div className={styles["detail-row"]}>
+					<span className={styles["detail-label"]}>Director:</span>
+					<span className={styles["detail-value"]}>{movie.director}</span>
+				</div>
+
+				<div className={styles["detail-row"]}>
+					<span className={styles["detail-label"]}>Length:</span>
+					<span className={styles["detail-value"]}>{minsToStringHours(movie.length)}</span>
+				</div>
+			</div>
+
+			<div className={styles["genres-container"]}>
+				<h4 className={styles["section-title"]}>Genres</h4>
+				<ul className={styles["genres-list"]}>
+					{movie.genres.map(genre => (
+						<Genre key={genre.id} name={genre.name} />
+					))}
+				</ul>
+			</div>
+
+			<div className={styles["seen-by-container"]}>
+				<h4 className={styles["section-title"]}>Seen by</h4>
+				<div className={styles["seen-by-list"]}>
+					{[...movie.seenBy]
+						.sort((a, b) => a.name.localeCompare(b.name))
+						.map(petit => (
+							<Petit key={petit.id} name={petit.name} />
+						))}
+				</div>
+			</div>
+		</div>
+	)
 }
 MovieCard.propTypes = {
-  movie: PropTypes.object.isRequired
+  movie: PropTypes.object.isRequired,
+	clickedMovieId: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired
 }
 
 const Genre = ({name}) => {
