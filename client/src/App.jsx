@@ -41,7 +41,7 @@ const App = () => {
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
         />
-        <Movies movies={filteredMovies.slice(moviesPerPage*page, moviesPerPage*page + moviesPerPage)}/>
+        <Movies movies={filteredMovies.slice(moviesPerPage*page, moviesPerPage*page + moviesPerPage)} setMovies={setMovies}/>
         <PageSwitch
           page={page}
           setPage={setPage}

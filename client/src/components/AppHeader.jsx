@@ -5,6 +5,7 @@ import MovieForm from './forms/MovieForm';
 import MovieService from '../services/MovieService';
 import PropTypes from 'prop-types';
 import { API_BASE_URL } from '../config';
+import Modal from './Modal';
 
 const AppHeader = ({ setMovies }) => {
     const [showModal, setShowModal] = useState(false);
@@ -43,7 +44,10 @@ const AppHeader = ({ setMovies }) => {
                 >
                     ➕ Add movie
                 </button>
-                {showModal && <MovieForm handleAddMovie={handleAddMovie} setShowModal={setShowModal}/>}                
+                {showModal && 
+                    <Modal>
+                        <MovieForm handleAddMovie={handleAddMovie} setShowModal={setShowModal}/>
+                    </Modal>}                
 
                 <button className={styles["header-button"]}>💬 Suggest movie</button>
                 <input 

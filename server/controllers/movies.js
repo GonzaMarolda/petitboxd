@@ -21,4 +21,16 @@ moviesRouter.post('/', upload.single("poster"), async (request, response) => {
   return response.status(201).json(populatedMovie)
 })
 
+moviesRouter.put('/:id', upload.single("poster"), async (request, response) => {
+  const movie = {
+    ...request.body,
+    poster: request.file ? request.file.filename : request.body.poster
+  }
+
+  console.log("Request file: " + request.file)
+
+  const updatedBlog = await Movie.findByIdAndUpdate(request.params.id, movie, { new: true, runValidators: true, context: 'query' }).populate(["genres", "seenBy", "country"])
+  response.json(updatedBlog)
+})
+
 module.exports = moviesRouter

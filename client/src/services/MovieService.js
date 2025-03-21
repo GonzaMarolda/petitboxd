@@ -12,4 +12,9 @@ const create = async newObject => {
     return response.data
 }
 
-export default { getAll, create }
+const update = async (id, movie) => {
+  const response = await axios.put(baseUrl + '/' + id, movie)
+  return response.data
+}
+
+export default { getAll, create, update }

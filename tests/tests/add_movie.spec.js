@@ -30,7 +30,7 @@ describe('Movie addition', () => {
         await page.getByTestId('genre_input').click()
         await page.getByText('Action').click()
         await page.getByText('Ariel').click() 
-        await page.getByTestId('add_movie').click()
+        await page.getByTestId('submit').click()
 
         await expect(page.getByText('testTitle')).toBeVisible()
     })

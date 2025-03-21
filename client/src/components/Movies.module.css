@@ -201,4 +201,7 @@
 .star-button {
     width: 75%;
     height: 75%;
+    opacity: 0.8;
+    margin-bottom: 1px;
+    margin-left: 1px;
 }

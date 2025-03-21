@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './PosterInsert.module.css'
 import { POSTERS_BASE_PATH } from '../../config'
 
-const PosterInsert = ({onUpload}) => {
+const PosterInsert = ({onUpload, initialPoster}) => {
     const [posterPreview, setPosterPreview] = useState(null);
 
     const handleImageUpload = (e) => {
@@ -36,6 +36,12 @@ const PosterInsert = ({onUpload}) => {
                     alt="Poster preview" 
                     className={styles["poster-inserted"]}
                 />
+            ) : initialPoster ? (
+                <img
+                    src={POSTERS_BASE_PATH + initialPoster} 
+                    alt="Poster preview" 
+                    className={styles["poster-inserted"]}
+                />
             ) : (
                 <>
                 <img
@@ -52,7 +58,8 @@ const PosterInsert = ({onUpload}) => {
     )
 }
 PosterInsert.propTypes = {
-    onUpload: PropTypes.func.isRequired
+    onUpload: PropTypes.func.isRequired,
+    initialPoster: PropTypes.string.isRequired
 }
 
 export default PosterInsert

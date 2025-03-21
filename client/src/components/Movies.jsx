@@ -2,8 +2,11 @@ import styles from './Movies.module.css'
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { POSTERS_BASE_PATH, API_BASE_URL } from '../config'
+import MovieForm from './forms/MovieForm'
+import Modal from './Modal'
+import MovieService from '../services/MovieService'
 
-export const Movies = ({movies}) => {
+export const Movies = ({movies, setMovies}) => {
 	const [clickedMovieId, setClickedMovieId] = useState('')
 
 	const onClick = (movieId, isOpen) => {
@@ -31,6 +34,7 @@ export const Movies = ({movies}) => {
 						<MovieCard 
 							key={movie.id} 
 							movie={movie} 
+							setMovies={setMovies}
 							clickedMovieId={clickedMovieId} 
 							onClick={onClick}
 						/>)}
@@ -38,25 +42,62 @@ export const Movies = ({movies}) => {
 	)
 }
 Movies.propTypes = {
-  movies: PropTypes.array.isRequired
+  movies: PropTypes.array.isRequired,
+  setMovies: PropTypes.func.isRequired
 }
 
-const MovieCard = ({movie, clickedMovieId, onClick}) => {
+const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 	const clicked = movie.id === clickedMovieId
+	const [editOpen, setEditOpen] = useState(false)
+	const handleEdit = (formData) => {
+		const editedMovie = {
+			...formData,
+			length: Number(formData.hours*60) + Number(formData.minutes),
+			country: formData.country !== "" ? formData.country : null,
+		}
+
+		MovieService
+			.update(movie.id, editedMovie)
+			.then(updatedMovie => {
+				console.log("Updated movie: " + JSON.stringify(updatedMovie))
+				setMovies((prevState) => prevState.map(m => m.id === updatedMovie.id ? updatedMovie : m))
+			})
+	}
+	const seeetEditOpen = (daBool) => {
+		console.log(daBool)
+		setEditOpen(false)
+	}
 
 	return (
 		<div 
 			className={styles["movie-card"] + " " + (clicked ? "" : styles["hoverable"])} 
 			onClick={() => {if (!clicked) onClick(movie.id, true)}} 
 			style={clicked ? {cursor: "auto"} : {cursor: "pointer"}}
+			data-testid={"card_" + movie.title}
 		>
 			<div className={styles["movie-config-container"]} style={clicked ? {visibility: "visible"} : {visibility: "hidden"}}>
-					<div 	className={styles["config-button"]}>
+					<div className={styles["config-button"]} onClick={() => {if (!editOpen) setEditOpen(true)}}>
 						<img 
 							className={styles["edit-button"]}
 							src={API_BASE_URL + "/uploads/edit.png"} 
 							alt="edit-image" 
+							data-testid="button_edit"
 						/>
+						{editOpen &&
+						(
+							<Modal>
+								<MovieForm
+									handleAddMovie={handleEdit}
+									setShowModal={seeetEditOpen}
+									initialFormData={{
+										...movie,
+										hours: Math.floor(movie.length / 60),
+										minutes: movie.length - Math.floor(movie.length / 60)*60,
+										seenBy: movie.seenBy.map(p => p.id)
+									}}
+								/>
+							</Modal>
+						)}
 					</div>
 
 					<div 	className={styles["config-button"]}>
@@ -125,7 +166,8 @@ const MovieCard = ({movie, clickedMovieId, onClick}) => {
 	)
 }
 MovieCard.propTypes = {
-  movie: PropTypes.object.isRequired,
+  	movie: PropTypes.object.isRequired,
+	setMovies: PropTypes.func.isRequired,
 	clickedMovieId: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired
 }
@@ -169,6 +211,7 @@ const Flag = ({name}) => {
       alt={name + " flag"} 
       onError={() => {setIsMissing(true)}}
       className={styles["flag-icon"]}
+	  data-testid={name}
     />
   )
 }
@@ -211,6 +254,6 @@ MovieImage.propTypes = {
 
 const minsToStringHours = (mins) => {
   const hoursString = Math.floor(mins/60).toString() + "h"
-  const minsString = Math.ceil((mins/60 - Math.floor(mins/60))*60) + "m"
+  const minsString = (mins - Math.floor(mins / 60)*60).toString() + "m"
   return hoursString + " " + minsString
 }

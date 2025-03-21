@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styles from './CountryDropdown.module.css'
 import { API_BASE_URL } from '../../config'
 
-const CountryDropdown = ( {onSelection} ) => {
+const CountryDropdown = ( {onSelection, initialCountry} ) => {
     const [countries, setCountries] = useState([])
     const [filteredCountries, setFilteredCountries] = useState([])
     const [countryFlag, setCountryFlag] = useState('missing')
@@ -18,6 +18,9 @@ const CountryDropdown = ( {onSelection} ) => {
                 setCountries(countries)
                 setFilteredCountries(countries)
             })
+        if (initialCountry) {
+            setCountryFlag(initialCountry.name)
+        }
     }, [])
 
     const handleEnter = (event) => {
@@ -94,7 +97,8 @@ const CountryDropdown = ( {onSelection} ) => {
     )
 }
 CountryDropdown.propTypes = {
-    onSelection: PropTypes.func.isRequired
+    onSelection: PropTypes.func.isRequired,
+    initialCountry: PropTypes.object
 }
 
 export default CountryDropdown

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import GenreService from '../../services/GenreService'
 import styles from './GenreDropdown.module.css'
 
-const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
+const GenreDropdown = ({ onModify, placeholder, selectLimit, initialSelectedGenres }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState('')
     const [genres, setGenres] = useState([])
@@ -19,6 +19,10 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
                 setGenres(genres)
                 setFilteredGenres(genres);
             })
+
+        if (initialSelectedGenres) {
+            setSelectedGenres(initialSelectedGenres)
+        }
     }, [])
 
     // Handle clicks for dropdown closure
@@ -136,6 +140,7 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
                                 type="button" 
                                 className={styles["remove-genre"]}
                                 onClick={() => handleRemove(genre)}
+                                data-testid={"remove_" + genre.name}
                             >
                                 ×
                             </button>
@@ -148,7 +153,8 @@ const GenreDropdown = ({ onModify, placeholder, selectLimit }) => {
 GenreDropdown.propTypes = {
     onModify: PropTypes.func.isRequired,
     placeholder: PropTypes.string.isRequired,
-    selectLimit: PropTypes.number
+    selectLimit: PropTypes.number,
+    initialSelectedGenres: PropTypes.array
 }
 
 export default GenreDropdown
