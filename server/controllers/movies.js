@@ -8,6 +8,10 @@ moviesRouter.get('/', async (request, response) => {
 })
 
 moviesRouter.post('/', upload.single("poster"), async (request, response) => {
+  if (!request.user?.id) {
+    return response.status(401).json({ error: 'invalid token' })
+  }
+
   const movie = new Movie({
     ...request.body,
     poster: request.file ? request.file.filename : null
@@ -22,6 +26,10 @@ moviesRouter.post('/', upload.single("poster"), async (request, response) => {
 })
 
 moviesRouter.put('/:id', upload.single("poster"), async (request, response) => {
+  if (!request.user?.id) {
+    return response.status(401).json({ error: 'invalid token' })
+  }
+
   const movie = {
     ...request.body,
     poster: request.file ? request.file.filename : request.body.poster

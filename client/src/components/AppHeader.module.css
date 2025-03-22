@@ -54,3 +54,28 @@
 .access-input::placeholder {
   color: #888;
 }
+
+.logged-message {
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-weight: 600;
+  color: #3681c2;
+  gap: 8px;
+  width: 125px;
+  margin-left: 15px;
+}
+
+.logout-button {
+  font-size: smaller;
+  background: #1a1c22;
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid #265c8c;
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+
+.logout-button:hover {
+  background: #265C8C;
+  border-color: #fff;
+}

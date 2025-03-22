@@ -1,10 +1,11 @@
 import styles from './Movies.module.css'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { POSTERS_BASE_PATH, API_BASE_URL } from '../config'
 import MovieForm from './forms/MovieForm'
 import Modal from './Modal'
 import MovieService from '../services/MovieService'
+import { UserContext } from '../providers/UserProvider'
 
 export const Movies = ({movies, setMovies}) => {
 	const [clickedMovieId, setClickedMovieId] = useState('')
@@ -47,6 +48,7 @@ Movies.propTypes = {
 }
 
 const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
+	const { user } = useContext(UserContext)
 	const clicked = movie.id === clickedMovieId
 	const [editOpen, setEditOpen] = useState(false)
 	const handleEdit = (formData) => {
@@ -70,9 +72,9 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 
 	return (
 		<div 
-			className={styles["movie-card"] + " " + (clicked ? "" : styles["hoverable"])} 
-			onClick={() => {if (!clicked) onClick(movie.id, true)}} 
-			style={clicked ? {cursor: "auto"} : {cursor: "pointer"}}
+			className={styles["movie-card"] + " " + (clicked || !user ? "" : styles["hoverable"])} 
+			onClick={() => {if (!clicked && user) onClick(movie.id, true)}} 
+			style={clicked || !user ? {cursor: "auto"} : {cursor: "pointer"}}
 			data-testid={"card_" + movie.title}
 		>
 			<div className={styles["movie-config-container"]} style={clicked ? {visibility: "visible"} : {visibility: "hidden"}}>

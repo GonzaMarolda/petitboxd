@@ -1,13 +1,16 @@
 import styles from './AppHeader.module.css'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
 import MovieForm from './forms/MovieForm';
 import MovieService from '../services/MovieService';
 import PropTypes from 'prop-types';
 import { API_BASE_URL } from '../config';
 import Modal from './Modal';
+import LoginService from '../services/LoginService';
+import { UserContext } from '../providers/UserProvider';
 
 const AppHeader = ({ setMovies }) => {
+    const { user, setUser } = useContext(UserContext)
     const [showModal, setShowModal] = useState(false);
 
     const handleAddMovie = (formData) => {
@@ -38,23 +41,47 @@ const AppHeader = ({ setMovies }) => {
             </h1>
 
             <div className={styles["header-controls"]}>
-                <button 
-                    className={styles["header-button"]}
-                    onClick={() => setShowModal(true)}
-                >
-                    ➕ Add movie
-                </button>
+                {user && (
+                    <button 
+                        className={styles["header-button"]}
+                        onClick={() => setShowModal(true)}
+                    >
+                        ➕ Add movie
+                    </button>
+                )}
                 {showModal && 
                     <Modal>
                         <MovieForm handleAddMovie={handleAddMovie} setShowModal={setShowModal}/>
                     </Modal>}                
 
                 <button className={styles["header-button"]}>💬 Suggest movie</button>
-                <input 
-                    type="password" 
-                    placeholder="Enter your petit key" 
-                    className={styles["access-input"]}
-                />
+                {user ? ( 
+                    <div className={styles["logged-message"]}>
+                        {user}
+                        <button className={styles["logout-button"]} onClick={() => {setUser(null)}}>logout</button>
+                    </div>
+                ) : (
+                    <input 
+                        type="password" 
+                        placeholder="Enter your petit key" 
+                        className={styles["access-input"]}
+                        onKeyDown={(e) => {
+                            if (e.key !== "Enter") return
+                            
+                            LoginService
+                                .login(e.target.value)
+                                .then(({token, user}) => {
+                                    console.log("Petit! User: " + user)
+                                    window.localStorage.setItem('loggedPetit', JSON.stringify({user, token}))
+                                    MovieService.setToken(token)
+                                    setUser(user)
+                                })
+                                .catch(() => {
+                                    alert("Invalid petit key")
+                                })
+                        }}
+                    />
+                )}
             </div>
         </header>
     )

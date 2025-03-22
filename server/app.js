@@ -10,6 +10,7 @@ const moviesRouter = require("./controllers/movies")
 const genresRouter = require("./controllers/genres")
 const countriesRouter = require("./controllers/countries")
 const petitsRouter = require("./controllers/petits")
+const loginRouter = require("./controllers/login")
 
 mongoose.connect(config.MONGODB_URI)
   .then(() => {
@@ -23,14 +24,16 @@ mongoose.connect(config.MONGODB_URI)
 
 app.use(cors())
 app.use(express.json())
+app.use(middleware.tokenExtractor)
 app.use(middleware.requestLogger)
 app.use('/uploads', express.static('uploads'))
 app.use(express.static('dist'))
 
-app.use("/api/movies", moviesRouter)
+app.use("/api/movies", middleware.userExtractor, moviesRouter)
 app.use("/api/genres", genresRouter)
 app.use("/api/countries", countriesRouter)
 app.use("/api/petits", petitsRouter)
+app.use("/api/login", loginRouter)
 
 if (process.env.NODE_ENV === 'test') {
     const testingRouter = require('./controllers/testing')

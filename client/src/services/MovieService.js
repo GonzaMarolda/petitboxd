@@ -1,6 +1,13 @@
 import axios from 'axios'
 const baseUrl = '/api/movies'
 
+let token = null
+
+const setToken = newToken => {
+  token = `Bearer ${newToken}`
+  console.log('Token set to ' + token)
+}
+
 const getAll = async () => {
     const request = await axios.get(baseUrl)
     console.log("Recieved data: " + JSON.stringify(request.data, null, 2))
@@ -8,13 +15,27 @@ const getAll = async () => {
   }
 
 const create = async newObject => {
-    const response = await axios.post(baseUrl, newObject, {headers: { 'Content-Type': 'multipart/form-data' }})
-    return response.data
-}
+  const config = {
+    headers: {
+      "Authorization": token,
+      "Content-Type": "multipart/form-data"
+    }
+  }
 
-const update = async (id, movie) => {
-  const response = await axios.put(baseUrl + '/' + id, movie)
+  const response = await axios.post(baseUrl, newObject, config)
   return response.data
 }
 
-export default { getAll, create, update }
+const update = async (id, movie) => {
+  const config = {
+    headers: {
+      "Authorization": token,
+      "Content-Type": "multipart/form-data"
+    }
+  }
+
+  const response = await axios.put(baseUrl + '/' + id, movie, config)
+  return response.data
+}
+
+export default { getAll, create, update, setToken }
