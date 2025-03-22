@@ -49,11 +49,17 @@ const filterSelectedFilters = (movies, selectedFilters) => {
 
     return hasIncluded && !hasExcluded
   })
-  .sort((a, b) => {
+  .sort((a, b) => { // Genres sort
     const countA = a.genres.filter(genre => selectedFilters.includedGenres.includes(genre.id)).length
     const countB = b.genres.filter(genre => selectedFilters.includedGenres.includes(genre.id)).length
     
     return countB - countA
+  })
+  .sort((a, b) => { // Year default sort
+    const yearA = Number(a.year)
+    const yearB = Number(b.year)
+    
+    return yearA - yearB
   })
 }
 

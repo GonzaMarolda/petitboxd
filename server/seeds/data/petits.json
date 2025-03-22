@@ -1,5 +1,5 @@
 [
-    { "name": "Ariel" },
-    { "name": "Ro" },
-    { "name": "Gonza" }
+    { "name": "Ariel", "key": "Pass123" },
+    { "name": "Ro", "key": "Pass123" },
+    { "name": "Gonza", "key": "Pass123" }
 ]

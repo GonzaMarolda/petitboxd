@@ -39,13 +39,18 @@ const App = () => {
       })
   }, []);
 
+  const handleSearchQuery = (searchQuery) => {
+    setSearchQuery(searchQuery)
+    setPage(0)
+  }
+
   return (
     <>
       <AppHeader setMovies={setMovies}/>
       <div className="main-content">
         <SearchBar 
           searchQuery={searchQuery} 
-          setSearchQuery={setSearchQuery}
+          setSearchQuery={handleSearchQuery}
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
         />

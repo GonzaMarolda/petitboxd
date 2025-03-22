@@ -58,6 +58,1766 @@
         "length": 138,
         "country": "Italy",
         "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Good, the Bad and the Ugly",
+        "poster": "45dfcc4c-0cb3-4706-b71f-825ae4927753.jpg",
+        "year": "1966",
+        "director": "Sergio Leone",
+        "genres": ["Adventure", "Western"],
+        "length": 161,
+        "country": "Italy",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "2001: A Space Odyssey",
+        "poster": "2001.webp",
+        "year": "1968",
+        "director": "Stanley Kubrick",
+        "genres": ["Adventure", "Science Fiction"],
+        "length": 149,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Once Upon a Time in the West",
+        "poster": "Once Upon a Time in the West.webp",
+        "year": "1968",
+        "director": "Sergio Leone",
+        "genres": ["Western"],
+        "length": 165,
+        "country": "Italy",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "A Clockwork Orange",
+        "poster": "A Clockwork Orange.jpg",
+        "year": "1971",
+        "director": "Stanley Kubrick",
+        "genres": ["Crime", "Science Fiction"],
+        "length": 136,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Godfather",
+        "poster": "The Godfather.jpg",
+        "year": "1972",
+        "director": "Francis Ford Coppola",
+        "genres": ["Crime", "Drama"],
+        "length": 175,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Exorcist",
+        "poster": "The Exorcist.jpg",
+        "year": "1973",
+        "director": "William Friedkin",
+        "genres": ["Horror"],
+        "length": 122,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Alice in the Cities",
+        "poster": "Alice in the Cities.jpg",
+        "year": "1974",
+        "director": "Wim Wenders",
+        "genres": ["Drama"],
+        "length": 113,
+        "country": "Germany",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Godfather Part II",
+        "poster": "The Godfather Part II.jpg",
+        "year": "1974",
+        "director": "Francis Ford Coppola",
+        "genres": ["Crime", "Drama"],
+        "length": 202,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Jaws",
+        "poster": "Jaws.jpg",
+        "year": "1975",
+        "director": "Steven Spielberg",
+        "genres": ["Adventure", "Mystery", "Thriller"],
+        "length": 124,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Taxi Driver",
+        "poster": "Taxi Driver.jpg",
+        "year": "1976",
+        "director": "Martin Scorsese",
+        "genres": ["Crime", "Drama"],
+        "length": 114,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Rocky",
+        "poster": "Rocky.jpg",
+        "year": "1976",
+        "director": "John G. Avildsen",
+        "genres": ["Drama", "Sport"],
+        "length": 120,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Annie Hall",
+        "poster": "Annie Hall.jpg",
+        "year": "1977",
+        "director": "Woody Allen",
+        "genres": ["Comedy", "Romance"],
+        "length": 93,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Life of Brian",
+        "poster": "The Life of Brian.jpg",
+        "year": "1979",
+        "director": "Terry Jones",
+        "genres": ["Comedy"],
+        "length": 94,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Manhattan",
+        "poster": "Manhattan.jpg",
+        "year": "1979",
+        "director": "Woody Allen",
+        "genres": ["Comedy", "Drama", "Romance"],
+        "length": 96,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Apocalypse Now",
+        "poster": "Apocalypse Now.webp",
+        "year": "1979",
+        "director": "Francis Ford Coppola",
+        "genres": ["Drama", "Mystery", "War"],
+        "length": 147,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Alien",
+        "poster": "Alien.jpg",
+        "year": "1979",
+        "director": "Ridley Scott",
+        "genres": ["Horror", "Science Fiction"],
+        "length": 117,
+        "country": "United States",
+        "seenBy": ["Gonza", "Ariel"]
+    },
+    {
+        "title": "All That Jazz",
+        "poster": "All That Jazz.jpg",
+        "year": "1979",
+        "director": "Bob Fosse",
+        "genres": ["Drama", "Musical"],
+        "length": 123,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Shining",
+        "poster": "The Shining.jpg",
+        "year": "1980",
+        "director": "Stanley Kubrick",
+        "genres": ["Drama", "Horror"],
+        "length": 146,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Airplane!",
+        "poster": "Airplane!.jpg",
+        "year": "1980",
+        "director": "David Zucker, Jim Abrahams, Jerry Zucker",
+        "genres": ["Comedy"],
+        "length": 88,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Quest for Fire",
+        "poster": "Quest for Fire.jpg",
+        "year": "1981",
+        "director": "Jean-Jacques Annaud",
+        "genres": ["Adventure", "Drama"],
+        "length": 100,
+        "country": "France",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Mad Max 2",
+        "poster": "Mad Max 2.webp",
+        "year": "1981",
+        "director": "George Miller",
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "length": 96,
+        "country": "Australia",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Thing",
+        "poster": "The Thing.jpg",
+        "year": "1982",
+        "director": "John Carpenter",
+        "genres": ["Horror", "Mystery", "Science Fiction"],
+        "length": 109,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Wall",
+        "poster": "The Wall.jpg",
+        "year": "1982",
+        "director": "Alan Parker",
+        "genres": ["Drama", "Fantasy", "Music"],
+        "length": 95,
+        "country": "United Kingdom",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "The King of Comedy",
+        "poster": "The King of Comedy.jpg",
+        "year": "1982",
+        "director": "Martin Scorsese",
+        "genres": ["Comedy", "Crime", "Drama"],
+        "length": 109,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Scarface",
+        "poster": "Scarface.jpg",
+        "year": "1983",
+        "director": "Brian De Palma",
+        "genres": ["Crime", "Drama"],
+        "length": 170,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Zelig",
+        "poster": "Zelig.jpg",
+        "year": "1983",
+        "director": "Woody Allen",
+        "genres": ["Comedy"],
+        "length": 79,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Espérame Mucho",
+        "poster": "Espérame Mucho.jpg",
+        "year": "1983",
+        "director": "Juan José Jusid",
+        "genres": ["Drama"],
+        "length": 90,
+        "country": "Argentina",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Monty Python's The Meaning of Life",
+        "poster": "Monty Python's The Meaning of Life.jpg",
+        "year": "1983",
+        "director": "Terry Jones, Terry Gilliam",
+        "genres": ["Comedy", "Musical"],
+        "length": 107,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "This Is Spinal Tap",
+        "poster": "This Is Spinal Tap.jpg",
+        "year": "1984",
+        "director": "Rob Reiner",
+        "genres": ["Comedy", "Music"],
+        "length": 82,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "A Nightmare on Elm Street",
+        "poster": "A Nightmare on Elm Street.jpg",
+        "year": "1984",
+        "director": "Wes Craven",
+        "genres": ["Horror"],
+        "length": 91,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Top Secret!",
+        "poster": "Top Secret!.jpg",
+        "year": "1984",
+        "director": "David Zucker, Jim Abrahams, Jerry Zucker",
+        "genres": ["Comedy", "Crime", "Music"],
+        "length": 90,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Blood Simple",
+        "poster": "Blood Simple.jpg",
+        "year": "1984",
+        "director": "Coen Brothers",
+        "genres": ["Crime", "Drama", "Thriller"],
+        "length": 99,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Ghostbusters",
+        "poster": "Ghostbusters.jpg",
+        "year": "1984",
+        "director": "Ivan Reitman",
+        "genres": ["Action", "Comedy", "Fantasy"],
+        "length": 105,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Terminator",
+        "poster": "The Terminator.jpg",
+        "year": "1984",
+        "director": "James Cameron",
+        "genres": ["Action", "Science Fiction"],
+        "length": 107,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "1984",
+        "poster": "1984.jpg",
+        "year": "1984",
+        "director": "Michael Radford",
+        "genres": ["Drama", "Science Fiction"],
+        "length": 113,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Amadeus",
+        "poster": "Amadeus.jpg",
+        "year": "1984",
+        "director": "Milos Forman",
+        "genres": ["Biography", "Drama", "Music"],
+        "length": 160,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Paris, Texas",
+        "poster": "Paris, Texas.jpg",
+        "year": "1984",
+        "director": "Wim Wenders",
+        "genres": ["Drama"],
+        "length": 145,
+        "country": "Germany",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Back to the Future",
+        "poster": "Back to the Future.jpg",
+        "year": "1985",
+        "director": "Robert Zemeckis",
+        "genres": ["Adventure", "Comedy", "Science Fiction"],
+        "length": 116,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Brazil",
+        "poster": "Brazil.jpg",
+        "year": "1985",
+        "director": "Terry Gilliam",
+        "genres": ["Drama", "Science Fiction"],
+        "length": 132,
+        "country": "United Kingdom",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Trainspotting",
+        "poster": "Trainspotting.jpg",
+        "year": "1986",
+        "director": "Danny Boyle",
+        "genres": ["Drama"],
+        "length": 93,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Stand by Me",
+        "poster": "Stand by Me.jpg",
+        "year": "1986",
+        "director": "Rob Reiner",
+        "genres": ["Adventure", "Drama"],
+        "length": 89,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "¡Three Amigos!",
+        "poster": "¡Three Amigos!.jpg",
+        "year": "1986",
+        "director": "John Landis",
+        "genres": ["Comedy", "Western"],
+        "length": 104,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Blue Velvet",
+        "poster": "Blue Velvet.jpg",
+        "year": "1986",
+        "director": "David Lynch",
+        "genres": ["Crime", "Drama", "Mystery"],
+        "length": 120,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Name of the Rose",
+        "poster": "The Name of the Rose.jpg",
+        "year": "1986",
+        "director": "Jean-Jacques Annaud",
+        "genres": ["Drama", "Mystery", "Thriller"],
+        "length": 130,
+        "country": "Italy",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Mission",
+        "poster": "The Mission.jpg",
+        "year": "1986",
+        "director": "Roland Joffé",
+        "genres": ["Adventure", "Drama", "History"],
+        "length": 125,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Full Metal Jacket",
+        "poster": "Full Metal Jacket.jpg",
+        "year": "1987",
+        "director": "Stanley Kubrick",
+        "genres": ["Drama", "War"],
+        "length": 116,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Untouchables",
+        "poster": "The Untouchables.jpg",
+        "year": "1987",
+        "director": "Brian De Palma",
+        "genres": ["Crime", "Drama", "Thriller"],
+        "length": 119,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Wings of Desire",
+        "poster": "Wings of Desire.jpg",
+        "year": "1987",
+        "director": "Wim Wenders",
+        "genres": ["Drama", "Fantasy", "Romance"],
+        "length": 128,
+        "country": "Germany",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "La deuda interna",
+        "poster": "La deuda interna.jpg",
+        "year": "1988",
+        "director": "Miguel Pereira",
+        "genres": ["Drama"],
+        "length": 106,
+        "country": "Argentina",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Who Framed Roger Rabbit",
+        "poster": "Who Framed Roger Rabbit.jpg",
+        "year": "1988",
+        "director": "Robert Zemeckis",
+        "genres": ["Animation", "Adventure", "Comedy"],
+        "length": 104,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Dirty Rotten Scoundrels",
+        "poster": "Dirty Rotten Scoundrels.jpg",
+        "year": "1988",
+        "director": "Frank Oz",
+        "genres": ["Comedy", "Crime"],
+        "length": 110,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Dangerous Liaisons",
+        "poster": "Dangerous Liaisons.jpg",
+        "year": "1988",
+        "director": "Stephen Frears",
+        "genres": ["Drama", "Romance"],
+        "length": 119,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Die Hard",
+        "poster": "Die Hard.jpg",
+        "year": "1988",
+        "director": "John McTiernan",
+        "genres": ["Action", "Thriller"],
+        "length": 132,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Cinema Paradiso",
+        "poster": "Cinema Paradiso.jpg",
+        "year": "1988",
+        "director": "Giuseppe Tornatore",
+        "genres": ["Drama", "Romance"],
+        "length": 155,
+        "country": "Italy",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "When Harry Met Sally",
+        "poster": "When Harry Met Sally.jpg",
+        "year": "1989",
+        "director": "Rob Reiner",
+        "genres": ["Comedy", "Drama", "Romance"],
+        "length": 95,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Central Station",
+        "poster": "Central Station.jpg",
+        "year": "1989",
+        "director": "J.A. Salgot",
+        "genres": ["Crime", "Thriller"],
+        "length": 105,
+        "country": "Spain",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Silence of the Lambs",
+        "poster": "The Silence of the Lambs.jpg",
+        "year": "1991",
+        "director": "Jonathan Demme",
+        "genres": ["Crime", "Drama", "Thriller"],
+        "length": 118,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Thelma & Louise",
+        "poster": "Thelma & Louise.jpg",
+        "year": "1991",
+        "director": "Ridley Scott",
+        "genres": ["Adventure", "Crime", "Drama"],
+        "length": 130,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Fisher King",
+        "poster": "The Fisher King.jpg",
+        "year": "1991",
+        "director": "Terry Gilliam",
+        "genres": ["Comedy", "Drama", "Fantasy"],
+        "length": 137,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Raise the Red Lantern",
+        "poster": "Raise the Red Lantern.jpg",
+        "year": "1991",
+        "director": "Yimou Zhang",
+        "genres": ["Drama", "Romance"],
+        "length": 125,
+        "country": "China",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Dracula",
+        "poster": "Dracula.jpg",
+        "year": "1992",
+        "director": "Francis Ford Coppola",
+        "genres": ["Drama", "Fantasy", "Horror"],
+        "length": 128,
+        "country": "United States",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Reservoir Dogs",
+        "poster": "Reservoir Dogs.jpg",
+        "year": "1992",
+        "director": "Quentin Tarantino",
+        "genres": ["Crime", "Thriller"],
+        "length": 99,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Nightmare Before Christmas",
+        "poster": "The Nightmare Before Christmas.jpg",
+        "year": "1993",
+        "director": "Tim Burton",
+        "genres": ["Animation", "Family", "Fantasy"],
+        "length": 76,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Groundhog Day",
+        "poster": "Groundhog Day.jpg",
+        "year": "1993",
+        "director": "Harold Ramis",
+        "genres": ["Comedy", "Drama", "Fantasy"],
+        "length": 101,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Falling Down",
+        "poster": "Falling Down.jpg",
+        "year": "1993",
+        "director": "Joel Schumacher",
+        "genres": ["Action", "Crime", "Drama"],
+        "length": 113,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Lisbon Story",
+        "poster": "Lisbon Story.jpg",
+        "year": "1994",
+        "director": "Wim Wenders",
+        "genres": ["Drama", "Music"],
+        "length": 100,
+        "country": "Germany",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Léon: The Professional",
+        "poster": "Léon The Professional.jpg",
+        "year": "1994",
+        "director": "Luc Besson",
+        "genres": ["Action", "Crime", "Drama"],
+        "length": 110,
+        "country": "France",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Forrest Gump",
+        "poster": "Forrest Gump.jpg",
+        "year": "1994",
+        "director": "Robert Zemeckis",
+        "genres": ["Drama", "Romance"],
+        "length": 142,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Four Weddings and a Funeral",
+        "poster": "Four Weddings and a Funeral.jpg",
+        "year": "1994",
+        "director": "Mike Newell",
+        "genres": ["Comedy", "Drama", "Romance"],
+        "length": 117,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Pulp Fiction",
+        "poster": "Pulp Fiction.jpg",
+        "year": "1994",
+        "director": "Quentin Tarantino",
+        "genres": ["Crime", "Drama"],
+        "length": 154,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Shawshank Redemption",
+        "poster": "The Shawshank Redemption.jpg",
+        "year": "1994",
+        "director": "Frank Darabont",
+        "genres": ["Drama"],
+        "length": 142,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Usual Suspects",
+        "poster": "The Usual Suspects.jpg",
+        "year": "1995",
+        "director": "Bryan Singer",
+        "genres": ["Crime", "Drama", "Mystery"],
+        "length": 106,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Seven",
+        "poster": "Seven.jpg",
+        "year": "1995",
+        "director": "David Fincher",
+        "genres": ["Crime", "Drama", "Mystery"],
+        "length": 127,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Ghost in the Shell",
+        "poster": "Ghost in the Shell.jpg",
+        "year": "1995",
+        "director": "Mamoru Oshii",
+        "genres": ["Animation", "Action", "Crime"],
+        "length": 83,
+        "country": "Japan",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Day of the Beast",
+        "poster": "The Day of the Beast.jpg",
+        "year": "1995",
+        "director": "Álex de la Iglesia",
+        "genres": ["Action", "Comedy", "Crime"],
+        "length": 103,
+        "country": "Spain",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "12 Monkeys",
+        "poster": "12 Monkeys.jpg",
+        "year": "1995",
+        "director": "Terry Gilliam",
+        "genres": ["Mystery", "Science Fiction", "Thriller"],
+        "length": 129,
+        "country": "United States",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Fargo",
+        "poster": "Fargo.jpg",
+        "year": "1996",
+        "director": "Coen Brothers",
+        "genres": ["Crime", "Thriller"],
+        "length": 98,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Scream",
+        "poster": "Scream.jpg",
+        "year": "1996",
+        "director": "Wes Craven",
+        "genres": ["Horror", "Mystery"],
+        "length": 111,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Full Monty",
+        "poster": "The Full Monty.jpg",
+        "year": "1997",
+        "director": "Peter Cattaneo",
+        "genres": ["Comedy", "Drama"],
+        "length": 91,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Gattaca",
+        "poster": "Gattaca.jpg",
+        "year": "1997",
+        "director": "Andrew Niccol",
+        "genres": ["Drama", "Science Fiction", "Thriller"],
+        "length": 106,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "As Good as It Gets",
+        "poster": "As Good as It Gets.jpg",
+        "year": "1997",
+        "director": "James L. Brooks",
+        "genres": ["Comedy", "Drama", "Romance"],
+        "length": 139,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Contact",
+        "poster": "Contact.jpg",
+        "year": "1997",
+        "director": "Robert Zemeckis",
+        "genres": ["Drama", "Mystery", "Science Fiction", "Thriller"],
+        "length": 150,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Good Will Hunting",
+        "poster": "Good Will Hunting.jpg",
+        "year": "1997",
+        "director": "Gus Van Sant",
+        "genres": ["Drama", "Romance"],
+        "length": 126,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Fifth Element",
+        "poster": "The Fifth Element.jpg",
+        "year": "1997",
+        "director": "Luc Besson",
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "length": 126,
+        "country": "France",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Pizza, Birra y Faso",
+        "poster": "Pizza, Birra y Faso.jpg",
+        "year": "1998",
+        "director": "Israel Adrián Caetano, Bruno Stagnaro",
+        "genres": ["Crime", "Drama"],
+        "length": 92,
+        "country": "Argentina",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Run Lola Run",
+        "poster": "Run Lola Run.jpg",
+        "year": "1998",
+        "director": "Tom Tykwer",
+        "genres": ["Action", "Crime", "Thriller"],
+        "length": 81,
+        "country": "Germany",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Truman Show",
+        "poster": "The Truman Show.jpg",
+        "year": "1998",
+        "director": "Peter Weir",
+        "genres": ["Comedy", "Drama"],
+        "length": 103,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Celebration",
+        "poster": "The Celebration.jpg",
+        "year": "1998",
+        "director": "Thomas Vinterberg",
+        "genres": ["Drama"],
+        "length": 105,
+        "country": "Denmark",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Big Lebowski",
+        "poster": "The Big Lebowski.jpg",
+        "year": "1998",
+        "director": "Coen Brothers",
+        "genres": ["Comedy", "Crime"],
+        "length": 117,
+        "country": "United States",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "The Thin Red Line",
+        "poster": "The Thin Red Line.jpg",
+        "year": "1998",
+        "director": "Terrence Malick",
+        "genres": ["Drama", "History", "War"],
+        "length": 170,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Sixth Sense",
+        "poster": "The Sixth Sense.jpg",
+        "year": "1999",
+        "director": "M. Night Shyamalan",
+        "genres": ["Drama", "Mystery", "Thriller"],
+        "length": 107,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Being John Malkovich",
+        "poster": "Being John Malkovich.jpg",
+        "year": "1999",
+        "director": "Spike Jonze",
+        "genres": ["Comedy", "Drama", "Fantasy"],
+        "length": 113,
+        "country": "United States",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Matrix",
+        "poster": "Matrix.jpg",
+        "year": "1999",
+        "director": "Wachowskis",
+        "genres": ["Action", "Science Fiction"],
+        "length": 136,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Fight Club",
+        "poster": "Fight Club.jpg",
+        "year": "1999",
+        "director": "David Fincher",
+        "genres": ["Drama"],
+        "length": 139,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "American Beauty",
+        "poster": "American Beauty.jpg",
+        "year": "1999",
+        "director": "Sam Mendes",
+        "genres": ["Drama"],
+        "length": 122,
+        "country": "United States",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Magnolia",
+        "poster": "Magnolia.jpg",
+        "year": "1999",
+        "director": "Paul Thomas Anderson",
+        "genres": ["Drama"],
+        "length": 188,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Chicken Run",
+        "poster": "Chicken Run.jpg",
+        "year": "2000",
+        "director": "Nick Park, Peter Lord",
+        "genres": ["Animation", "Adventure", "Comedy"],
+        "length": 84,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Bedazzled",
+        "poster": "Bedazzled.jpg",
+        "year": "2000",
+        "director": "Harold Ramis",
+        "genres": ["Comedy", "Fantasy"],
+        "length": 93,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Snatch",
+        "poster": "Snatch.jpg",
+        "year": "2000",
+        "director": "Guy Ritchie",
+        "genres": ["Comedy", "Crime"],
+        "length": 104,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "High Fidelity",
+        "poster": "High Fidelity.jpg",
+        "year": "2000",
+        "director": "Stephen Frears",
+        "genres": ["Comedy", "Drama", "Music"],
+        "length": 113,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Nueve Reinas",
+        "poster": "Nueve Reinas.jpg",
+        "year": "2000",
+        "director": "Fabián Bielinsky",
+        "genres": ["Crime", "Drama", "Thriller"],
+        "length": 114,
+        "country": "Argentina",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Me, Myself & Irene",
+        "poster": "Me, Myself & Irene.jpg",
+        "year": "2000",
+        "director": "Bobby Farrelly, Peter Farrelly",
+        "genres": ["Comedy"],
+        "length": 116,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "American Psycho",
+        "poster": "American Psycho.jpg",
+        "year": "2000",
+        "director": "Mary Harron",
+        "genres": ["Crime", "Drama"],
+        "length": 102,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Crouching Tiger, Hidden Dragon",
+        "poster": "Crouching Tiger, Hidden Dragon.jpg",
+        "year": "2000",
+        "director": "Ang Lee",
+        "genres": ["Action", "Adventure", "Drama"],
+        "length": 120,
+        "country": "Taiwan",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Zoolander",
+        "poster": "Zoolander.jpg",
+        "year": "2001",
+        "director": "Ben Stiller",
+        "genres": ["Comedy"],
+        "length": 90,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Donnie Darko",
+        "poster": "Donnie Darko.jpg",
+        "year": "2001",
+        "director": "Richard Kelly",
+        "genres": ["Drama", "Mystery", "Science Fiction"],
+        "length": 113,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "A.I. Artificial Intelligence",
+        "poster": "A.I. Artificial Intelligence.jpg",
+        "year": "2001",
+        "director": "Steven Spielberg",
+        "genres": ["Drama", "Science Fiction"],
+        "length": 146,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Mulholland Drive",
+        "poster": "Mulholland Drive.jpg",
+        "year": "2001",
+        "director": "David Lynch",
+        "genres": ["Drama", "Mystery", "Thriller"],
+        "length": 147,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Amélie",
+        "poster": "Amélie.jpg",
+        "year": "2001",
+        "director": "Jean-Pierre Jeunet",
+        "genres": ["Comedy", "Romance"],
+        "length": 122,
+        "country": "France",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Moulin Rouge!",
+        "poster": "Moulin Rouge!.jpg",
+        "year": "2001",
+        "director": "Baz Luhrmann",
+        "genres": ["Drama", "Musical", "Romance"],
+        "length": 127,
+        "country": "Australia",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Hannibal",
+        "poster": "Hannibal.jpg",
+        "year": "2001",
+        "director": "Ridley Scott",
+        "genres": ["Crime", "Drama", "Thriller"],
+        "length": 131,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Historias mínimas",
+        "poster": "Historias mínimas.jpg",
+        "year": "2002",
+        "director": "Carlos Sorín",
+        "genres": ["Comedy", "Drama"],
+        "length": 92,
+        "country": "Argentina",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "About a Boy",
+        "poster": "About a Boy.jpg",
+        "year": "2002",
+        "director": "Weitz Brothers",
+        "genres": ["Comedy", "Drama", "Romance"],
+        "length": 101,
+        "country": "United Kingdom",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Irreversible",
+        "poster": "Irreversible.jpg",
+        "year": "2002",
+        "director": "Gaspar Noé",
+        "genres": ["Crime", "Drama", "Mystery"],
+        "length": 97,
+        "country": "France",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Pianist",
+        "poster": "The Pianist.jpg",
+        "year": "2002",
+        "director": "Roman Polanski",
+        "genres": ["Biography", "Drama", "Music"],
+        "length": 150,
+        "country": "France",
+        "seenBy": ["Gonza", "Ariel"]
+    },
+    {
+        "title": "Gangs of New York",
+        "poster": "Gangs of New York.jpg",
+        "year": "2002",
+        "director": "Martin Scorsese",
+        "genres": ["Crime", "Drama"],
+        "length": 167,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "City of God",
+        "poster": "City of God.jpg",
+        "year": "2002",
+        "director": "Fernando Meirelles, Kátia Lund",
+        "genres": ["Crime", "Drama"],
+        "length": 130,
+        "country": "Brazil",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Elephant",
+        "poster": "Elephant.jpg",
+        "year": "2003",
+        "director": "Gus Van Sant",
+        "genres": ["Crime", "Drama", "Thriller"],
+        "length": 81,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Kill Bill: Vol. 1",
+        "poster": "Kill Bill Vol. 1.jpg",
+        "year": "2003",
+        "director": "Quentin Tarantino",
+        "genres": ["Action", "Crime", "Drama"],
+        "length": 111,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Zatoichi",
+        "poster": "Zatoichi.jpg",
+        "year": "2003",
+        "director": "Takeshi Kitano",
+        "genres": ["Action", "Comedy", "Crime"],
+        "length": 116,
+        "country": "Japan",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Oldboy",
+        "poster": "Oldboy.jpg",
+        "year": "2003",
+        "director": "Park Chan-wook",
+        "genres": ["Action", "Drama", "Mystery"],
+        "length": 120,
+        "country": "South Korea",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Spring, Summer, Fall, Winter... and Spring",
+        "poster": "Spring, Summer, Fall, Winter... and Spring.jpg",
+        "year": "2003",
+        "director": "Kim Ki-duk",
+        "genres": ["Drama", "Romance"],
+        "length": 103,
+        "country": "South Korea",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Good Bye Lenin!",
+        "poster": "Good Bye Lenin!.jpg",
+        "year": "2003",
+        "director": "Wolfgang Becker",
+        "genres": ["Comedy", "Drama", "Romance"],
+        "length": 121,
+        "country": "Germany",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Big Fish",
+        "poster": "Big Fish.jpg",
+        "year": "2003",
+        "director": "Tim Burton",
+        "genres": ["Adventure", "Drama", "Fantasy"],
+        "length": 125,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Eternal Sunshine of the Spotless Mind",
+        "poster": "Eternal Sunshine of the Spotless Mind.jpg",
+        "year": "2004",
+        "director": "Michel Gondry",
+        "genres": ["Drama", "Romance", "Science Fiction"],
+        "length": 108,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Howl's Moving Castle",
+        "poster": "Howl's Moving Castle.jpg",
+        "year": "2004",
+        "director": "Hayao Miyazaki",
+        "genres": ["Animation", "Adventure", "Family"],
+        "length": 119,
+        "country": "Japan",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Kill Bill: Vol. 2",
+        "poster": "Kill Bill Vol 2.jpg",
+        "year": "2004",
+        "director": "Quentin Tarantino",
+        "genres": ["Action", "Crime", "Drama"],
+        "length": 137,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Tiempo de Valientes",
+        "poster": "Tiempo de Valientes.jpg",
+        "year": "2005",
+        "director": "Damián Szifron",
+        "genres": ["Action", "Comedy", "Crime"],
+        "length": 112,
+        "country": "Argentina",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Match Point",
+        "poster": "Match Point.jpg",
+        "year": "2005",
+        "director": "Woody Allen",
+        "genres": ["Drama", "Romance", "Thriller"],
+        "length": 124,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Sin City",
+        "poster": "Sin City.jpg",
+        "year": "2005",
+        "director": "Robert Rodriguez",
+        "genres": ["Crime", "Thriller"],
+        "length": 124,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Paprika",
+        "poster": "Paprika.jpg",
+        "year": "2006",
+        "director": "Satoshi Kon",
+        "genres": ["Animation", "Drama", "Fantasy"],
+        "length": 90,
+        "country": "Japan",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Idiocracy",
+        "poster": "Idiocracy.jpg",
+        "year": "2006",
+        "director": "Mike Judge",
+        "genres": ["Adventure", "Comedy", "Science Fiction"],
+        "length": 84,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Fountain",
+        "poster": "The Fountain.jpg",
+        "year": "2006",
+        "director": "Darren Aronofsky",
+        "genres": ["Drama", "Mystery", "Romance"],
+        "length": 97,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Little Miss Sunshine",
+        "poster": "Little Miss Sunshine.jpg",
+        "year": "2006",
+        "director": "Jonathan Dayton, Valerie Faris",
+        "genres": ["Comedy", "Drama"],
+        "length": 101,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Children of Men",
+        "poster": "Children of Men.jpg",
+        "year": "2006",
+        "director": "Alfonso Cuarón",
+        "genres": ["Action", "Drama", "Science Fiction"],
+        "length": 109,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Stranger Than Fiction",
+        "poster": "Stranger Than Fiction.jpg",
+        "year": "2006",
+        "director": "Marc Forster",
+        "genres": ["Comedy", "Drama", "Fantasy"],
+        "length": 113,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Prestige",
+        "poster": "The Prestige.jpg",
+        "year": "2006",
+        "director": "Christopher Nolan",
+        "genres": ["Drama", "Mystery", "Science Fiction"],
+        "length": 130,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Departed",
+        "poster": "The Departed.jpg",
+        "year": "2006",
+        "director": "Martin Scorsese",
+        "genres": ["Crime", "Drama", "Thriller"],
+        "length": 151,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Perfume: The Story of a Murderer",
+        "poster": "Perfume The Story of a Murderer.jpg",
+        "year": "2006",
+        "director": "Tom Tykwer",
+        "genres": ["Crime", "Drama", "Fantasy"],
+        "length": 147,
+        "country": "Germany",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Ratatouille",
+        "poster": "Ratatouille.jpg",
+        "year": "2007",
+        "director": "Brad Bird",
+        "genres": ["Animation", "Adventure", "Comedy"],
+        "length": 111,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "No Country for Old Men",
+        "poster": "No Country for Old Men.jpg",
+        "year": "2007",
+        "director": "Coen Brothers",
+        "genres": ["Crime", "Drama", "Thriller"],
+        "length": 122,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Dark Knight",
+        "poster": "The Dark Knight.jpg",
+        "year": "2008",
+        "director": "Christopher Nolan",
+        "genres": ["Crime", "Drama", "Thriller"],
+        "length": 152,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Tropic Thunder",
+        "poster": "Tropic Thunder.jpg",
+        "year": "2008",
+        "director": "Ben Stiller",
+        "genres": ["Action", "Comedy", "War"],
+        "length": 107,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Mary and Max",
+        "poster": "Mary and Max.jpg",
+        "year": "2009",
+        "director": "Adam Elliot",
+        "genres": ["Animation", "Comedy", "Drama"],
+        "length": 152,
+        "country": "Australia",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Mr. Nobody",
+        "poster": "Mr. Nobody.jpg",
+        "year": "2009",
+        "director": "Jaco Van Dormael",
+        "genres": ["Drama", "Fantasy", "Romance"],
+        "length": 141,
+        "country": "Belgium",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "El Secreto de sus Ojos",
+        "poster": "El Secreto de sus Ojos.jpg",
+        "year": "2009",
+        "director": "Juan José Campanella",
+        "genres": ["Drama", "Mystery", "Romance"],
+        "length": 129,
+        "country": "Argentina",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Inception",
+        "poster": "Inception.jpg",
+        "year": "2010",
+        "director": "Christopher Nolan",
+        "genres": ["Action", "Adventure", "Science Fiction"],
+        "length": 148,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Black Swan",
+        "poster": "Black Swan.jpg",
+        "year": "2010",
+        "director": "Darren Aronofsky",
+        "genres": ["Drama", "Thriller"],
+        "length": 108,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Drive",
+        "poster": "Drive.jpg",
+        "year": "2011",
+        "director": "Nicolas Winding Refn",
+        "genres": ["Action", "Drama"],
+        "length": 100,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Black Mirror",
+        "poster": "Black Mirror.jpg",
+        "year": "2011",
+        "director": "Various",
+        "genres": ["Dystopia", "Drama", "Mystery"],
+        "length": 60,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Midnight in Paris",
+        "poster": "Midnight in Paris.jpg",
+        "year": "2011",
+        "director": "Woody Allen",
+        "genres": ["Comedy", "Fantasy", "Romance"],
+        "length": 94,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Django Unchained",
+        "poster": "Django Unchained.jpg",
+        "year": "2012",
+        "director": "Quentin Tarantino",
+        "genres": ["Drama", "Western"],
+        "length": 165,
+        "country": "United States",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "About Time",
+        "poster": "About Time.jpg",
+        "year": "2013",
+        "director": "Richard Curtis",
+        "genres": ["Comedy", "Drama", "Fantasy"],
+        "length": 123,
+        "country": "United Kingdom",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Only Lovers Left Alive",
+        "poster": "Only Lovers Left Alive.jpg",
+        "year": "2013",
+        "director": "Jim Jarmusch",
+        "genres": ["Comedy", "Drama", "Fantasy"],
+        "length": 123,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Wolf of Wall Street",
+        "poster": "The Wolf of Wall Street.jpg",
+        "year": "2013",
+        "director": "Martin Scorsese",
+        "genres": ["Comedy", "Drama", "Crime"],
+        "length": 180,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Grand Budapest Hotel",
+        "poster": "The Grand Budapest Hotel.jpg",
+        "year": "2014",
+        "director": "Wes Anderson",
+        "genres": ["Adventure", "Comedy", "Crime"],
+        "length": 99,
+        "country": "United States",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Ex Machina",
+        "poster": "Ex Machina.jpg",
+        "year": "2014",
+        "director": "Alex Garland",
+        "genres": ["Drama", "Science Fiction", "Thriller"],
+        "length": 108,
+        "country": "United Kingdom",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Relatos Salvajes",
+        "poster": "Relatos Salvajes.jpg",
+        "year": "2014",
+        "director": "Damián Szifron",
+        "genres": ["Comedy", "Drama", "Thriller"],
+        "length": 122,
+        "country": "Argentina",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Birdman",
+        "poster": "Birdman.jpg",
+        "year": "2014",
+        "director": "Alejandro G. Iñárritu",
+        "genres": ["Comedy", "Drama"],
+        "length": 119,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Whiplash",
+        "poster": "Whiplash.jpg",
+        "year": "2014",
+        "director": "Damien Chazelle",
+        "genres": ["Drama", "Music"],
+        "length": 106,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Interstellar",
+        "poster": "Interstellar.jpg",
+        "year": "2014",
+        "director": "Christopher Nolan",
+        "genres": ["Adventure", "Drama", "Science Fiction"],
+        "length": 169,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "The Lobster",
+        "poster": "The Lobster.jpg",
+        "year": "2015",
+        "director": "Yorgos Lanthimos",
+        "genres": ["Drama", "Romance", "Science Fiction"],
+        "length": 119,
+        "country": "Ireland",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Red Turtle",
+        "poster": "The Red Turtle.jpg",
+        "year": "2016",
+        "director": "Michaël Dudok de Wit",
+        "genres": ["Animation", "Drama", "Family"],
+        "length": 80,
+        "country": "France",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Arrival",
+        "poster": "Arrival.jpg",
+        "year": "2016",
+        "director": "Denis Villeneuve",
+        "genres": ["Drama", "Mystery", "Science Fiction"],
+        "length": 116,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Captain Fantastic",
+        "poster": "Captain Fantastic.jpg",
+        "year": "2016",
+        "director": "Matt Ross",
+        "genres": ["Comedy", "Drama"],
+        "length": 118,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Nocturnal Animals",
+        "poster": "Nocturnal Animals.jpg",
+        "year": "2016",
+        "director": "Tom Ford",
+        "genres": ["Drama", "Thriller"],
+        "length": 116,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Lady Bird",
+        "poster": "Lady Bird.jpg",
+        "year": "2017",
+        "director": "Greta Gerwig",
+        "genres": ["Comedy", "Drama"],
+        "length": 94,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Downsizing",
+        "poster": "Downsizing.jpg",
+        "year": "2017",
+        "director": "Alexander Payne",
+        "genres": ["Drama", "Fantasy", "Science Fiction"],
+        "length": 135,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Square",
+        "poster": "The Square.jpg",
+        "year": "2017",
+        "director": "Ruben Östlund",
+        "genres": ["Comedy", "Drama"],
+        "length": 151,
+        "country": "Sweden",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "Parasite",
+        "poster": "Parasite.jpg",
+        "year": "2019",
+        "director": "Bong Joon Ho",
+        "genres": ["Drama", "Thriller"],
+        "length": 132,
+        "country": "South Korea",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Once Upon a Time in Hollywood",
+        "poster": "Once Upon a Time in Hollywood.jpg",
+        "year": "2019",
+        "director": "Quentin Tarantino",
+        "genres": ["Comedy", "Drama"],
+        "length": 161,
+        "country": "United States",
+        "seenBy": ["Ro", "Ariel"]
+    },
+    {
+        "title": "Avengers: Endgame",
+        "poster": "Avengers Endgame.jpg",
+        "year": "2019",
+        "director": "Russo Brothers",
+        "genres": ["Action", "Adventure", "Drama"],
+        "length": 181,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Everything Everywhere All at Once",
+        "poster": "Everything Everywhere All at Once.jpg",
+        "year": "2022",
+        "director": "Dan Kwan, Daniel Scheinert",
+        "genres": ["Action", "Adventure", "Comedy"],
+        "length": 139,
+        "country": "United States",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
+    },
+    {
+        "title": "Bardo",
+        "poster": "Bardo.jpg",
+        "year": "2022",
+        "director": "Alejandro G. Iñárritu",
+        "genres": ["Comedy", "Drama"],
+        "length": 159,
+        "country": "Mexico",
+        "seenBy": []
+    },
+    {
+        "title": "The Menu",
+        "poster": "The Menu.jpg",
+        "year": "2022",
+        "director": "Mark Mylod",
+        "genres": ["Comedy", "Horror", "Thriller"],
+        "length": 107,
+        "country": "United States",
+        "seenBy": ["Ariel"]
+    },
+    {
+        "title": "The Boy and the Heron",
+        "poster": "The Boy and the Heron.jpg",
+        "year": "2023",
+        "director": "Hayao Miyazaki",
+        "genres": ["Animation", "Adventure", "Drama"],
+        "length": 124,
+        "country": "Japan",
+        "seenBy": ["Ariel", "Ro", "Gonza"]
     }
 ]
 
