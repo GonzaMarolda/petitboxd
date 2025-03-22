@@ -7,10 +7,4 @@ const getAll = async () => {
     return request.data
 }
 
-const login = async (key) => {
-    const request = await axios.post(baseUrl, key)
-    console.log("Recieved data: " + JSON.stringify(request.data, null, 2))
-    return request.data
-}
-
-export default { getAll, login }
+export default { getAll }
