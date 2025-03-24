@@ -144,7 +144,7 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 					<span className={styles["detail-value"]}>{minsToStringHours(movie.length)}</span>
 				</div>
 			</div>
-
+			
 			<div className={styles["genres-container"]}>
 				<h4 className={styles["section-title"]}>Genres</h4>
 				<ul className={styles["genres-list"]}>

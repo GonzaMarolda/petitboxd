@@ -4,9 +4,19 @@ html {
   color: white;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .main-content {
   margin-top: 58px;  
   padding: 1rem;
+  width: 100%;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 body {

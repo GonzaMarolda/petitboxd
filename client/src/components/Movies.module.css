@@ -1,18 +1,19 @@
 .movies-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     padding: 2rem;
 }
 
 .movie-card {
     position: relative;
-    max-width: 300px;
+    width: 100%;
     background: #1a1c22;
     border-radius: 10px;
     padding: 1.5rem;
     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     transition: transform 0.3s ease;
+    font-size: 0.8rem;
 }
 
 .movie-card.hoverable:hover {
@@ -22,10 +23,11 @@
 /* Movie header */
 
 .movie-poster {
-    width: 100%;
-    height: 331px;
+    width: 15rem;
+    height: 20rem;
     object-fit: fill;
     border-radius: 5px;
+    margin-bottom: 0.5rem;
 }
 
 .missing-image{
@@ -108,7 +110,6 @@
 
 .seen-by-list {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.5rem;
 }
   
@@ -204,4 +205,18 @@
     opacity: 0.8;
     margin-bottom: 1px;
     margin-left: 1px;
+}
+
+/* Media Queries */
+
+@media (max-width: 1200px) {
+    .movies-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .movies-container {
+        grid-template-columns: 1fr; 
+    }
 }

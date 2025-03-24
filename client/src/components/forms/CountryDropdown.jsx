@@ -40,7 +40,7 @@ const CountryDropdown = ( {onSelection, initialCountry} ) => {
     }
 
     return (
-        <span>
+        <span className={styles["flag-dropdown-container"]}>
             <img 
                 src={
                     API_BASE_URL + "/uploads/flags/" +
