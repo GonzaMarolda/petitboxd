@@ -25,7 +25,9 @@
 }
 
 .filter-subsection {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
 }
   
  .filter-title {
@@ -121,6 +123,31 @@
     color: #124673;
 }
 
+@media (max-width: 1200px) {
 
+}
+
+@media (max-width: 600px) {
+    .seen-by-list {
+        justify-content: right;
+        gap: 2px;
+        width: 7rem;
+        flex-wrap: wrap;
+    }
+    
+    .petit-tag {
+        padding: 0.15rem 0.55rem;
+        font-size: 0.7rem;
+    }
+    
+    .petit-any-tag {
+        padding: 0.15rem 0.55rem;
+        font-size: 0.7rem;
+    }
+
+    .filter-title {
+        margin: 0 0 0.7rem 0;
+    }
+}
   
   

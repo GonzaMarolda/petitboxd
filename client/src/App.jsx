@@ -20,7 +20,7 @@ const App = () => {
     country: '',
     seenBy: ['any']
   });
-  const moviesPerPage = 8
+  const moviesPerPage = 12
   const [page, setPage] = useState(0)
 
   const filteredMovies = filterMovies(movies, searchQuery, selectedFilters)
