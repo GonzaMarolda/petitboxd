@@ -11,6 +11,7 @@ import { UserContext } from '../providers/UserProvider';
 
 const AppHeader = ({ setMovies }) => {
     const { user, setUser } = useContext(UserContext)
+    const [petitKey, setPetitKey] = useState('')
     const [showModal, setShowModal] = useState(false);
 
     const handleAddMovie = (formData) => {
@@ -61,26 +62,29 @@ const AppHeader = ({ setMovies }) => {
                         <button className={styles["logout-button"]} onClick={() => {setUser(null)}}>logout</button>
                     </div>
                 ) : (
+                    <form onSubmit={(e) => {
+                        e.preventDefault()
+
+                        LoginService
+                        .login(petitKey)
+                        .then(({token, user}) => {
+                            console.log("Petit! User: " + user)
+                            window.localStorage.setItem('loggedPetit', JSON.stringify({user, token}))
+                            MovieService.setToken(token)
+                            setUser(user)
+                        })
+                        .catch(() => {
+                            alert("Invalid petit key")
+                        })
+                        }}>
                     <input 
                         type="password" 
                         placeholder="Enter your petit key" 
                         className={styles["access-input"]}
-                        onKeyDown={(e) => {
-                            if (e.key !== "Enter") return
-                            
-                            LoginService
-                                .login(e.target.value)
-                                .then(({token, user}) => {
-                                    console.log("Petit! User: " + user)
-                                    window.localStorage.setItem('loggedPetit', JSON.stringify({user, token}))
-                                    MovieService.setToken(token)
-                                    setUser(user)
-                                })
-                                .catch(() => {
-                                    alert("Invalid petit key")
-                                })
-                        }}
+                        value={petitKey}
+                        onChange={(e) => {setPetitKey(e.target.value)}}
                     />
+                    </form>
                 )}
             </div>
         </header>

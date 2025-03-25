@@ -218,5 +218,11 @@
 @media (max-width: 600px) {
     .movies-container {
         grid-template-columns: 1fr; 
+        padding: 0.5rem;
+    }
+    .movie-poster {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 2/3;
     }
 }

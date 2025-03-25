@@ -36,10 +36,21 @@
  }
   
  .page-indicator {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    color: #4a5568;
-    font-weight: 500;
-    min-width: 120px;
-    text-align: center;
+   display: flex;
+   justify-content: center;
+   gap: 5px;
+   font-family: 'Inter', sans-serif;
+   font-size: 0.9rem;
+   color: #4a5568;
+   font-weight: 500;
+   min-width: 120px;
+   text-align: center;
+ }
+
+ .current-page {
+   background: rgba(0, 0, 0, 0);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   color: #4a5568;
+   text-align: center;
+   width: 1rem;
  }
