@@ -69,3 +69,33 @@
   stroke-width: 2;
   stroke-linecap: round;
 }
+
+.sort-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sort-button {
+  height: 37px;
+  padding: 0.8rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.sort-button:hover {
+  border-color: #1c2a6d;
+  background: #f5f3ff;
+}
+
+.sort-button.active {
+  border-color: #1c2a6d;
+  background: #f0edff;
+  transition: all 0.15s ease;
+}

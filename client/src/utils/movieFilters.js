@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 export const filterMovies = (movies, searchQuery, selectedFilters) => {
-  const queryFilteredMovies = filterSearchQuery(movies, searchQuery)
+  const queryFilteredMovies = searchQuery ? filterSearchQuery(movies, searchQuery) : movies
   const filteredMovies = filterSelectedFilters(queryFilteredMovies, selectedFilters)
   return filteredMovies
 }
@@ -48,18 +48,6 @@ const filterSelectedFilters = (movies, selectedFilters) => {
     const hasExcluded = selectedFilters.excludedGenres.length > 0 ? movie.genres.some(g => selectedFilters.excludedGenres.includes(g.id)) : false
 
     return hasIncluded && !hasExcluded
-  })
-  .sort((a, b) => { // Genres sort
-    const countA = a.genres.filter(genre => selectedFilters.includedGenres.includes(genre.id)).length
-    const countB = b.genres.filter(genre => selectedFilters.includedGenres.includes(genre.id)).length
-    
-    return countB - countA
-  })
-  .sort((a, b) => { // Year default sort
-    const yearA = Number(a.year)
-    const yearB = Number(b.year)
-    
-    return yearA - yearB
   })
 }
 

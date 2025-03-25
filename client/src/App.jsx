@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { filterMovies } from './utils/movieFilters';
+import { sortMovies } from './utils/movieSorting';
 
 import {Movies} from './components/Movies'
 import MovieService from './services/MovieService';
@@ -20,10 +21,12 @@ const App = () => {
     country: '',
     seenBy: ['any']
   });
+  const [selectedSort, setSelectedSort] = useState({type: "ASC", name: "Year"})
   const moviesPerPage = 12
   const [page, setPage] = useState(0)
 
-  const filteredMovies = filterMovies(movies, searchQuery, selectedFilters)
+  const sortedMovies = sortMovies(movies, selectedSort)
+  const filteredSortedMovies = filterMovies(sortedMovies, searchQuery, selectedFilters)
 
   useEffect(() => {
     MovieService
@@ -53,12 +56,17 @@ const App = () => {
           setSearchQuery={handleSearchQuery}
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
+          selectedSort={selectedSort}
+          setSelectedSort={setSelectedSort}
         />
-        <Movies movies={filteredMovies.slice(moviesPerPage*page, moviesPerPage*page + moviesPerPage)} setMovies={setMovies}/>
+        <Movies 
+          movies={filteredSortedMovies.slice(moviesPerPage*page, moviesPerPage*page + moviesPerPage)} 
+          setMovies={setMovies}
+        />
         <PageSwitch
           page={page}
           setPage={setPage}
-          totalPages={Math.ceil(filteredMovies.length / moviesPerPage)}
+          totalPages={Math.ceil(filteredSortedMovies.length / moviesPerPage)}
         />
       </div>
     </>
