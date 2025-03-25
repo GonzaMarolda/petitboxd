@@ -16,7 +16,8 @@ More features, easier to use, and easier on the eye.
 - 🎬 Movie catalog with details
 - 🏷️ Tags: Genres, countries and who saw the movie
 - 🔎 Advanced search with static and dynamic filtering
-- ➕ Movie addition functionality
+- ➕ Movie add and edit function
+- 📱  Responsive design
 
 ## Technologies
 
