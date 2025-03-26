@@ -9,7 +9,10 @@ const SearchBar = ({ searchQuery, setSearchQuery, selectedFilters, setSelectedFi
     const [showFilters, setShowFilters] = useState(false);
     const [showSorting, setShowSorting] = useState(false)
   
-    const toggleFilters = () => setShowFilters(!showFilters);
+    const toggleFilters = () => {
+        setShowFilters(!showFilters)
+        setShowSorting(false)
+    };
 
     return (
         <div className={styles["search-filter-container"]}>
@@ -17,7 +20,11 @@ const SearchBar = ({ searchQuery, setSearchQuery, selectedFilters, setSelectedFi
                 <div className={styles["sort-container"]}>
                     <button 
                         className={styles["sort-button"] + " " + (showSorting ? styles["active"] : "")}
-                        onClick={() => setShowSorting(!showSorting)}
+                        onClick={() => {
+                            setShowSorting(!showSorting)
+                            setShowFilters(false)
+                        }}
+                        data-testid="sort-button"
                     >
                         <img 
                             src={API_BASE_URL + "/uploads/sort-icon.png"} 

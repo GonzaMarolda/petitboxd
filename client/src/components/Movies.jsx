@@ -126,7 +126,7 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 			/>
 
 			<header className={styles["movie-header"]}>
-				<h3 className={styles["movie-title"]}>
+				<h3 className={styles["movie-title"]} data-testid="movie-title">
 					{movie.title}
 					<span className={styles["movie-year"]}> ({movie.year})</span>
 					<Flag name={movie.country?.name}/>

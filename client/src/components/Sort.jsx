@@ -4,7 +4,7 @@ import { API_BASE_URL } from "../config"
 import PropTypes from "prop-types"
 
 const Sort = ({selectedSort, setSelectedSort, toggleSort}) => {
-    const sortAttributes = ["Year", "Title", "Country"]
+    const sortAttributes = ["Year", "Length", "Title", "Country"]
     const [selectedSortType, setSelectedSortType] = useState(selectedSort.type)
     const [selectedAttribute, setSelectedAttribute] = useState(selectedSort.name)
 
@@ -19,6 +19,7 @@ const Sort = ({selectedSort, setSelectedSort, toggleSort}) => {
                 <button 
                     className={styles["sort-button"] + " " + (selectedSortType === "ASC" ? styles["active"] : "")}
                     onClick={() => setSelectedSortType("ASC")}
+                    data-testid="sort-asc"
                 >
                     <div className={styles["sort-icon"]}>
                         <img 
@@ -33,6 +34,7 @@ const Sort = ({selectedSort, setSelectedSort, toggleSort}) => {
                 <button 
                     className={styles["sort-button"] + " " + (selectedSortType === "DESC" ? styles["active"] : "")}
                     onClick={() => setSelectedSortType("DESC")}
+                    data-testid="sort-desc"
                 >
                     <div className={styles["sort-icon"]}>
                         <img 
@@ -71,6 +73,7 @@ const Sort = ({selectedSort, setSelectedSort, toggleSort}) => {
                             sortAttributes[0]
                         )
                     }}
+                    data-testid="right-button"
                 >
                     {">"}
                 </div>
