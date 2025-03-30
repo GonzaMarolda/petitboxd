@@ -45,7 +45,7 @@ const Review = ({review}) => {
                 </div>
             </div>
             <p className={styles["review-text"]}>{review.comment}</p>
-            <span className={styles["review-date"]}>{review.date}</span>
+            <span className={styles["review-date"]}>{review.date.slice(0, 10)}</span>
         </div>
     )
 }
