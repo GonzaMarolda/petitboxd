@@ -18,14 +18,14 @@
 }
   
 .modal-action button[type="submit"] {
-    background: #007bff;
+    background: #4d6bfe;
     border: none;
 }
 
 .modal-action button[type="cancel"] {
     background: none;
-    color: #007bff;
-    border: 1px double #007bff;
+    color: #4d6bfe;
+    border: 1px double #4d6bfe;
 }
 
 /* Card */

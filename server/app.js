@@ -11,6 +11,7 @@ const genresRouter = require("./controllers/genres")
 const countriesRouter = require("./controllers/countries")
 const petitsRouter = require("./controllers/petits")
 const loginRouter = require("./controllers/login")
+const ratingsRouter = require("./controllers/ratings")
 
 mongoose.connect(config.MONGODB_URI)
   .then(() => {
@@ -33,6 +34,7 @@ app.use("/api/movies", middleware.userExtractor, moviesRouter)
 app.use("/api/genres", genresRouter)
 app.use("/api/countries", countriesRouter)
 app.use("/api/petits", petitsRouter)
+app.use("/api/ratings", middleware.userExtractor, ratingsRouter)
 app.use("/api/login", loginRouter)
 
 if (process.env.NODE_ENV === 'test') {

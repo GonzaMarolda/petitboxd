@@ -1,5 +1,6 @@
- const moviesRouter = require('express').Router()
+const moviesRouter = require('express').Router()
 const Movie = require('../models/movie')
+const Rating = require('../models/rating')
 const upload = require('../utils/storage')
 
 moviesRouter.get('/', async (request, response) => {
@@ -20,8 +21,13 @@ moviesRouter.post('/', upload.single("poster"), async (request, response) => {
   console.log("Request file: " + request.file)
 
   const savedMovie = await movie.save()
-  const populatedMovie = await Movie.findById(savedMovie.id).populate(["genres", "seenBy", "country"])
+  const rating = new Rating({
+    movie: savedMovie.id,
+    reviews: []
+  })
+  await rating.save()
 
+  const populatedMovie = await Movie.findById(savedMovie.id).populate(["genres", "seenBy", "country"])
   return response.status(201).json(populatedMovie)
 })
 
@@ -37,8 +43,8 @@ moviesRouter.put('/:id', upload.single("poster"), async (request, response) => {
 
   console.log("Request file: " + request.file)
 
-  const updatedBlog = await Movie.findByIdAndUpdate(request.params.id, movie, { new: true, runValidators: true, context: 'query' }).populate(["genres", "seenBy", "country"])
-  response.json(updatedBlog)
+  const updatedMovie = await Movie.findByIdAndUpdate(request.params.id, movie, { new: true, runValidators: true, context: 'query' }).populate(["genres", "seenBy", "country"])
+  response.json(updatedMovie)
 })
 
 module.exports = moviesRouter

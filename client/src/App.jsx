@@ -8,6 +8,7 @@ import AppHeader from './components/AppHeader';
 import SearchBar from './components/SearchBar';
 import PageSwitch from './components/PageSwitch';
 import { UserContext } from './providers/UserProvider';
+import { setToken } from './services/token';
 
 const App = () => {
   const { setUser } = useContext(UserContext)
@@ -36,7 +37,7 @@ const App = () => {
     const loggedPetitJSON = window.localStorage.getItem('loggedPetit')
     if (loggedPetitJSON) {
       const loggedPetit = JSON.parse(loggedPetitJSON)
-      MovieService.setToken(loggedPetit.token)
+      setToken(loggedPetit.token)
       setUser(loggedPetit.user)
     }
       })

@@ -15,7 +15,6 @@ export const sortMovies = (movies, selectedSort) => {
     } else {
         sortedMovies = movies
         .sort((a, b) => {
-            console.log(selectedSort.name + " " + a[selectedSort.name.toLowerCase()])
             return a[selectedSort.name.toLowerCase()].localeCompare(b[selectedSort.name.toLowerCase()], 'en', { sensitivity: 'base' })
         })
     }

@@ -8,6 +8,7 @@ import { API_BASE_URL } from '../config';
 import Modal from './Modal';
 import LoginService from '../services/LoginService';
 import { UserContext } from '../providers/UserProvider';
+import { setToken } from '../services/token';
 
 const AppHeader = ({ setMovies }) => {
     const { user, setUser } = useContext(UserContext)
@@ -58,20 +59,30 @@ const AppHeader = ({ setMovies }) => {
                 <button className={styles["header-button"]}>💬 Suggest movie</button>
                 {user ? ( 
                     <div className={styles["logged-message"]}>
-                        {user}
-                        <button className={styles["logout-button"]} onClick={() => {setUser(null)}}>logout</button>
+                        {user.name}
+                        <button 
+                            className={styles["logout-button"]} 
+                            onClick={() => {
+                                setUser(null)
+                                window.localStorage.removeItem("loggedPetit")
+                                setToken("")
+                            }}
+                        >
+                            logout
+                        </button>
                     </div>
                 ) : (
                     <form onSubmit={(e) => {
                         e.preventDefault()
 
+                        setPetitKey("")
                         LoginService
                         .login(petitKey)
-                        .then(({token, user}) => {
+                        .then(({token, user, id}) => {
                             console.log("Petit! User: " + user)
-                            window.localStorage.setItem('loggedPetit', JSON.stringify({user, token}))
-                            MovieService.setToken(token)
-                            setUser(user)
+                            window.localStorage.setItem("loggedPetit", JSON.stringify({user: {name: user, id}, token}))
+                            setToken(token)
+                            setUser({name: user, id})
                         })
                         .catch(() => {
                             alert("Invalid petit key")

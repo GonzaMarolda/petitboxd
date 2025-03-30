@@ -3,9 +3,11 @@ import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { POSTERS_BASE_PATH, API_BASE_URL } from '../config'
 import MovieForm from './forms/MovieForm'
+import Rating from './rating/Rating'
 import Modal from './Modal'
 import MovieService from '../services/MovieService'
 import { UserContext } from '../providers/UserProvider'
+import RatingService from '../services/RatingService'
 
 export const Movies = ({movies, setMovies}) => {
 	const [clickedMovieId, setClickedMovieId] = useState('')
@@ -51,6 +53,7 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 	const { user } = useContext(UserContext)
 	const clicked = movie.id === clickedMovieId
 	const [editOpen, setEditOpen] = useState(false)
+	const [ratingOpen, setRatingOpen] = useState(false)
 	const handleEdit = (formData) => {
 		const editedMovie = {
 			...formData,
@@ -65,9 +68,15 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 				setMovies((prevState) => prevState.map(m => m.id === updatedMovie.id ? updatedMovie : m))
 			})
 	}
-	const seeetEditOpen = (daBool) => {
-		console.log(daBool)
-		setEditOpen(false)
+
+	const handleReviewSubmit = (review) => {
+		console.log(JSON.stringify(user))
+		console.log(JSON.stringify(review))
+		RatingService.update(movie.id, review)
+			.then(updatedRating => {
+				console.log("Updated rating: " + JSON.stringify(updatedRating))
+				setRatingOpen(false)
+			})
 	}
 
 	return (
@@ -90,7 +99,7 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 							<Modal>
 								<MovieForm
 									handleAddMovie={handleEdit}
-									setShowModal={seeetEditOpen}
+									setShowModal={() => setEditOpen(false)}
 									initialFormData={{
 										...movie,
 										hours: Math.floor(movie.length / 60),
@@ -102,12 +111,22 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 						)}
 					</div>
 
-					<div 	className={styles["config-button"]}>
+					<div className={styles["config-button"]} onClick={() => {if (!ratingOpen) setRatingOpen(true)}}>
 						<img 
 							className={styles["star-button"]}
 							src={API_BASE_URL + "/uploads/star.webp"} 
 							alt="edit-image" 
 						/>
+						{ratingOpen &&
+						(
+							<Modal>
+								<Rating
+									movie={movie}
+									onSubmitRating={handleReviewSubmit}
+									onClose={() => setRatingOpen(false)}
+								/>
+							</Modal>
+						)}
 					</div>
 
 					<div className={styles["config-button"]} onClick={() => onClick(movie.id, false)}>

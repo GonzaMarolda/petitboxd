@@ -1,12 +1,6 @@
 import axios from 'axios'
+import { token } from './token'
 const baseUrl = '/api/movies'
-
-let token = null
-
-const setToken = newToken => {
-  token = `Bearer ${newToken}`
-  console.log('Token set to ' + token)
-}
 
 const getAll = async () => {
     const request = await axios.get(baseUrl)
@@ -38,4 +32,4 @@ const update = async (id, movie) => {
   return response.data
 }
 
-export default { getAll, create, update, setToken }
+export default { getAll, create, update }
