@@ -248,7 +248,7 @@ export const MovieImage = ({ src, alt, className }) => {
 
   return (
     <img 
-      src={POSTERS_BASE_PATH + imageSrc}
+      src={imageSrc}
       alt={alt}
       onError={() => {setImageSrc("missing.jpg")}}
       className={className}

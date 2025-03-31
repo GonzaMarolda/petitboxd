@@ -38,7 +38,7 @@ const PosterInsert = ({onUpload, initialPoster}) => {
                 />
             ) : initialPoster ? (
                 <img
-                    src={POSTERS_BASE_PATH + initialPoster} 
+                    src={initialPoster} 
                     alt="Poster preview" 
                     className={styles["poster-inserted"]}
                 />

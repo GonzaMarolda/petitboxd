@@ -2,6 +2,7 @@ const moviesRouter = require('express').Router()
 const Movie = require('../models/movie')
 const Rating = require('../models/rating')
 const upload = require('../utils/storage')
+const { v2: cloudinary } = require('cloudinary');
 
 moviesRouter.get('/', async (request, response) => {
   const movies = await Movie.find({}).populate(["genres", "seenBy", "country"])
@@ -15,7 +16,8 @@ moviesRouter.post('/', upload.single("poster"), async (request, response) => {
 
   const movie = new Movie({
     ...request.body,
-    poster: request.file ? request.file.filename : null
+    poster: request.file ? request.file.path : null,
+    poster_id: request.file ? request.file.filename : null
   })
 
   console.log("Request file: " + request.file)
@@ -36,15 +38,29 @@ moviesRouter.put('/:id', upload.single("poster"), async (request, response) => {
     return response.status(401).json({ error: 'invalid token' })
   }
 
-  const movie = {
-    ...request.body,
-    poster: request.file ? request.file.filename : request.body.poster
+  try {
+    const movieToUpdate = { ...request.body }
+
+    const existingMovie = await Movie.findById(request.params.id);
+    if (existingMovie.poster_id) {
+      await cloudinary.uploader.destroy(existingMovie.poster_id);
+    }
+    if (request.file) {  
+      movieToUpdate.poster = request.file.path;
+      movieToUpdate.poster_id = request.file.filename;
+    }
+  
+    console.log("Request file: " + request.file)
+  
+    const updatedMovie = await Movie.findByIdAndUpdate(request.params.id, movieToUpdate, { new: true, runValidators: true, context: 'query' }).populate(["genres", "seenBy", "country"])
+    response.json(updatedMovie)
+  } catch (error) {
+    if (request.file?.filename) {
+      await cloudinary.uploader.destroy(request.file.filename);
+    }
+    
+    response.status(500).json({ error: error.message });
   }
-
-  console.log("Request file: " + request.file)
-
-  const updatedMovie = await Movie.findByIdAndUpdate(request.params.id, movie, { new: true, runValidators: true, context: 'query' }).populate(["genres", "seenBy", "country"])
-  response.json(updatedMovie)
 })
 
 module.exports = moviesRouter
