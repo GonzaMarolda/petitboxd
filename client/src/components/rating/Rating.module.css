@@ -78,6 +78,11 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
     background-color: rgba(255, 255, 255, 0.05);
 }
+
+.buttons-container {
+    display: flex;
+    gap: 1rem;
+}
   
 .submit-btn {
     background: #4d6bfe;
@@ -87,6 +92,10 @@
     border-radius: 40px;
     cursor: pointer;
     transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
 }
   
 .reviews-section {

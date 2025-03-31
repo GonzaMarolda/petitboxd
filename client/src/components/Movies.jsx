@@ -7,7 +7,6 @@ import Rating from './rating/Rating'
 import Modal from './Modal'
 import MovieService from '../services/MovieService'
 import { UserContext } from '../providers/UserProvider'
-import RatingService from '../services/RatingService'
 
 export const Movies = ({movies, setMovies}) => {
 	const [clickedMovieId, setClickedMovieId] = useState('')
@@ -69,16 +68,6 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 			})
 	}
 
-	const handleReviewSubmit = (review) => {
-		console.log(JSON.stringify(user))
-		console.log(JSON.stringify(review))
-		RatingService.update(movie.id, review)
-			.then(updatedRating => {
-				console.log("Updated rating: " + JSON.stringify(updatedRating))
-				setRatingOpen(false)
-			})
-	}
-
 	return (
 		<div 
 			className={styles["movie-card"] + " " + (clicked || !user ? "" : styles["hoverable"])} 
@@ -122,7 +111,6 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 							<Modal>
 								<Rating
 									movie={movie}
-									onSubmitRating={handleReviewSubmit}
 									onClose={() => setRatingOpen(false)}
 								/>
 							</Modal>

@@ -7,10 +7,10 @@ import Review from "./Review";
 import RatingService from "../../services/RatingService";
 import { UserContext } from "../../providers/UserProvider";
 
-const Rating = ({ movie, onSubmitRating, onClose }) => {
+const Rating = ({ movie, onClose }) => {
   const [petitRating, setPetitRating] = useState(0.5)
-  const [movieRating, setMovieRating] = useState({})
   const [comment, setComment] = useState('')
+  const [movieRating, setMovieRating] = useState({})
   const [average, setAverage] = useState(0)
   const { user } = useContext(UserContext)
   
@@ -19,8 +19,30 @@ const Rating = ({ movie, onSubmitRating, onClose }) => {
       .then(rating => {
         setMovieRating(rating)
         setAverage(calculateAverage(rating.reviews))
+        
+        if (rating.reviews.map(r => r.petit.id).includes(user.id)) {
+          const petitReview = rating.reviews.find(r => r.petit.id === user.id)
+          setPetitRating(petitReview.rating)
+          setComment(petitReview.comment)
+        }
       })
   }, [])
+
+  const handleReviewSubmit = (review) => {
+    RatingService.update(movie.id, review)
+      .then(updatedRating => {
+        console.log("Updated rating: " + JSON.stringify(updatedRating))
+        setMovieRating(updatedRating)
+      })
+  }
+
+  const handleReviewDelete = () => {
+    RatingService.remove(movie.id)
+      .then((updatedRating) => {
+        console.log("Review deleted")
+        setMovieRating(updatedRating)
+      })
+  }
 
   const calculateAverage = (reviews) => {
     if (reviews.length === 0) return 0
@@ -57,16 +79,44 @@ const Rating = ({ movie, onSubmitRating, onClose }) => {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               />
-              <button 
-              className={styles["submit-btn"]}
-              onClick={() => onSubmitRating({ 
-                rating: petitRating, 
-                comment,
-                petit: user.id
-              })}
-              >
-              Submit
-              </button>
+              {movieRating.reviews?.map(r => r.petit.id).includes(user.id) ? (
+                <div className={styles["buttons-container"]}>
+                  <button 
+                    className={styles["submit-btn"]}
+                    onClick={() => {
+                      const reviewToSubmit = { 
+                        rating: petitRating, 
+                        comment,
+                        petit: user.id
+                      }
+                      handleReviewSubmit(reviewToSubmit)
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button 
+                    className={styles["submit-btn"]}
+                    style={{background: "#fe4d4d"}}
+                    onClick={() => handleReviewDelete()}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  className={styles["submit-btn"]}
+                  onClick={() => {
+                    const reviewToSubmit = { 
+                      rating: petitRating, 
+                      comment,
+                      petit: user.id
+                    }
+                    handleReviewSubmit(reviewToSubmit)
+                  }}
+                >
+                  Submit
+                </button>
+              )}
           </div>
 
           <div className={styles["reviews-section"]}>
@@ -93,7 +143,6 @@ const Rating = ({ movie, onSubmitRating, onClose }) => {
   
 Rating.propTypes = {
     movie: PropTypes.object.isRequired,
-    onSubmitRating: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired
 }
 
