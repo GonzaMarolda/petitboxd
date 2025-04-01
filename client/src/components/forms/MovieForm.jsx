@@ -222,7 +222,7 @@ const MovieForm = ({ handleAddMovie, setShowModal, initialFormData }) => {
                 </button>
                 <button 
                     type="submit"
-                    data-testid="submit"
+                    data-testid="add_movie"
                     onClick={(e) => {
                         e.preventDefault()
                         validateSubmit()

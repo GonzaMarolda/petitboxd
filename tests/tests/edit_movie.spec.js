@@ -15,6 +15,8 @@ describe('Movie update', () => {
       }})
 
       await page.goto('http://localhost:5173')
+      await page.getByTestId('login_input').fill("testPassword")
+      await page.keyboard.press('Enter');
     })
 
     describe('Initial movie is shown', () => {
@@ -58,7 +60,7 @@ describe('Movie update', () => {
             await page.getByTestId('remove_Documentary').click()
             await page.getByTestId('form_Ariel').click() 
             await page.getByTestId('form_Gonza').click() 
-            await page.getByTestId('submit').click()            
+            await page.getByTestId('add_movie').click()            
           })
 
         test('Title', async ({ page }) => {

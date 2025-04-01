@@ -91,6 +91,7 @@ const AppHeader = ({ setMovies }) => {
                     <input 
                         type="password" 
                         placeholder="Enter your petit key" 
+                        data-testId="login_input"
                         className={styles["access-input"]}
                         value={petitKey}
                         onChange={(e) => {setPetitKey(e.target.value)}}

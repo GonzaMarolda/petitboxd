@@ -1,5 +1,5 @@
 import styles from './Movies.module.css'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { POSTERS_BASE_PATH, API_BASE_URL } from '../config'
 import MovieForm from './forms/MovieForm'
@@ -270,6 +270,10 @@ Flag.propTypes = {
 
 export const MovieImage = ({ src, alt, className }) => {
   const [imageSrc, setImageSrc] = useState(src)
+
+  useEffect(() => {
+	if (!src) setImageSrc("missing.jpg")
+  }, [])
 
   if (imageSrc === "missing.jpg") {
     return (

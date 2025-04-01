@@ -5,6 +5,8 @@ describe('Movie addition', () => {
       await request.post('http://localhost:3001/api/testing/reset')
   
       await page.goto('http://localhost:5173')
+      await page.getByTestId('login_input').fill("testPassword")
+      await page.keyboard.press('Enter');
     })
   
     test('Add movie button is shown', async ({ page }) => {
@@ -30,7 +32,7 @@ describe('Movie addition', () => {
         await page.getByTestId('genre_input').click()
         await page.getByText('Action').click()
         await page.getByText('Ariel').click() 
-        await page.getByTestId('submit').click()
+        await page.getByTestId('add_movie').click()
 
         await expect(page.getByText('testTitle')).toBeVisible()
     })
