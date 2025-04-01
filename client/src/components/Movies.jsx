@@ -70,36 +70,38 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 
 	return (
 		<div 
-			className={styles["movie-card"] + " " + (clicked || !user ? "" : styles["hoverable"])} 
-			onClick={() => {if (!clicked && user) onClick(movie.id, true)}} 
-			style={clicked || !user ? {cursor: "auto"} : {cursor: "pointer"}}
+			className={styles["movie-card"] + " " + (clicked ? "" : styles["hoverable"])} 
+			onClick={() => {if (!clicked) onClick(movie.id, true)}} 
+			style={clicked ? {cursor: "auto"} : {cursor: "pointer"}}
 			data-testid={"card_" + movie.title}
 		>
 			<div className={styles["movie-config-container"]} style={clicked ? {visibility: "visible"} : {visibility: "hidden"}}>
-					<div className={styles["config-button"]} onClick={() => {if (!editOpen) setEditOpen(true)}}>
-						<img 
-							className={styles["edit-button"]}
-							src={API_BASE_URL + "/uploads/edit.png"} 
-							alt="edit-image" 
-							data-testid="button_edit"
-						/>
-						{editOpen &&
-						(
-							<Modal>
-								<MovieForm
-									handleAddMovie={handleEdit}
-									setShowModal={() => setEditOpen(false)}
-									initialFormData={{
-										...movie,
-										hours: Math.floor(movie.length / 60),
-										minutes: movie.length - Math.floor(movie.length / 60)*60,
-										seenBy: movie.seenBy.map(p => p.id)
-									}}
-								/>
-							</Modal>
-						)}
-					</div>
-
+					{user && (
+						<div className={styles["config-button"]} onClick={() => {if (!editOpen) setEditOpen(true)}}>
+							<img 
+								className={styles["edit-button"]}
+								src={API_BASE_URL + "/uploads/edit.png"} 
+								alt="edit-image" 
+								data-testid="button_edit"
+							/>
+							{editOpen &&
+							(
+								<Modal>
+									<MovieForm
+										handleAddMovie={handleEdit}
+										setShowModal={() => setEditOpen(false)}
+										initialFormData={{
+											...movie,
+											hours: Math.floor(movie.length / 60),
+											minutes: movie.length - Math.floor(movie.length / 60)*60,
+											seenBy: movie.seenBy.map(p => p.id)
+										}}
+									/>
+								</Modal>
+							)}
+						</div>
+					)}
+					
 					<div className={styles["config-button"]} onClick={() => {if (!ratingOpen) setRatingOpen(true)}}>
 						<img 
 							className={styles["star-button"]}

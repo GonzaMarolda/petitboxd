@@ -20,7 +20,7 @@ const Rating = ({ movie, onClose }) => {
         setMovieRating(rating)
         setAverage(calculateAverage(rating.reviews))
         
-        if (rating.reviews.map(r => r.petit.id).includes(user.id)) {
+        if (user && rating.reviews.map(r => r.petit.id).includes(user.id)) {
           const petitReview = rating.reviews.find(r => r.petit.id === user.id)
           setPetitRating(petitReview.rating)
           setComment(petitReview.comment)
@@ -67,6 +67,7 @@ const Rating = ({ movie, onClose }) => {
       </div>
 
       <div className={styles["rating-content"]}>
+        {user && (
           <div className={styles["rating-form"]}>
               <h3>Your rating</h3>
               <StarsInput
@@ -118,6 +119,7 @@ const Rating = ({ movie, onClose }) => {
                 </button>
               )}
           </div>
+        )}
 
           <div className={styles["reviews-section"]}>
               <h3 className={styles["reviews-title"]}>
