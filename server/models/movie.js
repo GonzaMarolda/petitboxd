@@ -42,7 +42,11 @@ const movieSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Petit',
         required: false
-    }]
+    }],
+    hasPriority: {
+        type: Boolean,
+        default: false
+    }
 })
 
 movieSchema.set('toJSON', {

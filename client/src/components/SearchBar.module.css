@@ -70,6 +70,26 @@
   stroke-linecap: round;
 }
 
+.prioritized-button {
+  height: 37px;
+  padding: 0.25rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+}
+
+.prioritized-button:hover {
+  color: #d13838b7;
+}
+
+.prioritized-button.active {
+  color: #d13838;
+}
+
 .sort-container {
   position: relative;
   display: flex;

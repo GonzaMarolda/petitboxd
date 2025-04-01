@@ -52,6 +52,7 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 	const { user } = useContext(UserContext)
 	const clicked = movie.id === clickedMovieId
 	const [editOpen, setEditOpen] = useState(false)
+	const [priorityUpdating, setPriorityUpdating] = useState(false)
 	const [ratingOpen, setRatingOpen] = useState(false)
 	const handleEdit = (formData) => {
 		const editedMovie = {
@@ -101,6 +102,43 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 							)}
 						</div>
 					)}
+
+					{user && (
+						<div 
+							className={
+								styles["config-button"] + " " +
+								(priorityUpdating ? styles["loading"] : "") 
+							} 
+							onClick={() => {
+								if (priorityUpdating) return
+								setPriorityUpdating(true)
+								MovieService.updatePriority(movie.id, !movie.hasPriority)
+									.then(() => {
+										setMovies(prev => prev.map(m => m.id === movie.id ? {...movie, hasPriority: !movie.hasPriority} : m))
+										setPriorityUpdating(false)
+									})
+									.catch((error) => {
+										console.error("Couldn't change movie priority: " + error)
+										setPriorityUpdating(false)
+									})
+							}}
+						>
+							<svg 
+								x="0px" 
+								y="0px" 
+								width="35px" 
+								height="35px" 
+								viewBox="0 0 122.879 122.867" 
+								className={
+									styles["pin-button"] + " " +
+									(movie.hasPriority ? styles["pinned"] : "")
+								}
+								fill='currentColor'
+							>
+								<g><path d="M83.88,0.451L122.427,39c0.603,0.601,0.603,1.585,0,2.188l-13.128,13.125 c-0.602,0.604-1.586,0.604-2.187,0l-3.732-3.73l-17.303,17.3c3.882,14.621,0.095,30.857-11.37,42.32 c-0.266,0.268-0.535,0.529-0.808,0.787c-1.004,0.955-0.843,0.949-1.813-0.021L47.597,86.48L0,122.867l36.399-47.584L11.874,50.76 c-0.978-0.98-0.896-0.826,0.066-1.837c0.24-0.251,0.485-0.503,0.734-0.753C24.137,36.707,40.376,32.917,54.996,36.8l17.301-17.3 l-3.733-3.732c-0.601-0.601-0.601-1.585,0-2.188L81.691,0.451C82.295-0.15,83.279-0.15,83.88,0.451L83.88,0.451z"/></g>
+							</svg>
+						</div>
+					)}	
 					
 					<div className={styles["config-button"]} onClick={() => {if (!ratingOpen) setRatingOpen(true)}}>
 						<img 

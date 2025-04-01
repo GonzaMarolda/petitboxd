@@ -32,4 +32,15 @@ const update = async (id, movie) => {
   return response.data
 }
 
-export default { getAll, create, update }
+const updatePriority = async (id, priority) => {
+  const config = {
+    headers: {
+      "Authorization": token
+    }
+  } 
+
+  const response = await axios.patch(baseUrl + '/priority/' + id, {priority}, config)
+  return response.data
+}
+
+export default { getAll, create, update, updatePriority }

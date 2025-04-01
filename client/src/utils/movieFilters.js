@@ -49,7 +49,13 @@ const filterSelectedFilters = (movies, selectedFilters) => {
 
     return hasIncluded && !hasExcluded
   })
+  .filter(movie => { // Priority
+    if (selectedFilters.showPrioritized === false) return true
+
+    return movie.hasPriority
+  })
 }
+
 
 // Matches movies to the quert and returns them with a failedMatch property
 const getProcessedMovies = (movies, searchQuery) => {

@@ -20,7 +20,8 @@ const App = () => {
     minYear: '',
     maxYear: '',
     country: '',
-    seenBy: ['any']
+    seenBy: ['any'],
+    showPrioritized: false
   });
   const [selectedSort, setSelectedSort] = useState({type: "ASC", name: "Year"})
   const moviesPerPage = 12

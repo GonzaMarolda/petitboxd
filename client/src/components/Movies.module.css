@@ -159,13 +159,13 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     gap: 50px;
     z-index: 2;
     padding: 1.5rem;
-    padding-bottom: 150px;
-    padding-top: 150px;
+    padding-bottom: 50px;
+    padding-top: 50px;
     right: 0;
     left: 0;
     top: 0;
@@ -189,9 +189,21 @@
     opacity: 0.75;
 }
 
+.config-button.loading {
+    opacity: 0.6;
+}
+
 .edit-button {
     width: 75%;
     height: 75%;
+}
+
+.pin-button {
+    color: #111;
+}
+
+.pin-button.pinned {
+    color: #d13838;
 }
 
 .close-button {

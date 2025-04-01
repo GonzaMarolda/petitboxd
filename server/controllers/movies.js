@@ -63,4 +63,17 @@ moviesRouter.put('/:id', upload.single("poster"), async (request, response) => {
   }
 })
 
+moviesRouter.patch('/priority/:id', async (request, response) => {
+  if (!request.user?.id) {
+    return response.status(401).json({ error: 'invalid token' })
+  }
+
+  await Movie.updateOne(
+    { _id: request.params.id},
+    { $set: { hasPriority: request.body.priority } }, 
+    { new: true, runValidators: true }
+  )
+  response.sendStatus(204)
+})
+
 module.exports = moviesRouter
