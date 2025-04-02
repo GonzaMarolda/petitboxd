@@ -15,7 +15,7 @@ const Review = ({review}) => {
     return (
         <div className={styles["review-card"]}>
             <div className={styles["review-header"]}>
-                <span className={styles["user"]}>{review.petit.name}</span>
+                <span className={styles["user"]} data-testId={"user-" + review.petit.name}>{review.petit.name}</span>
                 <div className={styles["review-stars"]}>
                     {[...Array(5)].map((_, i) => (
                         <span key={i}>
@@ -44,7 +44,7 @@ const Review = ({review}) => {
                     ))}
                 </div>
             </div>
-            <p className={styles["review-text"]}>{review.comment}</p>
+            <p className={styles["review-text"]} data-testId={"comment-" + review.comment}>{review.comment}</p>
             <span className={styles["review-date"]}>{review.date.slice(0, 10)}</span>
         </div>
     )

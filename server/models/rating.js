@@ -4,7 +4,8 @@ const ratingSchema = new mongoose.Schema({
     movie: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Movie',
-        required: true
+        required: true, 
+        unique: true
     },
     reviews: [{
         type: mongoose.Schema.Types.ObjectId,

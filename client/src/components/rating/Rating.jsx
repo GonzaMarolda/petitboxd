@@ -33,6 +33,7 @@ const Rating = ({ movie, onClose }) => {
       .then(updatedRating => {
         console.log("Updated rating: " + JSON.stringify(updatedRating))
         setMovieRating(updatedRating)
+        setAverage(calculateAverage(updatedRating.reviews))
       })
   }
 
@@ -41,6 +42,7 @@ const Rating = ({ movie, onClose }) => {
       .then((updatedRating) => {
         console.log("Review deleted")
         setMovieRating(updatedRating)
+        setAverage(calculateAverage(updatedRating.reviews))
       })
   }
 
@@ -56,7 +58,7 @@ const Rating = ({ movie, onClose }) => {
       <div className={styles["rating-header"]}>
         <h2>{movie.title}</h2>
         {average === 0 ? (
-          <div className={styles["no-rating"]}>
+          <div className={styles["no-rating"]} data-testId="no-ratings-message">
             No one has rated this movie yet 
           </div>
         ) : (
@@ -79,6 +81,7 @@ const Rating = ({ movie, onClose }) => {
               placeholder="Add a review (optional)"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
+              data-testId="comment-input"
               />
               {movieRating.reviews?.map(r => r.petit.id).includes(user.id) ? (
                 <div className={styles["buttons-container"]}>
@@ -133,7 +136,7 @@ const Rating = ({ movie, onClose }) => {
                   />
                 ))
               ) : (
-                <div className={styles["no-reviews"]}>
+                <div className={styles["no-reviews"]} data-testId="no-reviews-message">
                   No reviews to show
                 </div>
               )}

@@ -1,6 +1,7 @@
 const ratingsRouter = require('express').Router()
 const Rating = require('../models/rating')
 const Review = require('../models/review')
+const { Types: { ObjectId } } = require('mongoose');
 
 ratingsRouter.get('/:id', async (request, response) => {
   const ratings = await Rating.findOne({movie: request.params.id})
@@ -14,15 +15,17 @@ ratingsRouter.put('/:id', async (request, response) => {
       return response.status(401).json({ error: 'invalid token' })
     } 
 
-    const existingReview = await Rating.findOne({movie: request.params.id}).reviews?.find(r => r.petit === request.body.petit)
+    const populatedRating = await Rating.findOne({movie: request.params.id}).populate("reviews")
 
-    let savedReview
+    const existingReview = populatedRating.reviews?.find(r => r.petit.toString() === request.body.petit)
+
+    let savedReview = null
     if (existingReview) {
-      const rating = {
+      const review = {
         ...request.body,
         date: Date.now()
       }
-      savedReview = await Review.findOneAndUpdate({petit: existingReview.petit}, rating)
+      await Review.findOneAndUpdate({petit: existingReview.petit}, review)
     } else {
       const review = new Review({
         ...request.body
@@ -31,6 +34,7 @@ ratingsRouter.put('/:id', async (request, response) => {
     }
 
     const rating = await Rating.findOne({movie: request.params.id})
+
     const newRating = {
       movie: rating.movie, 
       reviews: existingReview ? 

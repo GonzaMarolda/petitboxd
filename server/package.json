@@ -8,7 +8,7 @@
     "test": "cross-env NODE_ENV=test node --test",
     "seed": "cross-env NODE_ENV=development node seeds/seedLoader.js",
     "seed:test": "cross-env NODE_ENV=test node seeds/seedLoader.js",
-    "start:test": "cross-env NODE_ENV=test node index.js"
+    "start:test": "cross-env NODE_ENV=test nodemon index.js"
   },
   "keywords": [],
   "author": "",

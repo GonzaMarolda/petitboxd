@@ -28,7 +28,7 @@ const StarsInput = ({selectedStars, setSelectedStars}) => {
     return (
         <div className={styles["stars-container"]}>
         {[...Array(5)].map((_, i) => (
-            <span key={i} className={styles["star-wrapper"]}>
+            <span key={i} className={styles["star-wrapper"]} data-testId={"review-form-star-" + i}>
                 <svg 
                     width={starSize} 
                     height={starSize}

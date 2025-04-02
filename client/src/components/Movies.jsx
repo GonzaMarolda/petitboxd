@@ -145,6 +145,7 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 							className={styles["star-button"]}
 							src={API_BASE_URL + "/uploads/star.webp"} 
 							alt="edit-image" 
+							data-testId="rating-button"
 						/>
 						{ratingOpen &&
 						(
