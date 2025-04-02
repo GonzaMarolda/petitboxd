@@ -5,6 +5,8 @@ import PetitService from '../../services/PetitService'
 import GenreDropdown from './GenreDropdown'
 import CountryDropdown from './CountryDropdown'
 import PosterInsert from './PosterInsert'
+import MovieFormDetails from './MovieFormDetails'
+import MovieFormHeader from './MovieFormHeader'
 
 const MovieForm = ({ handleAddMovie, setShowModal, initialFormData }) => {
     const [formData, setFormData] = useState({
@@ -37,13 +39,6 @@ const MovieForm = ({ handleAddMovie, setShowModal, initialFormData }) => {
         }
     }, [])
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        let processedValue = correctInputLength(name, value)
-
-        setFormData({...formData, [name]: processedValue });
-    }
-
     const handlePosterUpload = (file) => {
         setFormData({...formData, ["poster"]: file })
     }
@@ -58,25 +53,6 @@ const MovieForm = ({ handleAddMovie, setShowModal, initialFormData }) => {
         isSelection ?  
             setFormData({ ...formData, genres: formData.genres.concat(genre.id) }) :
             setFormData({ ...formData, genres: formData.genres.filter(gId => gId !== genre.id) })
-    }
-
-    const handleCountrySelection = (country) => {
-        setFormData({...formData, ["country"]: country.id })
-    }
-
-    const correctInputLength = (name, value) => {
-        let processedValue = value
-
-        if (name === "hours") {
-            processedValue = processedValue.replace(/[^0-9]/g, '')
-            processedValue = processedValue[processedValue.length - 1]
-            return processedValue
-        } else if (name === "minutes") {
-            processedValue = processedValue.replace(/[^0-9]/g, '')
-            if (processedValue.length <= 2) return processedValue
-            processedValue = processedValue[processedValue.length - 2] + processedValue[processedValue.length - 1]
-            return processedValue
-        } else return value
     }
 
     const validateSubmit = () => {
@@ -102,86 +78,19 @@ const MovieForm = ({ handleAddMovie, setShowModal, initialFormData }) => {
                 initialPoster={initialFormData?.poster}
             />
 
-            <header className={styles["movie-header"]}>
-                <h3 className={styles["movie-title"]}>
-                    {
-                        <input
-                            type="text"
-                            name="title"
-                            data-testid="title"
-                            value={formData.title}
-                            onChange={handleInputChange}
-                            placeholder="Enter a title"
-                            className={styles['title-input']}
-                            required
-                        />
-                    }
-                    <span className={styles["movie-year"]}> 
-                        ({
-                            <input
-                                type="number"
-                                name="year"
-                                data-testid="year"
-                                value={formData.year}
-                                onChange={handleInputChange}
-                                placeholder="Enter a year"
-                                className={styles['year-input']}
-                                required
-                            />
-                        })
-                    </span>
-                    <CountryDropdown
-                        onSelection={handleCountrySelection}
-                        initialCountry={initialFormData?.country}
-                    />
-                </h3>
-            </header>
-
-            <div className={styles["movie-details"]}>
-                <div className={styles["detail-row"]}>
-                    <span className={styles["detail-label"]}>Director:</span>
-                    <span className={styles["detail-value"]}>
-                        <input
-                            type="text"
-                            name="director"
-                            data-testid="director"
-                            value={formData.director}
-                            onChange={handleInputChange}
-                            placeholder="Enter a director"
-                            className={styles['director-input']}
-                            required
-                        />
-                    </span>
-                </div>
-
-                <div className={styles["detail-row"]}>
-                    <span className={styles["detail-label"]}>Length:</span>
-                    <span className={styles["detail-value"]}>
-                        {
-                            <input
-                                type="text"
-                                name="hours"
-                                data-testid="hours"
-                                value={formData.hours}
-                                onChange={handleInputChange}
-                                className={styles['length-input']}
-                                required
-                            />
-                        }h {" "}
-                        {
-                            <input
-                                type="text"
-                                name="minutes"
-                                data-testid="minutes"
-                                value={formData.minutes}
-                                onChange={handleInputChange}
-                                className={styles['length-input']}
-                                required
-                            />
-                        }m
-                    </span>
-                </div>
-            </div>
+            <MovieFormHeader
+                title={formData.title}
+                year={formData.year}
+                country={formData.country}
+                setFormData={setFormData}
+            />
+            
+            <MovieFormDetails
+                hours={formData.hours}
+                minutes={formData.minutes}
+                director={formData.director}
+                setFormData={setFormData}
+            />
 
             <div className={styles["genres-container"]}>
                 <h4 className={styles["section-title"]}>Genres</h4> 

@@ -157,15 +157,15 @@
 
 .movie-config-container {
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    gap: 50px;
+    justify-items: center;
+    gap: 5px;
     z-index: 2;
-    padding: 1.5rem;
-    padding-bottom: 50px;
-    padding-top: 50px;
+    padding: 3rem;
+    padding-bottom: 200px;
+    padding-top: 200px;
     right: 0;
     left: 0;
     top: 0;

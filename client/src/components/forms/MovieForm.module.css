@@ -56,25 +56,6 @@
     margin-block-end: 0.7em;
 }
 
-.detail-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0rem;
-    padding: 0.3rem 0;
-    border-bottom: 1px solid #eee;
-}
-  
-.detail-label {
-    font-weight: 600;
-    font-size: small;
-    color: #444;
-}
-  
-.detail-value {
-    color: #666;
-}
-
-
 /* Simple Inputs */
 
 .title-input {
@@ -96,25 +77,6 @@
     border-bottom: 2px solid #ccc;
     color: white;
 }
-
-.director-input {
-    text-align: right;
-    width: 150px;
-    background-color: rgba(0, 0, 0, 0);
-    border: 0px;
-    outline: none; 
-    color: #666;
-}
-
-.length-input {
-    text-align: center;
-    width: 15px;
-    background-color: rgba(0, 0, 0, 0);
-    outline: none; 
-    border: 0px;
-    color: #666;
-}
-
 
 /* Seen By */
 

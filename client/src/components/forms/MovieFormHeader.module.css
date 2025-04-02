@@ -1,0 +1,29 @@
+.movie-title {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+.movie-year {
+    color: #666;
+    font-weight: 400;
+}
+
+.title-input {
+    margin-right: 5px;
+    width: 55%;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    outline: none; 
+    border-bottom: 2px solid #ccc;
+    color: white;
+}
+
+.year-input {
+    text-align: center;
+    width: 73px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    outline: none; 
+    border-bottom: 2px solid #ccc;
+    color: white;
+}
