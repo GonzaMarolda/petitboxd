@@ -12,7 +12,8 @@ import { setToken } from './services/token';
 
 const App = () => {
   const { setUser } = useContext(UserContext)
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([])
+  const [suggestions, setSuggestions] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedFilters, setSelectedFilters] = useState({
     includedGenres: [],

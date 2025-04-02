@@ -71,26 +71,6 @@
   stroke-linecap: round;
 }
 
-.prioritized-button {
-  height: 37px;
-  padding: 0.25rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  background: #ffffff;
-  cursor: pointer;
-  transition: all 0.1s ease;
-  display: flex;
-  align-items: center;
-}
-
-.prioritized-button:hover {
-  color: #d13838b7;
-}
-
-.prioritized-button.active {
-  color: #d13838;
-}
-
 .sort-container {
   position: relative;
   display: flex;
@@ -119,6 +99,56 @@
   border-color: #1c2a6d;
   background: #f0edff;
   transition: all 0.15s ease;
+}
+
+.extras-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.prioritized-button {
+  height: 29px;
+  padding: 0.25rem;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+}
+
+.prioritized-button:hover {
+  color: #d13838b7;
+}
+
+.prioritized-button.active {
+  color: #d13838;
+}
+
+.suggestions-button {
+  height: 29px;
+  padding: 0.25rem 1rem;
+  width: 6rem;
+  border-radius: 8px;
+  background: #ffffffee;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+  font-size: small;
+  font-family: "Red Hat Text";
+}
+
+.suggestions-button:hover {
+  color: #d13838aa;
+}
+
+.suggestions-button.active {
+  color: #d13838;
 }
 
 @media (max-width: 600px) {
