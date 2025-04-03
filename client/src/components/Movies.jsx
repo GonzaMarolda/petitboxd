@@ -11,8 +11,8 @@ import { UserContext } from '../providers/UserProvider'
 export const Movies = ({movies, setMovies}) => {
 	const [clickedMovieId, setClickedMovieId] = useState('')
 
-	const onClick = (movieId, isOpen) => {
-		if (!isOpen) setClickedMovieId('')
+	const onClick = (movieId) => {
+		if (clickedMovieId === movieId) setClickedMovieId('')
 		else setClickedMovieId(movieId)
 	}
 
@@ -54,6 +54,7 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 	const [editOpen, setEditOpen] = useState(false)
 	const [priorityUpdating, setPriorityUpdating] = useState(false)
 	const [ratingOpen, setRatingOpen] = useState(false)
+	const [onDeleteConfirmation, setOnDeleteConfirmation] = useState(false)
 	const handleEdit = (formData) => {
 		const editedMovie = {
 			...formData,
@@ -72,99 +73,132 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 	return (
 		<div 
 			className={styles["movie-card"] + " " + (clicked ? "" : styles["hoverable"])} 
-			onClick={() => {if (!clicked) onClick(movie.id, true)}} 
-			style={clicked ? {cursor: "auto"} : {cursor: "pointer"}}
+			onClick={() => {
+					if (clicked) return
+					onClick(movie.id)
+					setOnDeleteConfirmation(false)
+				}} 
+			style={{cursor: "pointer"}}
 			data-testid={"card_" + movie.title}
 		>
-			<div className={styles["movie-config-container"]} style={clicked ? {visibility: "visible"} : {visibility: "hidden"}}>
-					{user && (
-						<div className={styles["config-button"]} onClick={() => {if (!editOpen) setEditOpen(true)}}>
-							<img 
-								className={styles["edit-button"]}
-								src={API_BASE_URL + "/uploads/edit.png"} 
-								alt="edit-image" 
-								data-testid="button_edit"
+			<div 
+				className={styles["movie-config-container"]} 
+				onClick={(e) => {
+					if (e.target === e.currentTarget) {
+						onClick(movie.id);
+					}
+				}} 
+				style={clicked ? {visibility: "visible"} : {visibility: "hidden"}}
+			>
+				<div className={styles["config-button"]} onClick={() => {if (!ratingOpen) setRatingOpen(true)}}>
+					<img 
+						className={styles["star-button"]}
+						src={API_BASE_URL + "/uploads/star.webp"} 
+						alt="edit-image" 
+						data-testId="rating-button"
+					/>
+					{ratingOpen &&
+					(
+						<Modal>
+							<Rating
+								movie={movie}
+								onClose={() => setRatingOpen(false)}
 							/>
-							{editOpen &&
-							(
-								<Modal>
-									<MovieForm
-										handleAddMovie={handleEdit}
-										setShowModal={() => setEditOpen(false)}
-										initialFormData={{
-											...movie,
-											hours: Math.floor(movie.length / 60),
-											minutes: movie.length - Math.floor(movie.length / 60)*60,
-											seenBy: movie.seenBy.map(p => p.id)
-										}}
-									/>
-								</Modal>
-							)}
-						</div>
+						</Modal>
 					)}
+				</div>
 
-					{user && (
-						<div 
+				{user && (
+					<div 
+						className={
+							styles["config-button"] + " " +
+							(priorityUpdating ? styles["loading"] : "") 
+						} 
+						onClick={() => {
+							if (priorityUpdating) return
+							setPriorityUpdating(true)
+							MovieService.updatePriority(movie.id, !movie.hasPriority)
+								.then(() => {
+									setMovies(prev => prev.map(m => m.id === movie.id ? {...movie, hasPriority: !movie.hasPriority} : m))
+									setPriorityUpdating(false)
+								})
+								.catch((error) => {
+									console.error("Couldn't change movie priority: " + error)
+									setPriorityUpdating(false)
+								})
+						}}
+					>
+						<svg 
+							x="0px" 
+							y="0px" 
+							width="35px" 
+							height="35px" 
+							viewBox="0 0 122.879 122.867" 
 							className={
-								styles["config-button"] + " " +
-								(priorityUpdating ? styles["loading"] : "") 
-							} 
-							onClick={() => {
-								if (priorityUpdating) return
-								setPriorityUpdating(true)
-								MovieService.updatePriority(movie.id, !movie.hasPriority)
-									.then(() => {
-										setMovies(prev => prev.map(m => m.id === movie.id ? {...movie, hasPriority: !movie.hasPriority} : m))
-										setPriorityUpdating(false)
-									})
-									.catch((error) => {
-										console.error("Couldn't change movie priority: " + error)
-										setPriorityUpdating(false)
-									})
-							}}
+								styles["pin-button"] + " " +
+								(movie.hasPriority ? styles["pinned"] : "")
+							}
+							fill='currentColor'
 						>
-							<svg 
-								x="0px" 
-								y="0px" 
-								width="35px" 
-								height="35px" 
-								viewBox="0 0 122.879 122.867" 
-								className={
-									styles["pin-button"] + " " +
-									(movie.hasPriority ? styles["pinned"] : "")
-								}
-								fill='currentColor'
-							>
-								<g><path d="M83.88,0.451L122.427,39c0.603,0.601,0.603,1.585,0,2.188l-13.128,13.125 c-0.602,0.604-1.586,0.604-2.187,0l-3.732-3.73l-17.303,17.3c3.882,14.621,0.095,30.857-11.37,42.32 c-0.266,0.268-0.535,0.529-0.808,0.787c-1.004,0.955-0.843,0.949-1.813-0.021L47.597,86.48L0,122.867l36.399-47.584L11.874,50.76 c-0.978-0.98-0.896-0.826,0.066-1.837c0.24-0.251,0.485-0.503,0.734-0.753C24.137,36.707,40.376,32.917,54.996,36.8l17.301-17.3 l-3.733-3.732c-0.601-0.601-0.601-1.585,0-2.188L81.691,0.451C82.295-0.15,83.279-0.15,83.88,0.451L83.88,0.451z"/></g>
-							</svg>
-						</div>
-					)}	
-					
-					<div className={styles["config-button"]} onClick={() => {if (!ratingOpen) setRatingOpen(true)}}>
+							<g><path d="M83.88,0.451L122.427,39c0.603,0.601,0.603,1.585,0,2.188l-13.128,13.125 c-0.602,0.604-1.586,0.604-2.187,0l-3.732-3.73l-17.303,17.3c3.882,14.621,0.095,30.857-11.37,42.32 c-0.266,0.268-0.535,0.529-0.808,0.787c-1.004,0.955-0.843,0.949-1.813-0.021L47.597,86.48L0,122.867l36.399-47.584L11.874,50.76 c-0.978-0.98-0.896-0.826,0.066-1.837c0.24-0.251,0.485-0.503,0.734-0.753C24.137,36.707,40.376,32.917,54.996,36.8l17.301-17.3 l-3.733-3.732c-0.601-0.601-0.601-1.585,0-2.188L81.691,0.451C82.295-0.15,83.279-0.15,83.88,0.451L83.88,0.451z"/></g>
+						</svg>
+					</div>
+				)}	
+
+				{user && (
+					<div className={styles["config-button"]} onClick={() => {if (!editOpen) setEditOpen(true)}}>
 						<img 
-							className={styles["star-button"]}
-							src={API_BASE_URL + "/uploads/star.webp"} 
+							className={styles["edit-button"]}
+							src={API_BASE_URL + "/uploads/edit.png"} 
 							alt="edit-image" 
-							data-testId="rating-button"
+							data-testid="button_edit"
 						/>
-						{ratingOpen &&
+						{editOpen &&
 						(
 							<Modal>
-								<Rating
-									movie={movie}
-									onClose={() => setRatingOpen(false)}
+								<MovieForm
+									handleAddMovie={handleEdit}
+									setShowModal={() => setEditOpen(false)}
+									initialFormData={{
+										...movie,
+										hours: Math.floor(movie.length / 60),
+										minutes: movie.length - Math.floor(movie.length / 60)*60,
+										seenBy: movie.seenBy.map(p => p.id)
+									}}
 								/>
 							</Modal>
 						)}
 					</div>
+				)}
 
-					<div className={styles["config-button"]} onClick={() => onClick(movie.id, false)}>
-						<img 
-							className={styles["close-button"]}
-							src={API_BASE_URL + "/uploads/close.png"} 
-							alt="edit-image" 
-						/>
-					</div>
+				<div 
+					className={styles["config-button"]} 
+					onClick={() => {
+						if (!onDeleteConfirmation) {
+							setOnDeleteConfirmation(true)
+						} else {
+							MovieService.remove(movie.id)
+								.then(() => {
+									onClick(movie.id)
+									setOnDeleteConfirmation(false)
+									setMovies(prev => prev.filter(m => m.id !== movie.id))
+								}
+							)
+						}
+					}}
+				>
+					{onDeleteConfirmation ? (
+						<svg width="36" height="36" viewBox="0 0 36 36" className={styles["confirm-delete-button"]} fill="currentColor" >
+							<path d="M34.459 1.375a2.999 2.999 0 0 0-4.149.884L13.5 28.17l-8.198-7.58a2.999 2.999 0 1 0-4.073 4.405l10.764 9.952s.309.266.452.359a2.999 2.999 0 0 0 4.15-.884L35.343 5.524a2.999 2.999 0 0 0-.884-4.149z"/>
+						</svg>
+					) : (
+						<svg className={styles["delete-button"]} fill="currentColor" width="36px" height="36px" viewBox="0 0 41.336 41.336">
+							<g>
+								<path d="M36.335,5.668h-8.167V1.5c0-0.828-0.672-1.5-1.5-1.5h-12c-0.828,0-1.5,0.672-1.5,1.5v4.168H5.001c-1.104,0-2,0.896-2,2   s0.896,2,2,2h2.001v29.168c0,1.381,1.119,2.5,2.5,2.5h22.332c1.381,0,2.5-1.119,2.5-2.5V9.668h2.001c1.104,0,2-0.896,2-2   S37.438,5.668,36.335,5.668z M14.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21c0-0.828,0.672-1.5,1.5-1.5   s1.5,0.672,1.5,1.5V35.67z M22.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21c0-0.828,0.672-1.5,1.5-1.5   s1.5,0.672,1.5,1.5V35.67z M25.168,5.668h-9V3h9V5.668z M30.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21   c0-0.828,0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5V35.67z"/>
+							</g>
+						</svg>
+					)}
+				</div>
 			</div>
 
 			<MovieImage 

@@ -1,4 +1,5 @@
 const moviesRouter = require('express').Router()
+const { default: mongoose } = require('mongoose');
 const Movie = require('../models/movie')
 const Rating = require('../models/rating')
 const upload = require('../utils/storage')
@@ -74,6 +75,38 @@ moviesRouter.patch('/priority/:id', async (request, response) => {
     { new: true, runValidators: true }
   )
   response.sendStatus(204)
+})
+
+moviesRouter.delete('/:id', async (request, response) => {
+  if (!request.user?.id) {
+    return response.status(401).json({ error: 'invalid token' })
+  }
+
+  const movieToDelete = await Movie.findById(request.params.id)
+  if (!movieToDelete) {
+    return response.status(404).json({ error: 'movie not found' })
+  }
+  const ratingToDelete = await Rating.findOne({movie: request.params.id})
+  if (!ratingToDelete) {
+    return response.status(404).json({ error: 'movie rating not found' })
+  }
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  
+  try {
+    await Movie.deleteOne({ _id: movieToDelete.id }).session(session);
+    await Rating.deleteOne({ _id: ratingToDelete.id }).session(session);
+    
+    await session.commitTransaction();
+    return response.sendStatus(204);
+  } catch (transactionError) {
+    await session.abortTransaction();
+    throw transactionError;
+  } finally {
+    console.log("AAAAAA")
+    session.endSession();
+  }
 })
 
 module.exports = moviesRouter
