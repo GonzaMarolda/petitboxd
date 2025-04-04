@@ -70,7 +70,7 @@
     color: #ccc;
     background: none;
     border-radius: 6px;
-    resize: vertical;
+    resize: none;
     transition: all 0.2s ease;
 }
 

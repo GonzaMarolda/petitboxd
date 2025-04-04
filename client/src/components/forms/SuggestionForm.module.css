@@ -1,0 +1,94 @@
+.suggestionCard {
+    position: relative;
+    width: 50%;
+    background: #1a1c22; 
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+  
+.suggestionTitle {
+    width: 40%;
+    margin: 0.5rem 0;
+    color: #fff;
+}
+  
+.comment-input {
+    width: 100%;
+    resize: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ccc;
+    padding: 1rem;
+    border-radius: 6px;
+    font-style: italic;
+    line-height: 1.4;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.comment-input:focus {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.075);
+}
+  
+.suggested-by-container {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title-input {
+    margin-right: 5px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    font-size: 1.1rem;
+    outline: none; 
+    border-bottom: 2px solid #ccccccaa;
+    color: white;
+}
+
+.name-input {
+    margin-right: 5px;
+    width: 25%;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    font-weight: bolder;
+    outline: none; 
+    border-bottom: 2px solid #ccccccaa;
+    color: white;
+}
+
+.form-buttons {
+    position: relative;
+    top: 7px;
+    left: 2px;
+    margin-top: 0.95rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.form-buttons button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: white;
+    border-radius: 4px;
+}
+  
+.form-buttons button[type="submit"] {
+    background: #4d6bfe;
+    border: none;
+}
+
+.form-buttons button[type="cancel"] {
+    background: none;
+    color: #4d6bfe;
+    border: 1px double #4d6bfe;
+}

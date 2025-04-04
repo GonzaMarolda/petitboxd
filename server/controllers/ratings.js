@@ -1,7 +1,6 @@
 const ratingsRouter = require('express').Router()
 const Rating = require('../models/rating')
 const Review = require('../models/review')
-const { Types: { ObjectId } } = require('mongoose');
 
 ratingsRouter.get('/:id', async (request, response) => {
   const ratings = await Rating.findOne({movie: request.params.id})
@@ -25,7 +24,7 @@ ratingsRouter.put('/:id', async (request, response) => {
         ...request.body,
         date: Date.now()
       }
-      await Review.findOneAndUpdate({petit: existingReview.petit}, review)
+      await Review.findByIdAndUpdate(existingReview.id, review)
     } else {
       const review = new Review({
         ...request.body

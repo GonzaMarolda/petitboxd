@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styles from './MovieForm.module.css'
 import PetitService from '../../services/PetitService'
 import GenreDropdown from './GenreDropdown'
-import CountryDropdown from './CountryDropdown'
 import PosterInsert from './PosterInsert'
 import MovieFormDetails from './MovieFormDetails'
 import MovieFormHeader from './MovieFormHeader'
@@ -81,7 +80,7 @@ const MovieForm = ({ handleAddMovie, setShowModal, initialFormData }) => {
             <MovieFormHeader
                 title={formData.title}
                 year={formData.year}
-                country={formData.country}
+                initialCountry={initialFormData?.country}
                 setFormData={setFormData}
             />
             

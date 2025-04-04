@@ -12,6 +12,7 @@ const countriesRouter = require("./controllers/countries")
 const petitsRouter = require("./controllers/petits")
 const loginRouter = require("./controllers/login")
 const ratingsRouter = require("./controllers/ratings")
+const suggestionsRouter = require("./controllers/suggestions")
 
 mongoose.connect(config.MONGODB_URI)
   .then(() => {
@@ -31,6 +32,7 @@ app.use('/uploads', express.static('uploads'))
 app.use(express.static('dist'))
 
 app.use("/api/movies", middleware.userExtractor, moviesRouter)
+app.use("/api/suggestions", middleware.userExtractor, suggestionsRouter)
 app.use("/api/genres", genresRouter)
 app.use("/api/countries", countriesRouter)
 app.use("/api/petits", petitsRouter)

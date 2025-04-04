@@ -9,11 +9,14 @@ import Modal from './Modal';
 import LoginService from '../services/LoginService';
 import { UserContext } from '../providers/UserProvider';
 import { setToken } from '../services/token';
+import SuggestionForm from './forms/SuggestionForm';
+import SuggestionService from '../services/SuggestionService';
 
-const AppHeader = ({ setMovies }) => {
+const AppHeader = ({ setMovies, setSuggestions }) => {
     const { user, setUser } = useContext(UserContext)
     const [petitKey, setPetitKey] = useState('')
-    const [showModal, setShowModal] = useState(false);
+    const [showMovieForm, setShowMovieForm] = useState(false);
+    const [showSuggestionForm, setShowSuggestionForm] = useState(false);
 
     const handleAddMovie = (formData) => {
         const newMovie = {
@@ -33,7 +36,17 @@ const AppHeader = ({ setMovies }) => {
                 console.log("Added movie: " + JSON.stringify(addedMovie))
                 setMovies((prevState) => prevState.concat(addedMovie))
             })
-    };
+    }
+
+    const handleAddSuggestion = (formData) => {
+        const newSuggestion = {...formData}
+        SuggestionService
+            .create(newSuggestion)
+            .then(addedSuggestion => {
+                console.log("Added suggestion: " + JSON.stringify(addedSuggestion))
+                setSuggestions((prevState) => prevState.concat(addedSuggestion))
+            })
+    }
 
     return (
         <header className={styles["header-container"]}>
@@ -44,19 +57,34 @@ const AppHeader = ({ setMovies }) => {
 
             <div className={styles["header-controls"]}>
                 {user && (
-                    <button 
+                    <button
                         className={styles["header-button"]}
-                        onClick={() => setShowModal(true)}
+                        onClick={() => setShowMovieForm(true)}
                     >
                         ➕ Add movie
                     </button>
                 )}
-                {showModal && 
+                {showMovieForm && 
                     <Modal>
-                        <MovieForm handleAddMovie={handleAddMovie} setShowModal={setShowModal}/>
-                    </Modal>}                
+                        <MovieForm handleAddMovie={handleAddMovie} setShowModal={setShowMovieForm}/>
+                    </Modal>
+                }                
 
-                <button className={styles["header-button"]}>💬 Suggest movie</button>
+                <button 
+                    className={styles["header-button"]}
+                    onClick={() => setShowSuggestionForm(true)}
+                >
+                    💬 Suggest movie
+                </button>
+                {showSuggestionForm && 
+                    <Modal>
+                        <SuggestionForm 
+                            setShow={setShowSuggestionForm}
+                            handleAddSuggestion={handleAddSuggestion}
+                        />
+                    </Modal>
+                } 
+
                 {user ? ( 
                     <div className={styles["logged-message"]}>
                         {user.name}
@@ -103,7 +131,8 @@ const AppHeader = ({ setMovies }) => {
     )
 }
 AppHeader.propTypes = {
-    setMovies: PropTypes.func.isRequired
+    setMovies: PropTypes.func.isRequired,
+    setSuggestions: PropTypes.func.isRequired
 }
 
 export default AppHeader

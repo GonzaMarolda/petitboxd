@@ -2,10 +2,10 @@
     position: absolute;
     left: 0;
     right: 0;
+    top: 2.8rem;
     background: #2d3340;
     border-radius: 8px;
     padding: 1.5rem;
-    margin-top: 0rem;
     z-index: 100;
     border: 1px solid #3e4451;
 }

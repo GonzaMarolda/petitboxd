@@ -104,7 +104,6 @@ moviesRouter.delete('/:id', async (request, response) => {
     await session.abortTransaction();
     throw transactionError;
   } finally {
-    console.log("AAAAAA")
     session.endSession();
   }
 })

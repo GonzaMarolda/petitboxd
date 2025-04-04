@@ -6,7 +6,7 @@ export const filterMovies = (movies, searchQuery, selectedFilters) => {
   return filteredMovies
 }
 
-const filterSearchQuery = (movies, searchQuery) => {
+export const filterSearchQuery = (movies, searchQuery) => {
     const processedMovies = getProcessedMovies(movies, searchQuery) 
     const filteredMovies = processedMovies.filter(movie => !movie.failedMatch)
 
@@ -61,7 +61,7 @@ const filterSelectedFilters = (movies, selectedFilters) => {
 const getProcessedMovies = (movies, searchQuery) => {
     return movies.map(movie => {
         if (searchQuery == '') return { ...movie, failedMatch: false }
-  
+
         const titleLower = movie.title.toLowerCase()
         const queryLower = searchQuery.toLowerCase()
   

@@ -52,7 +52,7 @@
   align-items: center;
 }
 
-.filter-button:hover {
+.filter-button.hoverable:hover {
   border-color: #1c2a6d;
   background: #f5f3ff;
 }
@@ -61,6 +61,10 @@
   border-color: #1c2a6d;
   background: #f0edff;
   transition: all 0.15s ease;
+}
+
+.filter-button.disabled {
+  opacity: 0.5;
 }
 
 .filter-icon {
@@ -90,7 +94,7 @@
   align-items: center;
 }
 
-.sort-button:hover {
+.sort-button.hoverable:hover {
   border-color: #1c2a6d;
   background: #f5f3ff;
 }
@@ -99,6 +103,10 @@
   border-color: #1c2a6d;
   background: #f0edff;
   transition: all 0.15s ease;
+}
+
+.sort-button.disabled {
+  opacity: 0.5;
 }
 
 .extras-container {
@@ -149,6 +157,10 @@
 
 .suggestions-button.active {
   color: #d13838;
+}
+
+.button:disabled {
+  opacity: 0.5;
 }
 
 @media (max-width: 600px) {

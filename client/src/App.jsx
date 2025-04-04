@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { filterMovies } from './utils/movieFilters';
+import { filterMovies, filterSearchQuery } from './utils/movieFilters';
 import { sortMovies } from './utils/movieSorting';
 
 import {Movies} from './components/Movies'
@@ -9,6 +9,8 @@ import SearchBar from './components/SearchBar';
 import PageSwitch from './components/PageSwitch';
 import { UserContext } from './providers/UserProvider';
 import { setToken } from './services/token';
+import SuggestionService from './services/SuggestionService';
+import Suggestions from './components/Suggestions';
 
 const App = () => {
   const { setUser } = useContext(UserContext)
@@ -22,7 +24,8 @@ const App = () => {
     maxYear: '',
     country: '',
     seenBy: ['any'],
-    showPrioritized: false
+    showPrioritized: false,
+    showSuggestions: false
   });
   const [selectedSort, setSelectedSort] = useState({type: "ASC", name: "Year"})
   const moviesPerPage = 12
@@ -30,12 +33,19 @@ const App = () => {
 
   const sortedMovies = sortMovies(movies, selectedSort)
   const filteredSortedMovies = filterMovies(sortedMovies, searchQuery, selectedFilters)
+  const filteredSuggestions = filterSearchQuery(suggestions, searchQuery)
 
   useEffect(() => {
     MovieService
       .getAll()
       .then(movies => {
         setMovies(movies);
+    SuggestionService
+        .getAll()
+        .then(suggestions => {
+          setSuggestions(suggestions)
+        })
+
     const loggedPetitJSON = window.localStorage.getItem('loggedPetit')
     if (loggedPetitJSON) {
       const loggedPetit = JSON.parse(loggedPetitJSON)
@@ -52,7 +62,7 @@ const App = () => {
 
   return (
     <>
-      <AppHeader setMovies={setMovies}/>
+      <AppHeader setMovies={setMovies} setSuggestions={setSuggestions}/>
       <div className="main-content">
         <SearchBar 
           searchQuery={searchQuery} 
@@ -62,14 +72,26 @@ const App = () => {
           selectedSort={selectedSort}
           setSelectedSort={setSelectedSort}
         />
-        <Movies 
-          movies={filteredSortedMovies.slice(moviesPerPage*page, moviesPerPage*page + moviesPerPage)} 
-          setMovies={setMovies}
-        />
+        {selectedFilters.showSuggestions ? (
+          <Suggestions
+            suggestions={filteredSuggestions}
+            setMovies={setMovies}
+            setSuggestions={setSuggestions}
+          />
+        ) : (
+          <Movies 
+            movies={filteredSortedMovies.slice(moviesPerPage*page, moviesPerPage*page + moviesPerPage)} 
+            setMovies={setMovies}
+          />
+        )}
         <PageSwitch
           page={page}
           setPage={setPage}
-          totalPages={Math.ceil(filteredSortedMovies.length / moviesPerPage)}
+          totalPages={
+            selectedFilters.showSuggestions ? 
+            Math.ceil(filteredSuggestions.length / moviesPerPage) :
+            Math.ceil(filteredSortedMovies.length / moviesPerPage)
+          }
         />
       </div>
     </>

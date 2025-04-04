@@ -16,12 +16,21 @@ const SearchBar = ({ searchQuery, setSearchQuery, selectedFilters, setSelectedFi
         setShowSorting(false)
     };
 
+    const getButtonStyle = (styleName) => {
+        if (showSuggestions) {
+            return styles[styleName] + " " + styles["disabled"]
+        } else {
+            return styles[styleName] + " " + (showSorting ? styles["active"] : styles["hoverable"])
+        }
+    }
+
     return (
         <div className={styles["search-filter-container"]}>
             <div className={styles["searchBar-container"]}>
                 <div className={styles["sort-container"]}>
-                    <button 
-                        className={styles["sort-button"] + " " + (showSorting ? styles["active"] : "")}
+                    <button
+                        disabled={showSuggestions}
+                        className={getButtonStyle("sort-button")}
                         onClick={() => {
                             setShowSorting(!showSorting)
                             setShowFilters(false)
@@ -51,7 +60,8 @@ const SearchBar = ({ searchQuery, setSearchQuery, selectedFilters, setSelectedFi
                     data-testid="search-input"
                 />
                 <button 
-                    className={styles["filter-button"] + " " + (showFilters ? styles["active"] : "")}
+                    disabled={showSuggestions}
+                    className={getButtonStyle("filter-button")}
                     onClick={toggleFilters}
                 >
                     <svg className={styles["filter-icon"]} viewBox="0 0 24 24" data-testid="filters-button">
@@ -84,6 +94,8 @@ const SearchBar = ({ searchQuery, setSearchQuery, selectedFilters, setSelectedFi
                     className={styles["suggestions-button"] + " " + (showSuggestions ? styles["active"] : "")}
                     onClick={() => {
                         setShowSuggestions(prev => !prev)
+                        setSelectedFilters(prev => ({...prev, showSuggestions: !prev.showSuggestions}))
+                        setShowSorting(false)
                     }}
                 >
                     Suggestions
