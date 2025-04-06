@@ -33,7 +33,7 @@ const filterSelectedFilters = (movies, selectedFilters) => {
   })
   .filter(movie => { // Country
     if (!selectedFilters.country) return true
-    return movie.country.id === selectedFilters.country
+    return movie.country?.id === selectedFilters.country
   })
   .filter(movie => { // Seen By
     if (selectedFilters.seenBy.includes('any')) return true

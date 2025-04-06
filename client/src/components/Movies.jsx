@@ -82,7 +82,7 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 			data-testid={"card_" + movie.title}
 		>
 			<div 
-				className={styles["movie-config-container"]} 
+				className={styles["movie-config-container"] + " " + (!user ? styles["non-user"] : "")} 
 				onClick={(e) => {
 					if (e.target === e.currentTarget) {
 						onClick(movie.id);
@@ -171,34 +171,36 @@ const MovieCard = ({movie, setMovies, clickedMovieId, onClick}) => {
 					</div>
 				)}
 
-				<div 
-					className={styles["config-button"]} 
-					onClick={() => {
-						if (!onDeleteConfirmation) {
-							setOnDeleteConfirmation(true)
-						} else {
-							MovieService.remove(movie.id)
-								.then(() => {
-									onClick(movie.id)
-									setOnDeleteConfirmation(false)
-									setMovies(prev => prev.filter(m => m.id !== movie.id))
-								}
-							)
-						}
-					}}
-				>
-					{onDeleteConfirmation ? (
-						<svg width="36" height="36" viewBox="0 0 36 36" className={styles["confirm-delete-button"]} fill="currentColor" >
-							<path d="M34.459 1.375a2.999 2.999 0 0 0-4.149.884L13.5 28.17l-8.198-7.58a2.999 2.999 0 1 0-4.073 4.405l10.764 9.952s.309.266.452.359a2.999 2.999 0 0 0 4.15-.884L35.343 5.524a2.999 2.999 0 0 0-.884-4.149z"/>
-						</svg>
-					) : (
-						<svg className={styles["delete-button"]} fill="currentColor" width="36px" height="36px" viewBox="0 0 41.336 41.336">
-							<g>
-								<path d="M36.335,5.668h-8.167V1.5c0-0.828-0.672-1.5-1.5-1.5h-12c-0.828,0-1.5,0.672-1.5,1.5v4.168H5.001c-1.104,0-2,0.896-2,2   s0.896,2,2,2h2.001v29.168c0,1.381,1.119,2.5,2.5,2.5h22.332c1.381,0,2.5-1.119,2.5-2.5V9.668h2.001c1.104,0,2-0.896,2-2   S37.438,5.668,36.335,5.668z M14.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21c0-0.828,0.672-1.5,1.5-1.5   s1.5,0.672,1.5,1.5V35.67z M22.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21c0-0.828,0.672-1.5,1.5-1.5   s1.5,0.672,1.5,1.5V35.67z M25.168,5.668h-9V3h9V5.668z M30.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21   c0-0.828,0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5V35.67z"/>
-							</g>
-						</svg>
-					)}
-				</div>
+				{user &&
+					<div 
+						className={styles["config-button"]} 
+						onClick={() => {
+							if (!onDeleteConfirmation) {
+								setOnDeleteConfirmation(true)
+							} else {
+								MovieService.remove(movie.id)
+									.then(() => {
+										onClick(movie.id)
+										setOnDeleteConfirmation(false)
+										setMovies(prev => prev.filter(m => m.id !== movie.id))
+									}
+								)
+							}
+						}}
+					>
+						{onDeleteConfirmation ? (
+							<svg width="36" height="36" viewBox="0 0 36 36" className={styles["confirm-delete-button"]} fill="currentColor" >
+								<path d="M34.459 1.375a2.999 2.999 0 0 0-4.149.884L13.5 28.17l-8.198-7.58a2.999 2.999 0 1 0-4.073 4.405l10.764 9.952s.309.266.452.359a2.999 2.999 0 0 0 4.15-.884L35.343 5.524a2.999 2.999 0 0 0-.884-4.149z"/>
+							</svg>
+						) : (
+							<svg className={styles["delete-button"]} fill="currentColor" width="36px" height="36px" viewBox="0 0 41.336 41.336">
+								<g>
+									<path d="M36.335,5.668h-8.167V1.5c0-0.828-0.672-1.5-1.5-1.5h-12c-0.828,0-1.5,0.672-1.5,1.5v4.168H5.001c-1.104,0-2,0.896-2,2   s0.896,2,2,2h2.001v29.168c0,1.381,1.119,2.5,2.5,2.5h22.332c1.381,0,2.5-1.119,2.5-2.5V9.668h2.001c1.104,0,2-0.896,2-2   S37.438,5.668,36.335,5.668z M14.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21c0-0.828,0.672-1.5,1.5-1.5   s1.5,0.672,1.5,1.5V35.67z M22.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21c0-0.828,0.672-1.5,1.5-1.5   s1.5,0.672,1.5,1.5V35.67z M25.168,5.668h-9V3h9V5.668z M30.168,35.67c0,0.828-0.672,1.5-1.5,1.5s-1.5-0.672-1.5-1.5v-21   c0-0.828,0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5V35.67z"/>
+								</g>
+							</svg>
+						)}
+					</div>
+				}
 			</div>
 
 			<MovieImage 
